@@ -4,20 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lesson 1 - Activity</title>
-
 <style>
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  display: flex;
   background: #f7f3ea;
   color: #1f2a44;
 }
 
+.topbar {
+  background: #2f5b95;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar .brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.topbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-weight: 600;
+}
+
+.layout {
+  display: flex;
+  min-height: calc(100vh - 56px);
+}
+
 .sidebar {
-  width: 250px;
+  width: 240px;
   background: #f1f1f1;
-  min-height: 100vh;
   padding: 20px;
   border-right: 1px solid #ddd;
 }
@@ -28,11 +51,12 @@ body {
 
 .sidebar a {
   display: block;
-  padding: 10px;
-  margin-bottom: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
   text-decoration: none;
   color: #1f2a44;
   border-radius: 6px;
+  font-weight: 600;
 }
 
 .sidebar a.active {
@@ -44,10 +68,16 @@ body {
   background: #ddd;
 }
 
+.back-link {
+  margin-top: 20px;
+  display: block;
+  font-size: 0.95rem;
+}
+
 .content {
   flex: 1;
   padding: 40px;
-  max-width: 900px;
+  max-width: 950px;
 }
 
 .section {
@@ -58,8 +88,54 @@ body {
   margin-bottom: 20px;
 }
 
+.section h2 {
+  margin-top: 0;
+}
+
+.source-box {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-left: 5px solid #2f5b95;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 14px;
+}
+
+.source-label {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.source-note {
+  color: #5f6878;
+  font-size: 0.92rem;
+  margin-top: 10px;
+}
+
 .question {
-  margin-bottom: 20px;
+  margin-top: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 0.98rem;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 button {
@@ -69,6 +145,7 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .result {
@@ -81,81 +158,177 @@ button {
 }
 
 .incorrect {
-  color: red;
+  color: #a4473f;
+}
+
+.next-link {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  background: #2f5b95;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.small {
+  color: #5a6478;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 </style>
 </head>
-
 <body>
 
-<div class="sidebar">
-  <h3>Lesson 1</h3>
-  <a href="lesson1-video.html">Video</a>
-  <a href="lesson1-reading.html">Textbook</a>
-  <a href="lesson1-activity.html" class="active">Activity</a>
+<div class="topbar">
+  <div class="brand">History Platform</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="course-cold-war.html">Cold War Unit</a>
+  </div>
 </div>
 
-<div class="content">
+<div class="layout">
+  <div class="sidebar">
+    <h3>Lesson 1</h3>
+    <a href="lesson1-video.html">Video</a>
+    <a href="lesson1-reading.html">Textbook</a>
+    <a href="lesson1-activity.html" class="active">Activity</a>
+    <a href="course-cold-war.html" class="back-link">← Back to Unit</a>
+  </div>
 
-<h1>Lesson 1 Activity</h1>
+  <div class="content">
+    <h1>Lesson 1 Activity</h1>
 
-<div class="section">
+    <div class="section">
+      <h2>Today I will</h2>
+      <p>compare a U.S. source and a Soviet source</p>
 
-<h2>Check for Understanding</h2>
+      <h2>So that I can</h2>
+      <p>see how different beliefs and distrust helped start the Cold War</p>
 
-<div class="question">
-<p>1. What was one major cause of the Cold War?</p>
-<label><input type="radio" name="q1" value="correct"> Different ideologies</label><br>
-<label><input type="radio" name="q1" value="wrong"> Weather changes</label><br>
-<label><input type="radio" name="q1" value="wrong"> Trade routes</label>
-</div>
+      <h2>I know I’ve got it when I can</h2>
+      <p>explain how both sources show conflict between the U.S. and USSR</p>
+    </div>
 
-<div class="question">
-<p>2. What system did the Soviet Union use?</p>
-<label><input type="radio" name="q2" value="wrong"> Capitalism</label><br>
-<label><input type="radio" name="q2" value="correct"> Communism</label><br>
-<label><input type="radio" name="q2" value="wrong"> Democracy</label>
-</div>
+    <div class="section">
+      <h2>Directions</h2>
+      <p class="small">
+        Read both sources. Then answer the questions below.
+        Your goal is to figure out what each side believed, feared, and wanted.
+      </p>
+    </div>
 
-<div class="question">
-<p>3. Why did the U.S. distrust the Soviet Union?</p>
-<label><input type="radio" name="q3" value="correct"> Fear of spreading communism</label><br>
-<label><input type="radio" name="q3" value="wrong"> They lost WWII</label><br>
-<label><input type="radio" name="q3" value="wrong"> They had no army</label>
-</div>
+    <div class="section">
+      <h2>Source A — United States</h2>
 
-<button onclick="gradeQuiz()">Submit</button>
+      <div class="source-box">
+        <div class="source-label">Harry S. Truman, 1947</div>
+        <p>
+          “One way of life is based upon the will of the majority, and is distinguished by free institutions,
+          representative government, free elections, guarantees of individual liberty, freedom of speech and religion,
+          and freedom from political oppression. The second way of life is based upon the will of a minority forcibly
+          imposed upon the majority... I believe that it must be the policy of the United States to support free peoples
+          who are resisting attempted subjugation.”
+        </p>
+        <div class="source-note">
+          This source appears in your TEKS guide as part of the Truman Doctrine section.  [oai_citation:0‡Ramsey Classroom | Suzanne's Candy Craze.pdf](sediment://file_00000000de1071fd87fc8c5a88d5c004)
+        </div>
+      </div>
 
-<div class="result" id="result"></div>
+      <div class="question">
+        <label for="a1">1. According to Truman, what two “ways of life” are in conflict?</label>
+        <textarea id="a1"></textarea>
+      </div>
 
-</div>
+      <div class="question">
+        <label for="a2">2. What does Truman think the United States should do?</label>
+        <textarea id="a2"></textarea>
+      </div>
+    </div>
 
-<div class="section">
+    <div class="section">
+      <h2>Source B — Soviet View</h2>
 
-<h2>Short Response</h2>
+      <div class="source-box" style="border-left-color:#a4473f;">
+        <div class="source-label">Soviet point of view, late 1940s</div>
+        <p>
+          Soviet leaders argued that the Soviet Union had suffered terribly in World War II and needed friendly
+          governments on its borders for security. They believed Western countries were hostile to communism
+          and might try to surround or weaken the Soviet Union.
+        </p>
+        <div class="source-note">
+          This source box is a classroom summary of the Soviet concerns shown in the TEKS reading:
+          Soviet resentment, distrust, and fear of outside pressure after World War II.  [oai_citation:1‡Print Resource _ TEKS Guide.pdf](sediment://file_00000000d4e071fdbff1b5fab6073bf7)
+        </div>
+      </div>
 
-<p>Which of the 3 causes of the Cold War do you think mattered most? Explain why.</p>
+      <div class="question">
+        <label for="b1">3. What did the Soviet Union fear?</label>
+        <textarea id="b1"></textarea>
+      </div>
 
-<textarea style="width:100%; height:120px;"></textarea>
+      <div class="question">
+        <label for="b2">4. Why did Soviet leaders want influence in Eastern Europe?</label>
+        <textarea id="b2"></textarea>
+      </div>
+    </div>
 
-</div>
+    <div class="section">
+      <h2>Compare the Sources</h2>
 
+      <div class="question">
+        <label for="c1">5. What belief or value is most important in Source A?</label>
+        <input type="text" id="c1">
+      </div>
+
+      <div class="question">
+        <label for="c2">6. What fear is most important in Source B?</label>
+        <input type="text" id="c2">
+      </div>
+
+      <div class="question">
+        <label for="c3">7. Which Cold War cause do these two sources show best?</label>
+        <p class="small">Choose one: ideology, distrust, or competition for power</p>
+        <input type="text" id="c3">
+      </div>
+
+      <button onclick="checkComparison()">Submit Quick Check</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <div class="section">
+      <h2>Short Response</h2>
+      <p>
+        In 4–6 sentences, explain how Source A and Source B help show why the Cold War began.
+        Be sure to mention at least <strong>two</strong> of these:
+      </p>
+      <ul>
+        <li>different ideologies</li>
+        <li>distrust after World War II</li>
+        <li>competition for power</li>
+      </ul>
+      <textarea></textarea>
+    </div>
+
+    <a href="course-cold-war.html" class="next-link">Back to Unit</a>
+  </div>
 </div>
 
 <script>
-function gradeQuiz() {
+function checkComparison() {
   let score = 0;
 
-  let q1 = document.querySelector('input[name="q1"]:checked');
-  let q2 = document.querySelector('input[name="q2"]:checked');
-  let q3 = document.querySelector('input[name="q3"]:checked');
+  const c1 = document.getElementById("c1").value.toLowerCase();
+  const c2 = document.getElementById("c2").value.toLowerCase();
+  const c3 = document.getElementById("c3").value.toLowerCase();
 
-  if (q1 && q1.value === "correct") score++;
-  if (q2 && q2.value === "correct") score++;
-  if (q3 && q3.value === "correct") score++;
+  if (c1.includes("freedom") || c1.includes("democracy") || c1.includes("free elections")) score++;
+  if (c2.includes("attack") || c2.includes("surround") || c2.includes("weaken") || c2.includes("security")) score++;
+  if (c3.includes("ideology") || c3.includes("distrust") || c3.includes("power")) score++;
 
-  let result = document.getElementById("result");
-
+  const result = document.getElementById("result");
   result.innerText = "Score: " + score + "/3";
 
   if (score === 3) {
