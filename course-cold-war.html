@@ -6,6 +6,7 @@
 <title>Cold War Unit</title>
 
 <style>
+
 body {
   font-family: Inter, sans-serif;
   margin: 0;
@@ -14,31 +15,61 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #5a6478;
+  margin-bottom: 30px;
 }
 
 .unit-box {
   background: white;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 14px;
+  padding: 25px;
   border: 1px solid #ddd;
-  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-.lesson {
-  margin-top: 10px;
-}
-
-.lesson a {
+.lesson-card {
+  display: block;
+  text-align: left;
+  padding: 16px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #e2e2e2;
   text-decoration: none;
-  color: #2f5b95;
+  color: #1f2a44;
+  transition: 0.15s;
+}
+
+.lesson-card:hover {
+  background: #f0f4fb;
+  transform: translateY(-2px);
+}
+
+.lesson-title {
   font-weight: 600;
+  color: #2f5b95;
+}
+
+.lesson-sub {
+  font-size: 0.9rem;
+  color: #6b7487;
+  margin-top: 4px;
+}
+
+.coming-soon {
+  opacity: 0.6;
+  cursor: default;
 }
 
 </style>
@@ -51,23 +82,26 @@ h1 {
 <h1>Cold War Unit</h1>
 
 <p>
-This unit explores the causes, conflicts, and consequences of the Cold War.
+Understand how and why the Cold War began, and how it shaped the modern world.
 </p>
 
 <div class="unit-box">
 
-<h2>Lessons</h2>
+<h2 style="text-align:left;">Lessons</h2>
 
-<div class="lesson">
-<a href="lesson1-cold-war.html">Lesson 1: Origins of the Cold War</a>
+<a href="lesson1-coldwar.html" class="lesson-card">
+  <div class="lesson-title">Lesson 1: Origins of the Cold War</div>
+  <div class="lesson-sub">Causes, ideologies, and rising tension</div>
+</a>
+
+<div class="lesson-card coming-soon">
+  <div class="lesson-title">Lesson 2: Containment</div>
+  <div class="lesson-sub">How the U.S. tried to stop communism</div>
 </div>
 
-<div class="lesson">
-Lesson 2: Containment (coming soon)
-</div>
-
-<div class="lesson">
-Lesson 3: Alliances (coming soon)
+<div class="lesson-card coming-soon">
+  <div class="lesson-title">Lesson 3: Alliances</div>
+  <div class="lesson-sub">NATO, Warsaw Pact, and global division</div>
 </div>
 
 </div>
