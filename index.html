@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>History Platform</title>
+
   <style>
     :root {
       --paper: #f7f3ea;
@@ -18,416 +19,159 @@
       --shadow: rgba(33, 49, 77, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, system-ui, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 20% 20%, rgba(164, 71, 63, 0.05) 0, transparent 28%),
-        radial-gradient(circle at 80% 10%, rgba(91, 122, 87, 0.05) 0, transparent 24%),
+        radial-gradient(circle at 20% 20%, rgba(164,71,63,0.05), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(91,122,87,0.05), transparent 24%),
         linear-gradient(to bottom, #fbf8f1, var(--paper));
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.08;
-      background-image:
-        radial-gradient(rgba(0,0,0,0.18) 0.5px, transparent 0.6px);
-      background-size: 10px 10px;
-      mix-blend-mode: multiply;
-      z-index: 0;
-    }
-
-    .site-wrap {
-      position: relative;
-      z-index: 1;
     }
 
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 18px 32px;
-      background: rgba(47, 91, 149, 0.96);
-      border-bottom: 3px solid var(--gold);
+      background: var(--blue);
       color: white;
-      box-shadow: 0 8px 24px rgba(47, 91, 149, 0.12);
-    }
-
-    .brand-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-sub {
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.82);
-      margin-top: 2px;
+      border-bottom: 3px solid var(--gold);
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
-      margin-left: 24px;
-      font-size: 0.95rem;
+      margin-left: 20px;
       font-weight: 600;
     }
 
-    .nav-links a:hover {
-      opacity: 0.82;
-    }
-
     .hero {
-      max-width: 950px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 76px 24px 48px;
+      padding: 70px 20px;
       text-align: center;
     }
 
-    .hero-box {
-      background: rgba(255,255,255,0.5);
-      border: 1px solid var(--line);
-      border-top: 5px solid var(--red);
-      border-radius: 20px;
-      padding: 48px 28px;
-      box-shadow: 0 18px 40px var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-box::before,
-    .card::before,
-    .preview-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.06;
-      background-image:
-        radial-gradient(rgba(0,0,0,0.55) 0.45px, transparent 0.55px);
-      background-size: 10px 10px;
-      mix-blend-mode: multiply;
-    }
-
-    .eyebrow {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--red);
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
     h1 {
+      font-size: 3rem;
       margin: 0;
-      font-size: 3.6rem;
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      color: var(--ink);
     }
 
     .hero-sub {
-      max-width: 640px;
-      margin: 18px auto 0;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #46556d;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 16px;
+      color: #555;
     }
 
     .btn {
       border: none;
       border-radius: 999px;
-      padding: 13px 22px;
-      font-size: 0.97rem;
-      font-weight: 700;
+      padding: 12px 20px;
+      font-weight: bold;
       cursor: pointer;
-      font-family: inherit;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      opacity: 0.95;
     }
 
     .btn-primary {
       background: var(--blue);
       color: white;
-      box-shadow: 0 8px 20px rgba(47, 91, 149, 0.18);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--green);
-      border: 1.5px solid var(--green);
     }
 
     .section {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 26px 24px 56px;
-    }
-
-    .section-header {
+      padding: 40px 20px;
       text-align: center;
-      max-width: 760px;
-      margin: 0 auto 24px;
-    }
-
-    .section-header h2 {
-      margin: 0 0 10px;
-      font-size: 2.15rem;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: #5b677b;
-      line-height: 1.65;
-      font-size: 1rem;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
     .card {
-      background: var(--card);
+      background: white;
       border: 1px solid var(--line);
-      border-top: 5px solid var(--blue);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 14px 28px var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card.red { border-top-color: var(--red); }
-    .card.green { border-top-color: var(--green); }
-    .card.gold { border-top-color: var(--gold); }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-      line-height: 1.2;
-    }
-
-    .card p {
-      margin: 0;
-      color: #556274;
-      line-height: 1.6;
-      font-size: 0.96rem;
-    }
-
-    .preview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 22px;
-    }
-
-    .preview-card {
-      background: rgba(255,255,255,0.58);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 14px 28px var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .preview-card.student {
-      border-left: 6px solid var(--green);
-    }
-
-    .preview-card.teacher {
-      border-left: 6px solid var(--red);
-    }
-
-    .preview-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.2rem;
-    }
-
-    .preview-sub {
-      color: #657286;
-      font-size: 0.94rem;
-      margin-bottom: 14px;
-    }
-
-    .mini-box {
-      background: rgba(255,255,255,0.68);
-      border: 1px solid #ddd2bd;
       border-radius: 12px;
-      padding: 13px 14px;
-      margin-bottom: 10px;
-      color: #4d596d;
-      font-size: 0.95rem;
+      padding: 20px;
     }
 
     footer {
-      margin-top: 18px;
-      border-top: 1px solid var(--line);
-      background: rgba(255,255,255,0.44);
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px;
       text-align: center;
-      color: #6a7483;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 850px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .nav-links a {
-        margin-left: 0;
-        margin-right: 18px;
-        display: inline-block;
-        margin-bottom: 8px;
-      }
-
-      h1 {
-        font-size: 2.7rem;
-      }
-
-      .preview-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-box {
-        padding: 38px 22px;
-      }
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
     }
   </style>
 </head>
+
 <body>
-  <div class="site-wrap">
-    <nav>
-      <div>
-        <div class="brand-title">History Platform</div>
-        <div class="brand-sub">Civics • Geography • Historical Thinking</div>
-      </div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Courses</a>
-        <a href="#">Student Portal</a>
-        <a href="#">Teacher Portal</a>
-      </div>
-    </nav>
 
-    <section class="hero">
-      <div class="hero-box">
-        <div class="eyebrow">A digital classroom with memory</div>
-        <h1>Learn history like it matters.</h1>
-        <p class="hero-sub">
-          Guided lessons, clear teacher oversight, student submissions, and AI support built for thoughtful learning.
-        </p>
-        <div class="hero-actions">
-          <button class="btn btn-primary">Explore the Platform</button>
-          <button class="btn btn-secondary">View Course Design</button>
-        </div>
-      </div>
-    </section>
+  <nav>
+    <div>
+      <strong>History Platform</strong><br>
+      <small>Civics • Geography • Historical Thinking</small>
+    </div>
 
-    <section class="section">
-      <div class="section-header">
-        <h2>What this platform will do</h2>
-        <p>
-          A cleaner way to bring together lessons, discussions, uploaded work, grading, and support in one place.
-        </p>
-      </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Student Portal</a>
+      <a href="#">Teacher Portal</a>
+    </div>
+  </nav>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Student Learning Paths</h3>
-          <p>Students move through lessons, maps, source work, quizzes, and projects in a guided sequence.</p>
-        </div>
+  <section class="hero">
+    <h1>Learn history like it matters.</h1>
+    <p class="hero-sub">
+      Guided lessons, clear structure, and meaningful thinking for students.
+    </p>
 
-        <div class="card red">
-          <h3>Teacher Dashboard</h3>
-          <p>Review submissions, leave feedback, track missing work, and manage weighted grading categories.</p>
-        </div>
+    <div style="margin-top: 20px;">
+      <button class="btn btn-primary">Explore the Platform</button>
+    </div>
+  </section>
 
-        <div class="card green">
-          <h3>Built In + Upload Assignments</h3>
-          <p>Support discussions, short responses, quizzes, and uploads like PDF, Word, PowerPoint, Pages, and Keynote.</p>
-        </div>
+  <section class="section">
+    <h2>What this platform will do</h2>
 
-        <div class="card gold">
-          <h3>AI Support with Boundaries</h3>
-          <p>Students get help with review, explanation, and revision without turning the platform into a shortcut machine.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Platform preview</h2>
-        <p>
-          Clear for students. Orderly for teachers. Built to feel calm, focused, and usable.
-        </p>
+    <div class="cards">
+      <div class="card">
+        <h3>Student Learning Paths</h3>
+        <p>Guided lessons and clear progression.</p>
       </div>
 
-      <div class="preview-grid">
-        <div class="preview-card student">
-          <h3>Student Dashboard</h3>
-          <div class="preview-sub">Simple, guided, and easy to resume</div>
-          <div class="mini-box">Current Course: 9th Grade Government</div>
-          <div class="mini-box">Unit Progress: Foundations of the Constitution</div>
-          <div class="mini-box">Upcoming Assignment: Federalism Discussion</div>
-          <div class="mini-box">Recent Feedback: Short Response 1 graded</div>
-        </div>
-
-        <div class="preview-card teacher">
-          <h3>Teacher Dashboard</h3>
-          <div class="preview-sub">Built for oversight without clutter</div>
-          <div class="mini-box">Classes: Government 1, Government 2, Geography 1</div>
-          <div class="mini-box">Submissions to Review: 14</div>
-          <div class="mini-box">Missing Assignments: 9</div>
-          <div class="mini-box">Average Progress This Week: 68%</div>
-        </div>
+      <div class="card">
+        <h3>Teacher Dashboard</h3>
+        <p>Track progress and give feedback.</p>
       </div>
-    </section>
 
-    <footer>
-      <div class="footer-inner">
-        History Platform prototype • Vintage modern classroom design
+      <div class="card">
+        <h3>Assignments</h3>
+        <p>Upload work and respond to prompts.</p>
       </div>
-    </footer>
-  </div>
+
+      <div class="card">
+        <h3>AI Support</h3>
+        <p>Help students think, not cheat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ YOUR BUTTON IN THE RIGHT PLACE -->
+  <section class="section">
+    <a href="course-cold-war.html">
+      <button class="btn btn-primary">
+        Enter Cold War Unit
+      </button>
+    </a>
+  </section>
+
+  <footer>
+    History Platform prototype • Vintage modern classroom design
+  </footer>
+
 </body>
 </html>
