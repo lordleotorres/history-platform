@@ -16,12 +16,17 @@ body {
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 40px 20px 60px;
 }
 
 h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
+}
+
+p {
+  color: #5a6478;
+  line-height: 1.6;
 }
 
 .unit-box {
@@ -33,27 +38,45 @@ h1 {
 }
 
 .lesson {
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  transition: background 0.2s;
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e3e3e3;
+  background: #fcfcfc;
 }
 
 .lesson:hover {
   background: #f0f4fa;
 }
 
-.lesson a {
-  text-decoration: none;
-  color: #2f5b95;
-  font-weight: 600;
-  font-size: 1.1rem;
+.lesson-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2a44;
+  margin-bottom: 6px;
 }
 
 .sub {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #666;
-  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.lesson-links a {
+  display: inline-block;
+  margin-right: 12px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #2f5b95;
+  font-weight: 600;
+}
+
+.lesson-links a:hover {
+  text-decoration: underline;
+}
+
+.coming-soon {
+  color: #666;
 }
 </style>
 </head>
@@ -73,16 +96,23 @@ This unit explores the causes, major events, and consequences of the Cold War.
 <h2>Lessons</h2>
 
 <div class="lesson">
-  <a href="lesson1-video.html">Lesson 1: Origins of the Cold War</a>
+  <div class="lesson-title">Lesson 1: Origins of the Cold War</div>
   <div class="sub">Start here — causes and early tensions</div>
+  <div class="lesson-links">
+    <a href="lesson1-video.html">Video</a>
+    <a href="lesson1-reading.html">Textbook</a>
+    <a href="lesson1-activity.html">Activity</a>
+  </div>
 </div>
 
-<div class="lesson">
-  Lesson 2: Containment (coming soon)
+<div class="lesson coming-soon">
+  <div class="lesson-title">Lesson 2: Containment</div>
+  <div class="sub">Coming soon</div>
 </div>
 
-<div class="lesson">
-  Lesson 3: Alliances (coming soon)
+<div class="lesson coming-soon">
+  <div class="lesson-title">Lesson 3: Alliances</div>
+  <div class="sub">Coming soon</div>
 </div>
 
 </div>
