@@ -8,74 +8,58 @@
 <style>
 body {
   font-family: Inter, sans-serif;
-  background: #f7f3ea;
   margin: 0;
+  background: #f7f3ea;
   color: #1f2a44;
 }
 
 .container {
-  max-width: 850px;
+  max-width: 900px;
   margin: auto;
-  padding: 50px 20px;
+  padding: 40px 20px;
 }
 
 h1 {
-  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
 }
 
 .section {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  margin-bottom: 18px;
+  margin-top: 25px;
   border: 1px solid #ddd;
 }
 
-h2 {
+.section h2 {
   margin-top: 0;
 }
 
-.think {
-  background: #eef3fb;
+input {
+  width: 100%;
   padding: 10px;
-  border-left: 4px solid #2f5b95;
-  margin-top: 10px;
-  font-size: 0.95rem;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 button {
-  margin: 5px;
-  padding: 10px 14px;
-  border: none;
+  padding: 12px 20px;
   background: #2f5b95;
   color: white;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.correct {
-  background: green !important;
-}
-
-.incorrect {
-  background: red !important;
-}
-
-textarea {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-.back {
-  display: block;
-  text-align: center;
-  margin-top: 25px;
-  text-decoration: none;
-  color: #2f5b95;
-  font-weight: 600;
+.result {
+  margin-top: 15px;
+  font-weight: bold;
 }
 </style>
+
 </head>
 
 <body>
@@ -84,64 +68,34 @@ textarea {
 
 <h1>Lesson 1: Origins of the Cold War</h1>
 
-<!-- OBJECTIVES -->
-<div class="section">
-<h2>Today I will</h2>
-<p>identify the 3 causes of the Cold War</p>
+<p>
+Today we explore why the Cold War began after World War II.
+</p>
 
-<h2>So that I can</h2>
-<p>explain why the United States and Soviet Union became rivals</p>
-
-<h2>I know I've got it when I can</h2>
-<p>explain all 3 causes in my own words</p>
-</div>
-
-<!-- READING -->
-<div class="section">
-<h2>Reading</h2>
-
-<p><strong>After World War II, two powerful countries remained:</strong> the United States and the Soviet Union.</p>
-
-<p>During the war, they were allies. However, they never fully trusted each other. The Soviet Union believed the United States waited too long to help during the war. The United States did not trust the Soviet leader, Joseph Stalin.</p>
-
-<div class="think">Think: Why would this create tension between the two countries?</div>
-
-<p><strong>The two countries believed in very different systems.</strong></p>
-
-<p>The United States supported capitalism and democracy. People could vote, own businesses, and have freedoms.</p>
-
-<p>The Soviet Union supported communism. The government controlled the economy and had more power over people.</p>
-
-<div class="think">Think: Why might each country believe their system is better?</div>
-
-<p><strong>After the war, both countries wanted power.</strong></p>
-
-<p>Europe was weak and damaged. Both the United States and Soviet Union wanted influence over these countries.</p>
-
-<p>The Soviet Union began spreading communism in Eastern Europe. The United States wanted to stop communism from spreading.</p>
-
-<div class="think">Think: Why would both countries want control over Europe?</div>
-
-<p><strong>Because of these issues, the Cold War began.</strong></p>
-
-<ul>
-<li>Different ideologies</li>
-<li>Distrust from World War II</li>
-<li>Competition for power</li>
-</ul>
-
-<div class="think">Final Think: Which cause do you think mattered most?</div>
-
-</div>
-
-<!-- VIDEO -->
+<!-- VIDEO SECTION -->
 <div class="section">
 <h2>Watch</h2>
 
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/CHx4U7J9n7I"
-frameborder="0"
-allowfullscreen></iframe>
+<iframe width="100%" height="400"
+src="https://www.youtube.com/embed/9C72ISMF_D0"
+frameborder="0" allowfullscreen></iframe>
+
+</div>
+
+<!-- GUIDED NOTES -->
+<div class="section">
+<h2>Guided Notes</h2>
+
+<p>Fill this out as you watch the video.</p>
+
+<label>1. The Cold War was a conflict between the United States and the ______ Union.</label>
+<input type="text" id="q1">
+
+<label>2. The U.S. believed in capitalism, while the USSR believed in ______.</label>
+<input type="text" id="q2">
+
+<label>3. One major cause of tension was lack of ______ between the two sides.</label>
+<input type="text" id="q3">
 
 </div>
 
@@ -149,55 +103,33 @@ allowfullscreen></iframe>
 <div class="section">
 <h2>Check for Understanding</h2>
 
-<p>Which system did the Soviet Union support?</p>
+<p>Answer the questions below.</p>
 
-<button onclick="checkAnswer(this, false)">Capitalism</button>
-<button onclick="checkAnswer(this, true)">Communism</button>
+<label>Why did the U.S. fear the spread of communism?</label>
+<input type="text" id="q4">
 
-<p id="result"></p>
+<label>What was one major difference between the U.S. and USSR?</label>
+<input type="text" id="q5">
 
-</div>
+<button onclick="checkAnswers()">Submit</button>
 
-<!-- STUDENT RESPONSE -->
-<div class="section">
-<h2>Student Response</h2>
-
-<p>Explain ONE cause of the Cold War in your own words.</p>
-
-<textarea id="response" rows="4"></textarea>
-<button onclick="saveResponse()">Submit</button>
-
-<p id="saved"></p>
+<div class="result" id="result"></div>
 
 </div>
-
-<a href="course-cold-war.html" class="back">← Back to Cold War Unit</a>
 
 </div>
 
 <script>
+function checkAnswers() {
+  let score = 0;
 
-function checkAnswer(button, correct) {
-  let result = document.getElementById("result");
+  if (document.getElementById("q1").value.toLowerCase().includes("soviet")) score++;
+  if (document.getElementById("q2").value.toLowerCase().includes("communism")) score++;
+  if (document.getElementById("q3").value.toLowerCase().includes("trust")) score++;
 
-  if (correct) {
-    button.classList.add("correct");
-    result.innerText = "Correct!";
-    localStorage.setItem("cfu1", "correct");
-  } else {
-    button.classList.add("incorrect");
-    result.innerText = "Try again";
-    localStorage.setItem("cfu1", "incorrect");
-  }
+  document.getElementById("result").innerText =
+    "You got " + score + " out of 3 correct.";
 }
-
-function saveResponse() {
-  let text = document.getElementById("response").value;
-  localStorage.setItem("response1", text);
-
-  document.getElementById("saved").innerText = "Response saved!";
-}
-
 </script>
 
 </body>
