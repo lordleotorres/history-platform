@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 1 - Origins of the Cold War</title>
+<title>Lesson 1 - Cold War Origins</title>
 
 <style>
 body {
@@ -21,14 +21,6 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  text-align: center;
-  color: #5a6478;
-  margin-bottom: 30px;
 }
 
 .section {
@@ -37,24 +29,10 @@ h1 {
   border-radius: 12px;
   margin-bottom: 18px;
   border: 1px solid #ddd;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}
-
-.section h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-}
-
-ul {
-  padding-left: 18px;
-}
-
-.video {
-  margin-top: 10px;
 }
 
 button {
-  margin: 6px 6px 0 0;
+  margin: 5px;
   padding: 10px 14px;
   border: none;
   background: #2f5b95;
@@ -69,13 +47,12 @@ textarea {
   padding: 10px;
 }
 
-.back {
-  display: block;
-  text-align: center;
-  margin-top: 25px;
-  text-decoration: none;
-  color: #2f5b95;
-  font-weight: 600;
+.correct {
+  background: green !important;
+}
+
+.incorrect {
+  background: red !important;
 }
 </style>
 </head>
@@ -85,85 +62,107 @@ textarea {
 <div class="container">
 
 <h1>Lesson 1: Origins of the Cold War</h1>
-<p class="subtitle">Why did two allies become enemies?</p>
 
+<!-- OBJECTIVES -->
 <div class="section">
 <h2>Today I will</h2>
 <p>identify 3 causes of the Cold War</p>
-</div>
 
-<div class="section">
 <h2>So that I can</h2>
-<p>explain why the United States and Soviet Union became rivals</p>
-</div>
+<p>explain why the U.S. and USSR became rivals</p>
 
-<div class="section">
 <h2>I know I've got it when I can</h2>
-<p>list 3 causes and explain each in one sentence</p>
+<p>list and explain all 3 causes</p>
 </div>
 
+<!-- READING (THIS IS WHAT YOU WANTED) -->
 <div class="section">
-<h2>Key Vocabulary</h2>
+<h2>Reading</h2>
+
+<p><strong>After World War II, two powerful countries remained:</strong>  
+the United States and the Soviet Union.</p>
+
+<p>The United States believed in <strong>capitalism</strong> and democracy.  
+The Soviet Union believed in <strong>communism</strong>.</p>
+
+<p>These two systems were very different, and neither side trusted the other.</p>
+
+<p>After the war, both countries wanted influence over Europe.  
+This created tension.</p>
+
+<p><strong>The Cold War began because of three main causes:</strong></p>
+
 <ul>
-<li><strong>Capitalism</strong> – private businesses and free markets</li>
-<li><strong>Communism</strong> – government controls the economy</li>
-<li><strong>Iron Curtain</strong> – division between Eastern and Western Europe</li>
-<li><strong>Containment</strong> – stopping the spread of communism</li>
+<li>Different ideologies</li>
+<li>Competition for power</li>
+<li>Fear and mistrust</li>
 </ul>
-</div>
-
-<div class="section">
-<h2>The 3 Causes of the Cold War</h2>
-
-<p><strong>1. Different Ideologies</strong><br>
-The U.S. believed in freedom, elections, and capitalism.  
-The Soviet Union believed in communism and control.</p>
-
-<p><strong>2. End of World War II</strong><br>
-Both countries became superpowers after WWII.  
-They competed to influence Europe.</p>
-
-<p><strong>3. Fear and Mistrust</strong><br>
-Each side believed the other was dangerous.  
-This fear led to tension and conflict.</p>
 
 </div>
 
+<!-- VIDEO -->
 <div class="section">
 <h2>Watch</h2>
 
-<div class="video">
 <iframe width="100%" height="315"
 src="https://www.youtube.com/embed/CHx4U7J9n7I"
-title="Cold War Overview"
 frameborder="0"
 allowfullscreen></iframe>
-</div>
 
 </div>
 
+<!-- CHECK FOR UNDERSTANDING (NOW TRACKED LOCALLY) -->
 <div class="section">
 <h2>Check for Understanding</h2>
 
 <p>Which system did the Soviet Union support?</p>
 
-<button onclick="alert('Try again')">Capitalism</button>
-<button onclick="alert('Correct!')">Communism</button>
+<button onclick="checkAnswer(this, false)">Capitalism</button>
+<button onclick="checkAnswer(this, true)">Communism</button>
+
+<p id="result"></p>
 
 </div>
 
+<!-- STUDENT RESPONSE -->
 <div class="section">
 <h2>Student Response</h2>
 
-<p>Explain ONE cause of the Cold War in your own words.</p>
+<p>Explain ONE cause of the Cold War.</p>
 
-<textarea rows="4"></textarea>
+<textarea id="response"></textarea>
+<button onclick="saveResponse()">Submit</button>
+
+<p id="saved"></p>
 
 </div>
 
-<a href="course-cold-war.html" class="back">← Back to Cold War Unit</a>
-
 </div>
+
+<script>
+
+function checkAnswer(button, correct) {
+  let result = document.getElementById("result");
+
+  if (correct) {
+    button.classList.add("correct");
+    result.innerText = "Correct!";
+    localStorage.setItem("cfu1", "correct");
+  } else {
+    button.classList.add("incorrect");
+    result.innerText = "Try again";
+    localStorage.setItem("cfu1", "incorrect");
+  }
+}
+
+function saveResponse() {
+  let text = document.getElementById("response").value;
+  localStorage.setItem("response1", text);
+
+  document.getElementById("saved").innerText = "Response saved!";
+}
+
+</script>
 
 </body>
 </html>
