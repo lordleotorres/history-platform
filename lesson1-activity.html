@@ -3,341 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 1 - Activity</title>
+<title>Lesson 1 Activity</title>
+
 <style>
+
 body {
   margin: 0;
-  font-family: Inter, sans-serif;
-  background: #f7f3ea;
-  color: #1f2a44;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f5f7fb;
+  color: #1a1a1a;
 }
 
-.topbar {
-  background: #2f5b95;
-  color: white;
-  padding: 16px 24px;
+/* Layout */
+.wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.topbar .brand {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.topbar a {
-  color: white;
-  text-decoration: none;
-  margin-left: 18px;
-  font-weight: 600;
-}
-
-.layout {
-  display: flex;
-  min-height: calc(100vh - 56px);
-}
-
+/* Sidebar */
 .sidebar {
   width: 240px;
-  background: #f1f1f1;
-  padding: 20px;
-  border-right: 1px solid #ddd;
+  height: 100vh;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 30px 20px;
+  position: fixed;
 }
 
-.sidebar h3 {
-  margin-top: 0;
+.sidebar h2 {
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
 .sidebar a {
   display: block;
-  padding: 10px 12px;
-  margin-bottom: 8px;
+  margin: 12px 0;
   text-decoration: none;
-  color: #1f2a44;
-  border-radius: 6px;
-  font-weight: 600;
+  color: #333;
+  font-weight: 500;
 }
 
 .sidebar a.active {
-  background: #2f5b95;
-  color: white;
+  color: #2f5b95;
+  font-weight: 700;
 }
 
 .sidebar a:hover {
-  background: #ddd;
+  color: #2f5b95;
 }
 
-.back-link {
-  margin-top: 20px;
-  display: block;
-  font-size: 0.95rem;
+/* Main */
+.main {
+  margin-left: 240px;
+  padding: 60px;
+  max-width: 900px;
 }
 
-.content {
-  flex: 1;
-  padding: 40px;
-  max-width: 950px;
+/* Headings */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 .section {
   background: white;
-  padding: 22px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
+  border-radius: 14px;
+  padding: 25px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-.section h2 {
-  margin-top: 0;
+/* Sources */
+.source {
+  border-left: 4px solid #2f5b95;
+  padding: 15px;
+  background: #f9fafc;
+  border-radius: 8px;
+  margin-top: 15px;
 }
 
-.source-box {
-  background: #fafafa;
-  border: 1px solid #ddd;
-  border-left: 5px solid #2f5b95;
-  padding: 18px;
-  border-radius: 10px;
-  margin-top: 14px;
-}
-
-.source-label {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.source-note {
-  color: #5f6878;
-  font-size: 0.92rem;
-  margin-top: 10px;
-}
-
+/* Questions */
 .question {
-  margin-top: 18px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-textarea,
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-family: inherit;
-  font-size: 0.98rem;
+  margin-top: 15px;
 }
 
 textarea {
-  min-height: 100px;
-  resize: vertical;
+  width: 100%;
+  height: 90px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-family: inherit;
 }
 
+/* Buttons */
 button {
-  padding: 12px 20px;
-  background: #2f5b95;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.result {
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-.correct {
-  color: green;
-}
-
-.incorrect {
-  color: #a4473f;
-}
-
-.next-link {
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  background: #2f5b95;
-  color: white;
+  margin-top: 20px;
   padding: 12px 18px;
-  border-radius: 6px;
-  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #2f5b95;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.small {
-  color: #5a6478;
-  font-size: 0.95rem;
-  line-height: 1.6;
+button:hover {
+  opacity: 0.9;
 }
+
 </style>
 </head>
+
 <body>
 
-<div class="topbar">
-  <div class="brand">History Platform</div>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="course-cold-war.html">Cold War Unit</a>
-  </div>
-</div>
+<div class="wrapper">
 
-<div class="layout">
+  <!-- Sidebar -->
   <div class="sidebar">
-    <h3>Lesson 1</h3>
+    <h2>Lesson 1</h2>
     <a href="lesson1-video.html">Video</a>
     <a href="lesson1-reading.html">Textbook</a>
-    <a href="lesson1-activity.html" class="active">Activity</a>
-    <a href="course-cold-war.html" class="back-link">← Back to Unit</a>
+    <a class="active">Activity</a>
+    <br>
+    <a href="course-cold-war.html">← Back to Unit</a>
   </div>
 
-  <div class="content">
-    <h1>Lesson 1 Activity</h1>
+  <!-- Main Content -->
+  <div class="main">
 
+    <h1>Compare Two Perspectives</h1>
+    <p>How did the U.S. and Soviet Union view the world differently?</p>
+
+    <!-- Objective -->
     <div class="section">
-      <h2>Today I will</h2>
-      <p>compare a U.S. source and a Soviet source</p>
-
-      <h2>So that I can</h2>
-      <p>see how different beliefs and distrust helped start the Cold War</p>
-
-      <h2>I know I’ve got it when I can</h2>
-      <p>explain how both sources show conflict between the U.S. and USSR</p>
+      <strong>Goal:</strong><br><br>
+      Compare a U.S. and Soviet source to understand why conflict grew after WWII.
     </div>
 
+    <!-- Source A -->
     <div class="section">
-      <h2>Directions</h2>
-      <p class="small">
-        Read both sources. Then answer the questions below.
-        Your goal is to figure out what each side believed, feared, and wanted.
-      </p>
-    </div>
+      <h3>Source A — United States</h3>
 
-    <div class="section">
-      <h2>Source A — United States</h2>
-
-      <div class="source-box">
-        <div class="source-label">Harry S. Truman, 1947</div>
-        <p>
-          “One way of life is based upon the will of the majority, and is distinguished by free institutions,
-          representative government, free elections, guarantees of individual liberty, freedom of speech and religion,
-          and freedom from political oppression. The second way of life is based upon the will of a minority forcibly
-          imposed upon the majority... I believe that it must be the policy of the United States to support free peoples
-          who are resisting attempted subjugation.”
-        </p>
-        <div class="source-note">
-          This source appears in your TEKS guide as part of the Truman Doctrine section.  [oai_citation:0‡Ramsey Classroom | Suzanne's Candy Craze.pdf](sediment://file_00000000de1071fd87fc8c5a88d5c004)
-        </div>
-      </div>
-
-      <div class="question">
-        <label for="a1">1. According to Truman, what two “ways of life” are in conflict?</label>
-        <textarea id="a1"></textarea>
-      </div>
-
-      <div class="question">
-        <label for="a2">2. What does Truman think the United States should do?</label>
-        <textarea id="a2"></textarea>
+      <div class="source">
+        <strong>Harry Truman, 1947</strong><br><br>
+        "Free peoples must be supported against groups that seek to control them through force or pressure."
       </div>
     </div>
 
+    <!-- Source B -->
     <div class="section">
-      <h2>Source B — Soviet View</h2>
+      <h3>Source B — Soviet Union</h3>
 
-      <div class="source-box" style="border-left-color:#a4473f;">
-        <div class="source-label">Soviet point of view, late 1940s</div>
-        <p>
-          Soviet leaders argued that the Soviet Union had suffered terribly in World War II and needed friendly
-          governments on its borders for security. They believed Western countries were hostile to communism
-          and might try to surround or weaken the Soviet Union.
-        </p>
-        <div class="source-note">
-          This source box is a classroom summary of the Soviet concerns shown in the TEKS reading:
-          Soviet resentment, distrust, and fear of outside pressure after World War II.  [oai_citation:1‡Print Resource _ TEKS Guide.pdf](sediment://file_00000000d4e071fdbff1b5fab6073bf7)
-        </div>
-      </div>
-
-      <div class="question">
-        <label for="b1">3. What did the Soviet Union fear?</label>
-        <textarea id="b1"></textarea>
-      </div>
-
-      <div class="question">
-        <label for="b2">4. Why did Soviet leaders want influence in Eastern Europe?</label>
-        <textarea id="b2"></textarea>
+      <div class="source">
+        <strong>Soviet Perspective</strong><br><br>
+        "Capitalist nations seek to dominate weaker countries. Socialist nations must resist imperialism."
       </div>
     </div>
 
+    <!-- Questions -->
     <div class="section">
-      <h2>Compare the Sources</h2>
+      <h3>Your Analysis</h3>
 
       <div class="question">
-        <label for="c1">5. What belief or value is most important in Source A?</label>
-        <input type="text" id="c1">
+        1. What does the United States believe is its role?
+        <textarea></textarea>
       </div>
 
       <div class="question">
-        <label for="c2">6. What fear is most important in Source B?</label>
-        <input type="text" id="c2">
+        2. What does the Soviet Union believe is happening?
+        <textarea></textarea>
       </div>
 
       <div class="question">
-        <label for="c3">7. Which Cold War cause do these two sources show best?</label>
-        <p class="small">Choose one: ideology, distrust, or competition for power</p>
-        <input type="text" id="c3">
+        3. Why would these two views create conflict?
+        <textarea></textarea>
       </div>
 
-      <button onclick="checkComparison()">Submit Quick Check</button>
-      <div class="result" id="result"></div>
+      <button onclick="alert('Response submitted (we will build real tracking later)')">
+        Submit
+      </button>
     </div>
 
-    <div class="section">
-      <h2>Short Response</h2>
-      <p>
-        In 4–6 sentences, explain how Source A and Source B help show why the Cold War began.
-        Be sure to mention at least <strong>two</strong> of these:
-      </p>
-      <ul>
-        <li>different ideologies</li>
-        <li>distrust after World War II</li>
-        <li>competition for power</li>
-      </ul>
-      <textarea></textarea>
-    </div>
-
-    <a href="course-cold-war.html" class="next-link">Back to Unit</a>
   </div>
+
 </div>
-
-<script>
-function checkComparison() {
-  let score = 0;
-
-  const c1 = document.getElementById("c1").value.toLowerCase();
-  const c2 = document.getElementById("c2").value.toLowerCase();
-  const c3 = document.getElementById("c3").value.toLowerCase();
-
-  if (c1.includes("freedom") || c1.includes("democracy") || c1.includes("free elections")) score++;
-  if (c2.includes("attack") || c2.includes("surround") || c2.includes("weaken") || c2.includes("security")) score++;
-  if (c3.includes("ideology") || c3.includes("distrust") || c3.includes("power")) score++;
-
-  const result = document.getElementById("result");
-  result.innerText = "Score: " + score + "/3";
-
-  if (score === 3) {
-    result.className = "result correct";
-  } else {
-    result.className = "result incorrect";
-  }
-}
-</script>
 
 </body>
 </html>
