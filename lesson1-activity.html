@@ -1,192 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 1 Activity</title>
-
-<style>
-
-body {
-  margin: 0;
-  font-family: Inter, system-ui, sans-serif;
-  background: #f5f7fb;
-  color: #1a1a1a;
-}
-
-/* Layout */
-.wrapper {
-  display: flex;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  background: white;
-  border-right: 1px solid #e5e7eb;
-  padding: 30px 20px;
-  position: fixed;
-}
-
-.sidebar h2 {
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-.sidebar a {
-  display: block;
-  margin: 12px 0;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-.sidebar a.active {
-  color: #2f5b95;
-  font-weight: 700;
-}
-
-.sidebar a:hover {
-  color: #2f5b95;
-}
-
-/* Main */
-.main {
-  margin-left: 240px;
-  padding: 60px;
-  max-width: 900px;
-}
-
-/* Headings */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.section {
-  background: white;
-  border-radius: 14px;
-  padding: 25px;
-  margin-top: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-/* Sources */
-.source {
-  border-left: 4px solid #2f5b95;
-  padding: 15px;
-  background: #f9fafc;
-  border-radius: 8px;
-  margin-top: 15px;
-}
-
-/* Questions */
-.question {
-  margin-top: 15px;
-}
-
-textarea {
-  width: 100%;
-  height: 90px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  font-family: inherit;
-}
-
-/* Buttons */
-button {
-  margin-top: 20px;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 8px;
-  background: #2f5b95;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 1 Activity</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>Lesson 1</h2>
-    <a href="lesson1-video.html">Video</a>
-    <a href="lesson1-reading.html">Textbook</a>
-    <a class="active">Activity</a>
-    <br>
-    <a href="course-cold-war.html">← Back to Unit</a>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Lesson 1</h2>
+      <a href="lesson1-video.html">Video</a>
+      <a href="lesson1-reading.html">Textbook</a>
+      <a href="lesson1-activity.html" class="active">Activity</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <h1>Compare Two Perspectives</h1>
+      <p class="subtle">
+        How did the United States and Soviet Union view the world differently after World War II?
+      </p>
+
+      <!-- Objective -->
+      <section class="section">
+        <strong>Goal</strong><br><br>
+        Compare a U.S. and Soviet perspective to understand why conflict developed.
+      </section>
+
+      <!-- Source A -->
+      <section class="section">
+        <h2>Source A — United States</h2>
+
+        <div class="source">
+          <strong>Harry Truman, 1947</strong><br><br>
+          “Free peoples must be supported against groups that seek to control them through force or pressure.”
+        </div>
+
+        <div class="question">
+          1. What does the United States believe its role is in the world?
+          <textarea></textarea>
+        </div>
+      </section>
+
+      <!-- Source B -->
+      <section class="section">
+        <h2>Source B — Soviet Union</h2>
+
+        <div class="source">
+          <strong>Soviet Perspective</strong><br><br>
+          “Capitalist nations seek to dominate weaker countries. Socialist nations must resist imperialism.”
+        </div>
+
+        <div class="question">
+          2. What does the Soviet Union believe is happening in the world?
+          <textarea></textarea>
+        </div>
+      </section>
+
+      <!-- Comparison -->
+      <section class="section">
+        <h2>Compare the Sources</h2>
+
+        <div class="question">
+          3. Why would these two views lead to conflict between the U.S. and USSR?
+          <textarea></textarea>
+        </div>
+
+        <div class="question">
+          4. Which cause of the Cold War do these sources best show?
+          <p class="subtle">Choose one: ideology, distrust, or competition for power</p>
+          <textarea></textarea>
+        </div>
+
+        <button onclick="submitWork()">Submit</button>
+      </section>
+
+      <!-- Exit -->
+      <a href="course-cold-war.html" class="btn-link">Back to Unit →</a>
+
+    </main>
+
   </div>
 
-  <!-- Main Content -->
-  <div class="main">
-
-    <h1>Compare Two Perspectives</h1>
-    <p>How did the U.S. and Soviet Union view the world differently?</p>
-
-    <!-- Objective -->
-    <div class="section">
-      <strong>Goal:</strong><br><br>
-      Compare a U.S. and Soviet source to understand why conflict grew after WWII.
-    </div>
-
-    <!-- Source A -->
-    <div class="section">
-      <h3>Source A — United States</h3>
-
-      <div class="source">
-        <strong>Harry Truman, 1947</strong><br><br>
-        "Free peoples must be supported against groups that seek to control them through force or pressure."
-      </div>
-    </div>
-
-    <!-- Source B -->
-    <div class="section">
-      <h3>Source B — Soviet Union</h3>
-
-      <div class="source">
-        <strong>Soviet Perspective</strong><br><br>
-        "Capitalist nations seek to dominate weaker countries. Socialist nations must resist imperialism."
-      </div>
-    </div>
-
-    <!-- Questions -->
-    <div class="section">
-      <h3>Your Analysis</h3>
-
-      <div class="question">
-        1. What does the United States believe is its role?
-        <textarea></textarea>
-      </div>
-
-      <div class="question">
-        2. What does the Soviet Union believe is happening?
-        <textarea></textarea>
-      </div>
-
-      <div class="question">
-        3. Why would these two views create conflict?
-        <textarea></textarea>
-      </div>
-
-      <button onclick="alert('Response submitted (we will build real tracking later)')">
-        Submit
-      </button>
-    </div>
-
-  </div>
-
-</div>
+  <script>
+    function submitWork() {
+      alert("Work submitted (tracking comes next)");
+    }
+  </script>
 
 </body>
 </html>
