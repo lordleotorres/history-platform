@@ -4,174 +4,89 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>History Platform</title>
-
-  <style>
-    :root {
-      --paper: #f7f3ea;
-      --paper-2: #efe8da;
-      --ink: #21314d;
-      --blue: #2f5b95;
-      --red: #a4473f;
-      --green: #5b7a57;
-      --gold: #b8944f;
-      --line: #d9cfbf;
-      --card: rgba(255, 252, 246, 0.9);
-      --shadow: rgba(33, 49, 77, 0.08);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(164,71,63,0.05), transparent 28%),
-        radial-gradient(circle at 80% 10%, rgba(91,122,87,0.05), transparent 24%),
-        linear-gradient(to bottom, #fbf8f1, var(--paper));
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 32px;
-      background: var(--blue);
-      color: white;
-      border-bottom: 3px solid var(--gold);
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-    }
-
-    .hero {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-
-    .hero-sub {
-      margin-top: 16px;
-      color: #555;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 12px 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid var(--line);
-      margin-top: 40px;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <nav>
-    <div>
-      <strong>History Platform</strong><br>
-      <small>Civics • Geography • Historical Thinking</small>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">History Platform</div>
+      <div class="brand-sub">Civics • Geography • Historical Thinking</div>
     </div>
 
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Courses</a>
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="course-cold-war.html">Cold War Unit</a>
       <a href="#">Student Portal</a>
       <a href="#">Teacher Portal</a>
     </div>
-  </nav>
+  </div>
 
-  <section class="hero">
-    <h1>Learn history like it matters.</h1>
-    <p class="hero-sub">
-      Guided lessons, clear structure, and meaningful thinking for students.
+  <div class="hero-wrap">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Historical learning, redesigned</div>
+        <h1>Learn history like it matters.</h1>
+        <p class="hero-subtext">
+          A story-driven digital classroom built for reading, video, primary source analysis, and meaningful student thinking.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="course-cold-war.html">Enter Cold War Unit</a>
+          <a class="btn-secondary" href="course-cold-war.html">View Lesson Flow</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="stat-block">
+          <div class="stat-title">Built for real lessons</div>
+          <p>Every lesson follows a consistent flow: video, reading, and activity.</p>
+        </div>
+
+        <div class="stat-block">
+          <div class="stat-title">Designed for clarity</div>
+          <p>Minimal distractions. Strong hierarchy. Premium classroom feel.</p>
+        </div>
+
+        <div class="stat-block">
+          <div class="stat-title">Made for history</div>
+          <p>Primary sources, historical thinking, and narrative structure at the center.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="content-wrap">
+    <h2 class="section-title">What this platform is built to do</h2>
+    <p class="section-sub">
+      The goal is not a worksheet warehouse. The goal is a clean, guided learning environment that feels serious, modern, and usable.
     </p>
 
-    <div style="margin-top: 20px;">
-      <button class="btn btn-primary">Explore the Platform</button>
-    </div>
-  </section>
+    <div class="grid-4">
+      <div class="card card-accent-gold">
+        <h3>Lesson Pathways</h3>
+        <p>Students move through a structured sequence without getting lost.</p>
+      </div>
 
-  <section class="section">
-    <h2>What this platform will do</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Student Learning Paths</h3>
-        <p>Guided lessons and clear progression.</p>
+      <div class="card card-accent-blue">
+        <h3>Primary Source Work</h3>
+        <p>Students compare voices, analyze claims, and practice real interpretation.</p>
       </div>
 
       <div class="card">
-        <h3>Teacher Dashboard</h3>
-        <p>Track progress and give feedback.</p>
+        <h3>Teacher Oversight</h3>
+        <p>Designed to grow into dashboards, submissions, feedback, and grading.</p>
       </div>
 
       <div class="card">
-        <h3>Assignments</h3>
-        <p>Upload work and respond to prompts.</p>
-      </div>
-
-      <div class="card">
-        <h3>AI Support</h3>
-        <p>Help students think, not cheat.</p>
+        <h3>Visual Discipline</h3>
+        <p>Dark academic style with modern spacing, clean type, and strong readability.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ✅ YOUR BUTTON IN THE RIGHT PLACE -->
-  <section class="section">
-    <a href="course-cold-war.html">
-      <button class="btn btn-primary">
-        Enter Cold War Unit
-      </button>
-    </a>
-  </section>
-
-  <footer>
-    History Platform prototype • Vintage modern classroom design
-  </footer>
+  </div>
 
 </body>
 </html>
