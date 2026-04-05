@@ -1,146 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cold War Unit</title>
-<style>
-body {
-  font-family: Inter, sans-serif;
-  margin: 0;
-  background: #f7f3ea;
-  color: #1f2a44;
-}
-
-.topbar {
-  background: #2f5b95;
-  color: white;
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.topbar .brand {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.topbar a {
-  color: white;
-  text-decoration: none;
-  margin-left: 18px;
-  font-weight: 600;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px 60px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-p {
-  color: #5a6478;
-  line-height: 1.6;
-}
-
-.unit-box {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  border: 1px solid #ddd;
-  margin-top: 25px;
-}
-
-.lesson {
-  margin-top: 18px;
-  padding: 16px;
-  border-radius: 10px;
-  border: 1px solid #e3e3e3;
-  background: #fcfcfc;
-}
-
-.lesson:hover {
-  background: #f0f4fa;
-}
-
-.lesson-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #1f2a44;
-  margin-bottom: 6px;
-}
-
-.sub {
-  font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 12px;
-}
-
-.lesson-links a {
-  display: inline-block;
-  margin-right: 12px;
-  margin-bottom: 8px;
-  text-decoration: none;
-  color: #2f5b95;
-  font-weight: 600;
-}
-
-.lesson-links a:hover {
-  text-decoration: underline;
-}
-
-.coming-soon {
-  color: #666;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cold War Unit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<div class="topbar">
-  <div class="brand">History Platform</div>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="course-cold-war.html">Cold War Unit</a>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">History Platform</div>
+      <div class="brand-sub">Cold War Unit</div>
+    </div>
+
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="course-cold-war.html">Cold War Unit</a>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <h1>Cold War Unit</h1>
+  <div class="unit-page">
+    <div class="unit-hero">
+      <div class="eyebrow">World History</div>
+      <h1>The Cold War</h1>
+      <p>
+        This unit explores the origins, tensions, and consequences of the Cold War through video, reading, and source-based analysis.
+      </p>
+    </div>
 
-  <p>
-    This unit explores the causes, major events, and consequences of the Cold War.
-  </p>
+    <div class="unit-grid">
+      <div class="unit-card">
+        <div class="lesson-title">Lesson 1: Origins of the Cold War</div>
+        <p>Begin with the causes: ideology, distrust, and competition for power after World War II.</p>
 
-  <div class="unit-box">
-    <h2>Lessons</h2>
+        <div class="lesson-links">
+          <a href="lesson1-video.html">Video</a>
+          <a href="lesson1-reading.html">Textbook</a>
+          <a href="lesson1-activity.html">Activity</a>
+        </div>
+      </div>
 
-    <div class="lesson">
-      <div class="lesson-title">Lesson 1: Origins of the Cold War</div>
-      <div class="sub">Start here — causes and early tensions</div>
-      <div class="lesson-links">
-        <a href="lesson1-video.html">Video</a>
-        <a href="lesson1-reading.html">Textbook</a>
-        <a href="lesson1-activity.html">Activity</a>
+      <div class="unit-card">
+        <div class="lesson-title">Lesson 2: Containment</div>
+        <p>Coming soon.</p>
+      </div>
+
+      <div class="unit-card">
+        <div class="lesson-title">Lesson 3: Alliances</div>
+        <p>Coming soon.</p>
       </div>
     </div>
-
-    <div class="lesson coming-soon">
-      <div class="lesson-title">Lesson 2: Containment</div>
-      <div class="sub">Coming soon</div>
-    </div>
-
-    <div class="lesson coming-soon">
-      <div class="lesson-title">Lesson 3: Alliances</div>
-      <div class="sub">Coming soon</div>
-    </div>
   </div>
-</div>
 
 </body>
 </html>
