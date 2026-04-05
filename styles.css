@@ -46,8 +46,7 @@ p, li {
   line-height: 1.7;
 }
 
-/* ---------- TOP BAR ---------- */
-
+/* TOP BAR */
 .topbar {
   position: sticky;
   top: 0;
@@ -91,8 +90,7 @@ p, li {
   color: var(--accent-gold);
 }
 
-/* ---------- HERO ---------- */
-
+/* HERO */
 .hero-wrap {
   max-width: 1240px;
   margin: 0 auto;
@@ -179,8 +177,7 @@ p, li {
   color: #b6c2d1;
 }
 
-/* ---------- BUTTONS ---------- */
-
+/* BUTTONS */
 .btn,
 .btn-secondary {
   display: inline-block;
@@ -209,8 +206,7 @@ p, li {
   opacity: 0.95;
 }
 
-/* ---------- LIGHT CONTENT ZONES ---------- */
-
+/* LIGHT CONTENT ZONES */
 .content-wrap {
   background: var(--bg-surface);
   color: var(--text-main);
@@ -241,8 +237,7 @@ p, li {
   line-height: 1.75;
 }
 
-/* ---------- GRID CARDS ---------- */
-
+/* GRID CARDS */
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -277,8 +272,7 @@ p, li {
   border-top: 4px solid var(--accent-blue);
 }
 
-/* ---------- FEATURE BLOCK ---------- */
-
+/* FEATURE BLOCK */
 .feature-band {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -315,17 +309,12 @@ p, li {
   color: var(--text-muted);
 }
 
-.feature-panel .eyebrow {
-  margin-bottom: 14px;
-}
-
 .feature-panel .eyebrow,
 .feature-side .eyebrow {
   color: var(--accent-gold);
 }
 
-/* ---------- UNIT PAGE ---------- */
-
+/* UNIT PAGE */
 .unit-page {
   max-width: 1180px;
   margin: 0 auto;
@@ -385,8 +374,7 @@ p, li {
   text-decoration: underline;
 }
 
-/* ---------- LESSON LAYOUT ---------- */
-
+/* LESSON LAYOUT */
 .layout {
   display: flex;
   min-height: 100vh;
@@ -560,8 +548,6 @@ iframe {
   box-shadow: var(--shadow-soft);
 }
 
-/* ---------- DASHBOARD / PORTAL ---------- */
-
 .portal-shell,
 .dashboard-shell,
 .courses-shell {
@@ -572,7 +558,10 @@ iframe {
 
 @media (max-width: 980px) {
   .hero,
-  .feature-band,
+  .feature-band {
+    grid-template-columns: 1fr;
+  }
+
   .grid-4 {
     grid-template-columns: 1fr 1fr;
   }
