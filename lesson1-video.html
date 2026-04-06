@@ -3,11 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lesson 1 - Video</title>
+  <title>Lesson 1 Video | Historia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .note-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .note-item {
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .note-item h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    .watch-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .watch-list li {
+      margin-bottom: 8px;
+    }
+
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,32 +64,48 @@
       <a href="lesson1-video.html" class="active">Video</a>
       <a href="lesson1-reading.html">Textbook</a>
       <a href="lesson1-activity.html">Activity</a>
-      <a href="course-cold-war.html" class="back-link">← Back to Unit</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
     </aside>
 
     <main class="main">
-      <div class="page-kicker">Lesson 1</div>
-      <h1>Origins of the Cold War</h1>
-      <p class="subtle">Start with the lecture overview, then move into the reading and analysis.</p>
+      <div class="lesson-header">
+        <div class="page-kicker">World History • Lesson 1</div>
+        <h1>Origins of the Cold War</h1>
+        <p class="subtle">
+          Start with a short overview. Then move into the reading and source analysis.
+        </p>
+      </div>
 
       <section class="section">
-        <h2>Today I will</h2>
-        <p>identify the 3 causes of the Cold War</p>
+        <span class="small-label">Lesson Goal</span>
+        <h2>What students should get from this</h2>
+        <p>
+          Students should leave this lesson understanding that the Cold War began because the United States and Soviet Union had different beliefs, distrusted each other, and competed for influence after World War II.
+        </p>
+      </section>
 
-        <h2>So that I can</h2>
-        <p>explain why the United States and Soviet Union became rivals</p>
+      <section class="section">
+        <h2>Before You Watch</h2>
+        <p>
+          Keep these 3 ideas in mind while watching the overview:
+        </p>
 
-        <h2>I know I’ve got it when I can</h2>
-        <p>list the 3 causes and explain each one clearly</p>
+        <ul class="watch-list">
+          <li>What made the U.S. and Soviet Union different?</li>
+          <li>Why did both countries distrust each other after World War II?</li>
+          <li>Why would both sides care about power in Europe?</li>
+        </ul>
       </section>
 
       <section class="section">
         <h2>Watch</h2>
-        <p>Use the video to get the big picture first. Then complete the guided notes below.</p>
+        <p>
+          This video should give students a simple overview, not every detail. The goal is to make the reading easier to understand.
+        </p>
 
         <iframe
           width="100%"
-          height="440"
+          height="420"
           src="https://www.youtube.com/embed/9C72ISMF_D0"
           title="Origins of the Cold War"
           allowfullscreen>
@@ -50,28 +113,39 @@
       </section>
 
       <section class="section">
-        <h2>Guided Notes</h2>
+        <h2>Quick Notes</h2>
+        <p>
+          Students can jot down short answers while they watch. Keep this light and simple.
+        </p>
 
-        <div class="question">
-          1. The Cold War was a conflict between the United States and the ______ Union.
-          <textarea id="q1"></textarea>
+        <div class="note-grid">
+          <div class="note-item">
+            <h3>1. Two rivals</h3>
+            <p>Who were the two main countries in the Cold War?</p>
+            <textarea id="q1"></textarea>
+          </div>
+
+          <div class="note-item">
+            <h3>2. Big difference</h3>
+            <p>What was one major difference between the U.S. and Soviet Union?</p>
+            <textarea id="q2"></textarea>
+          </div>
+
+          <div class="note-item">
+            <h3>3. Main cause</h3>
+            <p>What is one reason the Cold War began?</p>
+            <textarea id="q3"></textarea>
+          </div>
         </div>
 
-        <div class="question">
-          2. The U.S. believed in capitalism, while the Soviet Union believed in ______.
-          <textarea id="q2"></textarea>
-        </div>
-
-        <div class="question">
-          3. One major cause of tension was lack of ______ between the two sides.
-          <textarea id="q3"></textarea>
-        </div>
-
-        <button onclick="checkAnswers()">Submit Notes Check</button>
+        <button onclick="checkAnswers()">Check My Notes</button>
         <p id="result" class="result"></p>
       </section>
 
-      <a href="lesson1-reading.html" class="btn-link">Next: Textbook →</a>
+      <div class="lesson-nav-row">
+        <a href="lesson1-reading.html" class="btn">Next: Textbook</a>
+        <a href="course-cold-war.html" class="btn-secondary">Back to Unit</a>
+      </div>
     </main>
   </div>
 
@@ -83,12 +157,12 @@
       const q2 = document.getElementById("q2").value.toLowerCase();
       const q3 = document.getElementById("q3").value.toLowerCase();
 
-      if (q1.includes("soviet")) score++;
-      if (q2.includes("communism")) score++;
-      if (q3.includes("trust")) score++;
+      if (q1.includes("united states") || q1.includes("america") || q1.includes("soviet")) score++;
+      if (q2.includes("capitalism") || q2.includes("communism") || q2.includes("democracy")) score++;
+      if (q3.includes("distrust") || q3.includes("ideology") || q3.includes("power")) score++;
 
       document.getElementById("result").innerText =
-        "You got " + score + " out of 3 correct.";
+        "You hit " + score + " of the 3 key ideas. That’s enough to move into the reading.";
     }
   </script>
 
