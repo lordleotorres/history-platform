@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Work | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .work-shell {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 56px 28px 84px;
+    }
+
+    .work-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .work-hero h1 {
+      font-size: 3.1rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .work-hero p {
+      margin: 0;
+      max-width: 760px;
+      color: #cbd5e1;
+    }
+
+    .work-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .work-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .work-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line-light);
+      flex-wrap: wrap;
+      background: #ffffff;
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .submission-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .submission-item {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 0.8fr 0.8fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .submission-item:last-child {
+      border-bottom: none;
+    }
+
+    .submission-main {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .submission-name {
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .submission-sub {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .submission-meta {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-new {
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+    }
+
+    .status-review {
+      background: rgba(59,130,246,0.12);
+      color: var(--accent-blue);
+    }
+
+    .status-flagged {
+      background: rgba(239,68,68,0.12);
+      color: #dc2626;
+    }
+
+    .status-complete {
+      background: rgba(34,197,94,0.14);
+      color: #15803d;
+    }
+
+    .open-link {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .open-link:hover {
+      text-decoration: underline;
+    }
+
+    .note-box {
+      margin-top: 24px;
+      background: #ffffff;
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--text-muted);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 1100px) {
+      .submission-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .work-hero {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
+    </div>
+
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="#">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
+    </div>
+  </div>
+
+  <div class="work-shell">
+
+    <div class="work-hero">
+      <div>
+        <div class="eyebrow">Teacher workflow</div>
+        <h1>Student Work</h1>
+        <p>
+          Review student responses, sort what needs attention, and keep lesson submissions organized in one place.
+        </p>
+      </div>
+
+      <div class="work-actions">
+        <a class="btn" href="teacher-portal.html">Back to Portal</a>
+        <a class="btn-secondary" href="course-cold-war.html">Open Unit</a>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-toolbar">
+        <div class="toolbar-left">
+          <span class="chip">World History</span>
+          <span class="chip">Cold War Unit</span>
+          <span class="chip">Lesson 1</span>
+        </div>
+
+        <div class="toolbar-right">
+          <span class="chip">14 submissions</span>
+          <span class="chip">Newest first</span>
+        </div>
+      </div>
+
+      <div class="submission-list">
+
+        <div class="submission-item">
+          <div class="submission-main">
+            <div class="submission-name">Student Name Placeholder</div>
+            <div class="submission-sub">Final Written Response</div>
+          </div>
+          <div class="submission-meta">Lesson 1 Activity</div>
+          <div class="submission-meta">8 minutes ago</div>
+          <div><span class="status-pill status-new">New</span></div>
+          <div><a class="open-link" href="#">Open</a></div>
+        </div>
+
+        <div class="submission-item">
+          <div class="submission-main">
+            <div class="submission-name">Student Name Placeholder</div>
+            <div class="submission-sub">Source Comparison</div>
+          </div>
+          <div class="submission-meta">Lesson 1 Activity</div>
+          <div class="submission-meta">14 minutes ago</div>
+          <div><span class="status-pill status-review">Needs Review</span></div>
+          <div><a class="open-link" href="#">Open</a></div>
+        </div>
+
+        <div class="submission-item">
+          <div class="submission-main">
+            <div class="submission-name">Student Name Placeholder</div>
+            <div class="submission-sub">Reading Response</div>
+          </div>
+          <div class="submission-meta">Lesson 1 Textbook</div>
+          <div class="submission-meta">26 minutes ago</div>
+          <div><span class="status-pill status-complete">Checked</span></div>
+          <div><a class="open-link" href="#">Open</a></div>
+        </div>
+
+        <div class="submission-item">
+          <div class="submission-main">
+            <div class="submission-name">Student Name Placeholder</div>
+            <div class="submission-sub">Final Written Response</div>
+          </div>
+          <div class="submission-meta">Lesson 1 Activity</div>
+          <div class="submission-meta">41 minutes ago</div>
+          <div><span class="status-pill status-flagged">Flagged</span></div>
+          <div><a class="open-link" href="#">Open</a></div>
+        </div>
+
+        <div class="submission-item">
+          <div class="submission-main">
+            <div class="submission-name">Student Name Placeholder</div>
+            <div class="submission-sub">Quick Notes Check</div>
+          </div>
+          <div class="submission-meta">Lesson 1 Video</div>
+          <div class="submission-meta">1 hour ago</div>
+          <div><span class="status-pill status-complete">Checked</span></div>
+          <div><a class="open-link" href="#">Open</a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="note-box">
+      This page is the teacher-facing submission inbox. Later, when student portals and accounts are added, real names, timestamps, statuses, and review actions can appear here automatically.
+    </div>
+
+  </div>
+
+</body>
+</html>
