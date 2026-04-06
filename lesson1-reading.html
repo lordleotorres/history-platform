@@ -3,11 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lesson 1 - Textbook</title>
+  <title>Lesson 1 Textbook | Historia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .reading-block + .reading-block {
+      margin-top: 34px;
+    }
+
+    .reading-block h3 {
+      margin-bottom: 12px;
+    }
+
+    .response-box {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .response-box h4 {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .response-box p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .vocab-item {
+      padding: 16px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .vocab-item strong {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .reading-figure {
+      margin: 26px 0;
+      text-align: center;
+    }
+
+    .reading-figure img {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .reading-figure figcaption {
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 820px) {
+      .vocab-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,131 +113,174 @@
       <a href="lesson1-video.html">Video</a>
       <a href="lesson1-reading.html" class="active">Textbook</a>
       <a href="lesson1-activity.html">Activity</a>
-      <a href="course-cold-war.html" class="back-link">← Back to Unit</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
     </aside>
 
     <main class="main">
-      <div class="page-kicker">Lesson 1</div>
-      <h1>Origins of the Cold War</h1>
-      <p class="subtle">Read carefully, then move into the source comparison activity.</p>
+      <div class="lesson-header">
+        <div class="page-kicker">World History • Lesson 1</div>
+        <h1>Origins of the Cold War</h1>
+        <p class="subtle">
+          Read the overview, respond to the reflection boxes, and then move into the activity.
+        </p>
+      </div>
 
       <section class="section">
-        <h2>Today I will</h2>
-        <p>identify the 3 causes of the Cold War</p>
+        <span class="small-label">Key Vocabulary</span>
 
-        <h2>So that I can</h2>
-        <p>explain why the United States and Soviet Union became rivals</p>
+        <div class="vocab-grid">
+          <div class="vocab-item">
+            <strong>Cold War</strong>
+            A long period of tension and rivalry between the United States and the Soviet Union.
+          </div>
 
-        <h2>I know I’ve got it when I can</h2>
-        <p>describe how ideology, distrust, and power helped start the Cold War</p>
+          <div class="vocab-item">
+            <strong>Capitalism</strong>
+            A system based on private property, business ownership, and markets.
+          </div>
+
+          <div class="vocab-item">
+            <strong>Communism</strong>
+            A system in which the government controls the economy and political life.
+          </div>
+
+          <div class="vocab-item">
+            <strong>Containment</strong>
+            The U.S. policy of trying to stop communism from spreading.
+          </div>
+        </div>
       </section>
 
       <section class="section">
-        <h2>Key Vocabulary</h2>
-        <div class="source">
-          <p><strong>Cold War</strong> – a long period of tension and competition between the United States and the Soviet Union</p>
-          <p><strong>Ideology</strong> – a set of beliefs about politics, economics, and society</p>
-          <p><strong>Capitalism</strong> – a system based on private ownership and markets</p>
-          <p><strong>Communism</strong> – a system in which the government controls the economy and political life</p>
-          <p><strong>Containment</strong> – the U.S. policy of stopping communism from spreading</p>
-          <p><strong>Superpower</strong> – a nation with major global military and political influence</p>
+        <span class="small-label">Reading</span>
+
+        <div class="reading-block">
+          <h3>Two Allies, but Never Fully United</h3>
+          <p>
+            The Cold War began after World War II. During the war, the United States and the Soviet Union fought on the same side against Nazi Germany. But even as allies, they did not trust each other.
+          </p>
+          <p>
+            The United States distrusted Joseph Stalin and the communist government of the Soviet Union. The Soviets believed the United States had not acted fast enough to help them during the war. Soviet leaders thought that delay had cost millions of Russian lives.
+          </p>
+          <p>
+            So the Cold War did not begin suddenly. Before World War II had fully ended, both sides were already carrying fear, anger, and suspicion.
+          </p>
+
+          <div class="response-box">
+            <h4>Quick Response</h4>
+            <p>Why would the U.S. and Soviet Union have trouble trusting each other after the war?</p>
+            <textarea placeholder="Write 2–3 sentences here..."></textarea>
+          </div>
         </div>
+
+        <div class="reading-block">
+          <h3>Different Ideas About How Society Should Work</h3>
+          <p>
+            One major cause of the Cold War was ideology. The United States believed in democracy and capitalism. Americans valued elections, individual rights, and private ownership.
+          </p>
+          <p>
+            The Soviet Union believed in communism. In that system, the government controlled the economy and held much more power over society.
+          </p>
+          <p>
+            Each side believed its own system was better. Each also believed the other system was dangerous. This made cooperation much harder.
+          </p>
+
+          <div class="callout">
+            <strong>Think:</strong> This was more than a disagreement over policy. It was a clash between two different visions of how society should be organized.
+          </div>
+
+          <div class="response-box">
+            <h4>Quick Response</h4>
+            <p>What was one major difference between the United States and the Soviet Union?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+
+        <div class="reading-block">
+          <h3>Distrust Grew into Fear</h3>
+          <p>
+            As World War II ended, tensions increased between the two new superpowers. The Soviet Union expanded communist influence in Eastern Europe. The United States saw this as a threat.
+          </p>
+          <p>
+            At the same time, Soviet leaders feared that capitalist countries were hostile to them and wanted to surround or weaken the Soviet Union. Each side assumed the worst about the other.
+          </p>
+          <p>
+            This fear mattered because it shaped how both countries interpreted events. Instead of assuming defense, they assumed aggression.
+          </p>
+
+          <div class="response-box">
+            <h4>Quick Response</h4>
+            <p>How can fear make conflict worse between countries?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+
+        <div class="reading-block">
+          <h3>Competition for Power</h3>
+          <p>
+            A third cause of the Cold War was power. World War II left much of Europe damaged and unstable. That meant the future of Europe was still being decided.
+          </p>
+          <p>
+            The United States and the Soviet Union both wanted influence over what happened next. The Soviet Union wanted friendly governments near its borders. The United States wanted to prevent Soviet domination and protect democratic allies.
+          </p>
+          <p>
+            This competition turned Europe into the first major arena of the Cold War.
+          </p>
+
+          <div class="response-box">
+            <h4>Quick Response</h4>
+            <p>Why did Europe matter so much after World War II?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+
+        <div class="reading-block">
+          <h3>The U.S. Response: Containment</h3>
+          <p>
+            The United States decided that communism had to be stopped from spreading further. This policy became known as containment.
+          </p>
+          <p>
+            In simple terms, containment meant the United States would support countries that were in danger of falling under communist influence. American leaders believed that if communism kept expanding, it would threaten freedom and stability in other parts of the world.
+          </p>
+          <p>
+            The Soviet Union, however, saw this as opposition to its influence. So each side believed the other was proving its worst fears.
+          </p>
+
+          <div class="callout">
+            <strong>Main Point:</strong> The Cold War grew out of 3 major causes: different beliefs, distrust, and competition for power.
+          </div>
+        </div>
+
+        <!-- Optional image slot for later -->
+        <!--
+        <figure class="reading-figure">
+          <img src="images/cold-war-map.jpg" alt="Map of Europe during the early Cold War">
+          <figcaption>
+            Early Cold War map of Europe. Source: Add citation here.
+          </figcaption>
+        </figure>
+        -->
+
       </section>
 
       <section class="section">
-        <h2>Reading</h2>
-
-        <h3>Two Allies, but Never Close Friends</h3>
-        <p>
-          The Cold War began right after World War II. During the war, the United States and the Soviet Union had fought on the same side against Nazi Germany. But even as allies, their relationship was weak and uneasy. The United States distrusted Joseph Stalin and the Soviet communist government. The Soviets, meanwhile, believed the United States had not moved quickly enough to help them during the war. Soviet leaders felt that this delay had cost millions of Russian lives.
-        </p>
-
-        <p>
-          That means the Cold War did not begin out of nowhere. Before the war had even fully ended, both sides already carried anger, suspicion, and fear. Instead of bringing the two countries closer together, victory left them staring at one another as future rivals.
-        </p>
-
-        <div class="callout">
-          <strong>Think:</strong> Why would it be hard for two countries to trust each other after years of suspicion during wartime?
-        </div>
-
-        <h3>Different Ideas About How the World Should Work</h3>
-        <p>
-          One major cause of the Cold War was ideology. The United States believed in democracy and capitalism. Americans valued elections, individual rights, private property, and economic freedom. The Soviet Union believed in communism, where the government controlled the economy and tightly directed political life.
-        </p>
-
-        <p>
-          Each side thought its system was better. More than that, each side believed the other system was dangerous. To Americans, Soviet communism threatened freedom. To Soviet leaders, Western capitalism looked hostile, selfish, and aggressive. This was not just a disagreement over policy. It was a conflict over two very different visions of society.
-        </p>
-
-        <div class="callout">
-          <strong>Think:</strong> Why would different political and economic systems make cooperation more difficult?
-        </div>
-
-        <h3>Distrust Grew into Fear</h3>
-        <p>
-          As the war ended, tensions increased between the two new superpowers. The Soviet Union pushed forward with communist influence in areas it controlled, especially in Eastern Europe. The United States saw this as a threat. American leaders worried that communism would continue spreading into more countries.
-        </p>
-
-        <p>
-          At the same time, the Soviets feared being surrounded or weakened by hostile capitalist nations. Each side interpreted the actions of the other in the worst possible way. Instead of assuming defense, they assumed aggression. Instead of compromise, they prepared for struggle.
-        </p>
-
-        <p>
-          This is why distrust matters so much in explaining the Cold War. Even before the biggest crises happened, the relationship had already become a standoff built on fear.
-        </p>
-
-        <div class="callout">
-          <strong>Think:</strong> How can fear change the way countries interpret each other’s actions?
-        </div>
-
-        <h3>The Fight for Power After World War II</h3>
-        <p>
-          A third cause was power. World War II had left much of Europe damaged, weakened, and unstable. That meant the future of Europe was still being decided. The United States and the Soviet Union both wanted influence over what came next.
-        </p>
-
-        <p>
-          The Soviet Union wanted governments near its borders that were friendly to Soviet interests. The United States wanted to prevent Soviet domination and protect democratic allies. This competition for influence turned Europe into the first major arena of the Cold War.
-        </p>
-
-        <p>
-          The result was not direct war between the United States and Soviet Union. Instead, the two nations competed through pressure, alliances, ideology, aid, military strength, and influence around the world.
-        </p>
-
-        <div class="callout">
-          <strong>Think:</strong> Why would both countries care so much about what happened in Europe after the war?
-        </div>
-
-        <h3>The U.S. Response: Containment</h3>
-        <p>
-          Early in the Cold War, the United States decided that communism had to be stopped from spreading further. This idea became known as containment. President Harry S. Truman announced that the United States should support free peoples who were resisting outside pressure and political control. In practical terms, that meant the U.S. would give aid and support to countries that might fall under communist influence.
-        </p>
-
-        <p>
-          This did not end the conflict. It deepened it. The Soviet Union saw U.S. containment as opposition to Soviet influence. The United States saw Soviet expansion as proof that containment was necessary. In other words, both sides believed the other was confirming their worst fears.
-        </p>
-
-        <div class="callout">
-          <strong>Think:</strong> Why might one side view “protection” while the other side sees “aggression”?
-        </div>
-
-        <h3>Why It Was Called a Cold War</h3>
-        <p>
-          The Cold War lasted from about 1947 to 1991. It was called “cold” because the United States and the Soviet Union never fought each other directly in a full-scale war. But that does not mean it was peaceful. Their rivalry helped cause crises, arms buildups, alliances, and conflicts across the globe. At several points, the world came dangerously close to disaster.
-        </p>
-
-        <p>
-          So when we ask why the Cold War began, the answer is not just one event. It is a combination of causes: different ideologies, deep distrust, and competition for power after World War II.
-        </p>
-      </section>
-
-      <section class="section">
+        <span class="small-label">Wrap Up</span>
         <h2>Main Idea</h2>
         <p>
-          The Cold War began because the United States and Soviet Union had opposing beliefs, distrusted each other after World War II, and competed for power and influence in Europe and around the world.
+          The Cold War began because the United States and Soviet Union had different beliefs, distrusted each other after World War II, and competed for power and influence.
         </p>
+
+        <div class="response-box">
+          <h4>Final Response</h4>
+          <p>In your own words, explain why the Cold War began.</p>
+          <textarea placeholder="Write 4–5 sentences here..."></textarea>
+        </div>
       </section>
 
-      <a href="lesson1-activity.html" class="btn-link">Next: Activity →</a>
+      <div class="lesson-nav-row">
+        <a href="lesson1-activity.html" class="btn">Next: Activity</a>
+        <a href="lesson1-video.html" class="btn-secondary">Back to Video</a>
+      </div>
     </main>
   </div>
 
