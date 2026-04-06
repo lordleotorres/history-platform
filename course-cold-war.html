@@ -3,56 +3,238 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cold War Unit</title>
+  <title>Cold War Unit | Historia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .unit-intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
+
+    .unit-intro-card,
+    .lesson-launch-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      padding: 28px;
+    }
+
+    .unit-intro-card h2,
+    .lesson-launch-card h2 {
+      color: #0f172a;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+
+    .unit-intro-card p,
+    .lesson-launch-card p {
+      color: var(--text-muted);
+      margin-top: 0;
+    }
+
+    .unit-list {
+      margin: 18px 0 0;
+      padding-left: 20px;
+    }
+
+    .unit-list li {
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .lesson-status {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .lesson-row {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .lesson-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .lesson-card h3 {
+      color: #0f172a;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .lesson-card p {
+      color: var(--text-muted);
+      margin-top: 0;
+      margin-bottom: 16px;
+      max-width: 800px;
+    }
+
+    .lesson-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .lesson-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .lesson-links a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .lesson-links a:hover {
+      text-decoration: underline;
+    }
+
+    .inactive-link {
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .unit-intro-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <div class="topbar">
     <div class="brand">
-      <div class="brand-title">History Platform</div>
-      <div class="brand-sub">Cold War Unit</div>
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
     </div>
 
     <div class="topnav-links">
       <a href="index.html">Home</a>
-      <a href="course-cold-war.html">Cold War Unit</a>
+      <a href="courses.html">Courses</a>
+      <a href="#">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
     </div>
   </div>
 
   <div class="unit-page">
     <div class="unit-hero">
       <div class="eyebrow">World History</div>
-      <h1>The Cold War</h1>
+      <h1>Cold War</h1>
       <p>
-        This unit explores the origins, tensions, and consequences of the Cold War through video, reading, and source-based analysis.
+        This unit explores the origins, tensions, and global consequences of the Cold War through structured lessons built around video, reading, and historical analysis.
       </p>
     </div>
 
-    <div class="unit-grid">
-      <div class="unit-card">
-        <div class="lesson-title">Lesson 1: Origins of the Cold War</div>
-        <p>Begin with the causes: ideology, distrust, and competition for power after World War II.</p>
+    <div class="unit-intro-grid">
+      <section class="unit-intro-card">
+        <h2>Unit Focus</h2>
+        <p>
+          Students will examine how the United States and Soviet Union became rivals, how containment shaped policy, and how Cold War tensions affected the wider world.
+        </p>
+
+        <ul class="unit-list">
+          <li>Understand the origins of the Cold War</li>
+          <li>Study containment and early U.S. response</li>
+          <li>Analyze alliances, ideology, and global competition</li>
+          <li>Practice source analysis and historical argument</li>
+        </ul>
+      </section>
+
+      <section class="lesson-launch-card">
+        <div class="lesson-status">Featured sequence</div>
+        <h2>Start Here</h2>
+        <p>
+          Lesson 1 is the current model lesson. It sets the pattern for how future Historia lessons will work across all courses.
+        </p>
+
+        <div class="lesson-links">
+          <a class="btn" href="lesson1-video.html">Open Lesson 1</a>
+          <a class="btn-secondary" href="courses.html">Back to Courses</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="lesson-row">
+
+      <section class="lesson-card">
+        <div class="eyebrow">Lesson 1</div>
+        <h3>Origins of the Cold War</h3>
+        <p>
+          Students explore the basic causes of the Cold War: ideology, distrust, and the struggle for influence after World War II.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">Video</span>
+          <span class="pill">Textbook</span>
+          <span class="pill">Source Analysis</span>
+        </div>
 
         <div class="lesson-links">
           <a href="lesson1-video.html">Video</a>
           <a href="lesson1-reading.html">Textbook</a>
           <a href="lesson1-activity.html">Activity</a>
         </div>
-      </div>
+      </section>
 
-      <div class="unit-card">
-        <div class="lesson-title">Lesson 2: Containment</div>
-        <p>Coming soon.</p>
-      </div>
+      <section class="lesson-card">
+        <div class="eyebrow">Lesson 2</div>
+        <h3>Containment</h3>
+        <p>
+          This lesson will introduce the Truman Doctrine, Marshall Plan, and the early logic of U.S. foreign policy in response to Soviet expansion.
+        </p>
 
-      <div class="unit-card">
-        <div class="lesson-title">Lesson 3: Alliances</div>
-        <p>Coming soon.</p>
-      </div>
+        <div class="lesson-meta">
+          <span class="pill">Coming Soon</span>
+        </div>
+
+        <div class="lesson-links">
+          <span class="inactive-link">Video</span>
+          <span class="inactive-link">Textbook</span>
+          <span class="inactive-link">Activity</span>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Lesson 3</div>
+        <h3>Alliances and Division</h3>
+        <p>
+          This lesson will focus on NATO, the Warsaw Pact, and the way the Cold War divided Europe and reshaped international politics.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">Coming Soon</span>
+        </div>
+
+        <div class="lesson-links">
+          <span class="inactive-link">Video</span>
+          <span class="inactive-link">Textbook</span>
+          <span class="inactive-link">Activity</span>
+        </div>
+      </section>
+
     </div>
   </div>
 
