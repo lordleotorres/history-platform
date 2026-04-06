@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teacher Portal</title>
+  <title>Teacher Portal | Historia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -24,13 +24,15 @@
     }
 
     .portal-hero h1 {
-      font-size: 3.2rem;
+      font-size: 3.1rem;
       margin-bottom: 10px;
+      color: #ffffff;
     }
 
     .portal-hero p {
       margin: 0;
       max-width: 760px;
+      color: #cbd5e1;
     }
 
     .portal-actions {
@@ -51,21 +53,23 @@
     }
 
     .portal-card {
-      background: rgba(17, 24, 39, 0.82);
-      border: 1px solid var(--line);
+      background: #ffffff;
+      border: 1px solid var(--line-light);
       border-radius: 24px;
       padding: 28px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
     }
 
     .portal-card h2 {
       font-size: 1.8rem;
       margin-bottom: 12px;
+      color: #0f172a;
     }
 
     .portal-card p {
       margin-top: 0;
       margin-bottom: 20px;
+      color: var(--text-muted);
     }
 
     .metric-row {
@@ -76,14 +80,14 @@
     }
 
     .metric {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      border: 1px solid var(--line-light);
       border-radius: 18px;
       padding: 18px;
     }
 
     .metric-label {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -92,15 +96,16 @@
     }
 
     .metric-value {
-      color: #f8fafc;
+      color: #0f172a;
       font-size: 2rem;
       font-weight: 700;
       line-height: 1;
       margin-bottom: 8px;
+      font-family: "Inter", sans-serif;
     }
 
     .metric-note {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.92rem;
     }
 
@@ -117,24 +122,24 @@
       gap: 16px;
       padding: 18px 18px;
       border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line-light);
+      background: var(--bg-soft);
     }
 
     .action-title {
-      color: #f8fafc;
+      color: #0f172a;
       font-weight: 700;
       font-size: 1rem;
       margin-bottom: 6px;
     }
 
     .action-sub {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.92rem;
     }
 
     .text-link {
-      color: var(--gold);
+      color: var(--accent-blue);
       text-decoration: none;
       font-weight: 700;
       white-space: nowrap;
@@ -145,12 +150,19 @@
     }
 
     .note-box {
-      border-left: 3px solid var(--gold);
-      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--accent-gold);
+      background: var(--bg-soft);
       padding: 16px 18px;
       border-radius: 16px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.7;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
     }
 
     @media (max-width: 1100px) {
@@ -173,13 +185,14 @@
 
   <div class="topbar">
     <div class="brand">
-      <div class="brand-title">History Platform</div>
-      <div class="brand-sub">Teacher Portal</div>
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
     </div>
 
     <div class="topnav-links">
       <a href="index.html">Home</a>
-      <a href="course-cold-war.html">Cold War Unit</a>
+      <a href="courses.html">Courses</a>
+      <a href="#">Student Portal</a>
       <a href="teacher-portal.html">Teacher Portal</a>
     </div>
   </div>
@@ -191,13 +204,13 @@
         <div class="eyebrow">Instructor dashboard</div>
         <h1>Teacher Portal</h1>
         <p>
-          Review student work, manage course flow, and keep your instructional space organized.
+          Review student work, monitor lesson flow, and manage course structures from one central workspace.
         </p>
       </div>
 
       <div class="portal-actions">
         <a class="btn" href="student-work.html">Open Student Work</a>
-        <a class="btn-secondary" href="course-cold-war.html">Open Unit</a>
+        <a class="btn-secondary" href="course-cold-war.html">Open Cold War Unit</a>
       </div>
     </div>
 
@@ -206,25 +219,27 @@
       <div class="stack">
         <section class="portal-card">
           <h2>Overview</h2>
-          <p>This is your command center. Start here to review submissions, open lessons, and keep the unit moving.</p>
+          <p>
+            This space is your control center. It is designed to eventually connect to real student accounts, submissions, and teacher review tools.
+          </p>
 
           <div class="metric-row">
             <div class="metric">
-              <div class="metric-label">Student work queue</div>
-              <div class="metric-value">14</div>
-              <div class="metric-note">Submissions waiting for review</div>
+              <div class="metric-label">Course hubs</div>
+              <div class="metric-value">6</div>
+              <div class="metric-note">Current catalog categories across the platform</div>
             </div>
 
             <div class="metric">
               <div class="metric-label">Active unit</div>
               <div class="metric-value">1</div>
-              <div class="metric-note">Cold War currently live</div>
+              <div class="metric-note">Cold War is the live model sequence</div>
             </div>
 
             <div class="metric">
-              <div class="metric-label">Lessons built</div>
+              <div class="metric-label">Built lesson flow</div>
               <div class="metric-value">3</div>
-              <div class="metric-note">Video, reading, and activity flow</div>
+              <div class="metric-note">Video, reading, and activity for Lesson 1</div>
             </div>
           </div>
         </section>
@@ -236,15 +251,15 @@
             <div class="action-item">
               <div>
                 <div class="action-title">Student Work Inbox</div>
-                <div class="action-sub">Open student submissions, read responses, and prepare feedback.</div>
+                <div class="action-sub">Open submitted responses, source analyses, and written work.</div>
               </div>
               <a class="text-link" href="student-work.html">Open</a>
             </div>
 
             <div class="action-item">
               <div>
-                <div class="action-title">Cold War Unit</div>
-                <div class="action-sub">Review the lesson structure and student-facing sequence.</div>
+                <div class="action-title">World History → Cold War</div>
+                <div class="action-sub">Review the current unit structure and lesson sequence.</div>
               </div>
               <a class="text-link" href="course-cold-war.html">Open</a>
             </div>
@@ -252,7 +267,7 @@
             <div class="action-item">
               <div>
                 <div class="action-title">Lesson 1 Activity</div>
-                <div class="action-sub">Jump directly into the source analysis experience students are using.</div>
+                <div class="action-sub">Jump directly into the current primary source analysis task.</div>
               </div>
               <a class="text-link" href="lesson1-activity.html">Open</a>
             </div>
@@ -262,28 +277,34 @@
 
       <div class="stack">
         <section class="portal-card">
-          <h2>What this area is for</h2>
-          <div class="note-box">
-            This portal is not a fake gradebook. It is the teacher side of the platform: the place where you review student work, monitor lesson flow, and eventually track real submissions once student portals are live.
+          <h2>Current Build Status</h2>
+          <div class="pill-row">
+            <span class="pill">Student-facing lesson built</span>
+            <span class="pill">Teacher shell active</span>
+            <span class="pill">Course catalog live</span>
+          </div>
+
+          <div class="note-box" style="margin-top: 18px;">
+            This portal is not pretending to be a fake live gradebook. Its purpose is to serve as the teacher-facing side of Historia: the place where course control, student work review, and future progress monitoring will live.
           </div>
         </section>
 
         <section class="portal-card">
-          <h2>Coming Next</h2>
+          <h2>What comes next</h2>
 
           <div class="action-list">
             <div class="action-item">
               <div>
-                <div class="action-title">Submission Review</div>
-                <div class="action-sub">Open an individual student response and leave feedback.</div>
+                <div class="action-title">Student Work Review</div>
+                <div class="action-sub">A page for opening and reviewing submitted student responses.</div>
               </div>
-              <span class="text-link">Soon</span>
+              <span class="text-link">Next</span>
             </div>
 
             <div class="action-item">
               <div>
-                <div class="action-title">Progress Tracking</div>
-                <div class="action-sub">See who completed the video, reading, and activity.</div>
+                <div class="action-title">Lesson 2 Buildout</div>
+                <div class="action-sub">Containment, Truman Doctrine, and the Marshall Plan.</div>
               </div>
               <span class="text-link">Soon</span>
             </div>
@@ -291,7 +312,7 @@
             <div class="action-item">
               <div>
                 <div class="action-title">Teacher Resources</div>
-                <div class="action-sub">Store notes, lesson plans, rubrics, and pacing guides.</div>
+                <div class="action-sub">Rubrics, notes, pacing, and lesson planning support.</div>
               </div>
               <span class="text-link">Soon</span>
             </div>
