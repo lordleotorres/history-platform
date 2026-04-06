@@ -3,11 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lesson 1 - Activity</title>
+  <title>Lesson 1 Activity | Historia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .source-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 16px;
+    }
+
+    .source-card {
+      padding: 22px;
+      border: 1px solid var(--line-light);
+      border-radius: 18px;
+      background: var(--bg-soft);
+    }
+
+    .source-card h3 {
+      margin-bottom: 10px;
+      color: #0f172a;
+      font-size: 1.3rem;
+    }
+
+    .source-meta {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .analysis-block + .analysis-block {
+      margin-top: 24px;
+    }
+
+    .analysis-block h3 {
+      margin-bottom: 10px;
+      color: #0f172a;
+      font-size: 1.25rem;
+    }
+
+    .analysis-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .analysis-box {
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .analysis-box h4 {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .analysis-box p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,71 +103,118 @@
       <a href="lesson1-video.html">Video</a>
       <a href="lesson1-reading.html">Textbook</a>
       <a href="lesson1-activity.html" class="active">Activity</a>
-      <a href="course-cold-war.html" class="back-link">← Back to Unit</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
     </aside>
 
     <main class="main">
-      <div class="page-kicker">Lesson 1</div>
-      <h1>Compare Two Perspectives</h1>
-      <p class="subtle">How did the United States and Soviet Union view the world differently after World War II?</p>
+      <div class="lesson-header">
+        <div class="page-kicker">World History • Lesson 1</div>
+        <h1>Compare Two Perspectives</h1>
+        <p class="subtle">
+          Use the sources below to see how the United States and Soviet Union understood the world differently.
+        </p>
+      </div>
 
       <section class="section">
-        <h2>Goal</h2>
-        <p>Compare a U.S. and Soviet perspective to understand why conflict developed.</p>
+        <span class="small-label">Lesson Goal</span>
+        <h2>What this activity is asking students to do</h2>
+        <p>
+          Students should be able to compare a U.S. perspective and a Soviet perspective and explain how ideology, distrust, and power helped create the Cold War.
+        </p>
       </section>
 
       <section class="section">
-        <h2>Source A — United States</h2>
+        <span class="small-label">Sources</span>
+        <h2>Read both perspectives</h2>
 
-        <div class="source">
-          <strong>Harry Truman, 1947</strong><br><br>
-          “Free peoples must be supported against groups that seek to control them through force or pressure.”
-        </div>
+        <div class="source-grid">
 
-        <div class="question">
-          1. What does the United States believe its role is in the world?
-          <textarea></textarea>
+          <div class="source-card">
+            <span class="source-meta">Source A — United States</span>
+            <h3>Harry Truman, 1947</h3>
+            <p>
+              “Free peoples must be supported against groups that seek to control them through force or pressure.”
+            </p>
+            <p>
+              This statement reflects the idea that the United States should help nations resist outside control, especially communist influence.
+            </p>
+          </div>
+
+          <div class="source-card">
+            <span class="source-meta">Source B — Soviet Perspective</span>
+            <h3>Soviet View</h3>
+            <p>
+              “Capitalist nations seek to dominate weaker countries. Socialist nations must resist imperialism.”
+            </p>
+            <p>
+              This perspective reflects the Soviet belief that capitalist countries were a threat and that communist states needed to defend themselves.
+            </p>
+          </div>
+
         </div>
       </section>
 
       <section class="section">
-        <h2>Source B — Soviet Union</h2>
+        <span class="small-label">Analysis</span>
+        <h2>Work through the evidence</h2>
 
-        <div class="source">
-          <strong>Soviet Perspective</strong><br><br>
-          “Capitalist nations seek to dominate weaker countries. Socialist nations must resist imperialism.”
-        </div>
+        <div class="analysis-grid">
 
-        <div class="question">
-          2. What does the Soviet Union believe is happening in the world?
-          <textarea></textarea>
+          <div class="analysis-box">
+            <h4>1. Source A</h4>
+            <p>What does the United States believe it should do in the world?</p>
+            <textarea placeholder="Write your response here..."></textarea>
+          </div>
+
+          <div class="analysis-box">
+            <h4>2. Source B</h4>
+            <p>What does the Soviet Union seem to fear?</p>
+            <textarea placeholder="Write your response here..."></textarea>
+          </div>
+
+          <div class="analysis-box">
+            <h4>3. Compare</h4>
+            <p>How are these two views different?</p>
+            <textarea placeholder="Write your response here..."></textarea>
+          </div>
+
+          <div class="analysis-box">
+            <h4>4. Connect to the Lesson</h4>
+            <p>Which cause of the Cold War do these sources show most clearly: ideology, distrust, or power? Explain your choice.</p>
+            <textarea placeholder="Write your response here..."></textarea>
+          </div>
+
         </div>
       </section>
 
       <section class="section">
-        <h2>Compare the Sources</h2>
+        <span class="small-label">Final Written Response</span>
+        <h2>Make a claim</h2>
+        <p>
+          In 4–6 sentences, explain how these two perspectives help show why the Cold War began.
+        </p>
 
-        <div class="question">
-          3. Why would these two views lead to conflict between the U.S. and USSR?
-          <textarea></textarea>
+        <div class="callout">
+          <strong>Sentence help:</strong> The Cold War began in part because… / Source A shows… / Source B shows… / This led to conflict because…
         </div>
 
-        <div class="question">
-          4. Which cause of the Cold War do these sources best show?
-          <p class="subtle">Choose one: ideology, distrust, or competition for power</p>
-          <textarea></textarea>
-        </div>
+        <textarea placeholder="Write your final response here..."></textarea>
 
         <button onclick="submitWork()">Submit</button>
+        <p id="submitMessage" class="result"></p>
       </section>
 
-      <a href="course-cold-war.html" class="btn-link">Back to Unit →</a>
+      <div class="lesson-nav-row">
+        <a href="course-cold-war.html" class="btn">Back to Unit</a>
+        <a href="lesson1-reading.html" class="btn-secondary">Back to Textbook</a>
+      </div>
     </main>
   </div>
 
   <script>
     function submitWork() {
-      alert("Work submitted (tracking comes next)");
+      document.getElementById("submitMessage").innerText =
+        "Work submitted. Teacher review tools can be connected later.";
     }
   </script>
 
