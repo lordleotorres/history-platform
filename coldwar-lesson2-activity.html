@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cold War Lesson 2 Activity | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .activity-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .activity-box {
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .activity-box h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    .activity-box p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .lesson-breadcrumb {
+      font-size: 0.85rem;
+      color: #b6c2d1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .lesson-breadcrumb a {
+      color: #b6c2d1;
+      text-decoration: none;
+    }
+
+    .lesson-breadcrumb a:hover {
+      color: var(--accent-gold);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Cold War</h2>
+      <a href="coldwar-lesson2-video.html">Lesson 2 Video</a>
+      <a href="coldwar-lesson2-reading.html">Lesson 2 Textbook</a>
+      <a href="coldwar-lesson2-activity.html" class="active">Lesson 2 Activity</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
+    </aside>
+
+    <main class="main">
+      <div class="lesson-header">
+        <div class="lesson-breadcrumb">
+          <a href="world-history.html">World History</a> •
+          <a href="course-cold-war.html">Cold War Unit</a> •
+          Lesson 2
+        </div>
+        <div class="page-kicker">World History • Cold War • Lesson 2</div>
+        <h1>Containment and the Early Cold War</h1>
+        <p class="subtle">
+          Use the questions below to explain how the United States tried to stop communism in the early Cold War.
+        </p>
+      </div>
+
+      <section class="section">
+        <span class="small-label">Lesson Goal</span>
+        <h2>What this activity is asking students to do</h2>
+        <p>
+          Students should be able to explain containment and show how the Truman Doctrine and Marshall Plan fit into that strategy.
+        </p>
+      </section>
+
+      <section class="section">
+        <span class="small-label">Written Practice</span>
+        <h2>Work through the ideas</h2>
+
+        <div class="activity-grid">
+          <div class="activity-box">
+            <h3>1. Define the strategy</h3>
+            <p>What does containment mean in your own words?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="activity-box">
+            <h3>2. Connect the Truman Doctrine</h3>
+            <p>How did the Truman Doctrine help put containment into action?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="activity-box">
+            <h3>3. Connect the Marshall Plan</h3>
+            <p>How did the Marshall Plan fight communism without using soldiers?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="activity-box">
+            <h3>4. Compare the two</h3>
+            <p>What is the difference between helping a country with money and helping a country with political support?</p>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="small-label">Final Response</span>
+        <h2>Make a historical claim</h2>
+        <p>
+          In 4–6 sentences, explain how the United States tried to stop communism during the early Cold War.
+        </p>
+
+        <div class="callout">
+          <strong>Sentence help:</strong> The United States used containment to… / One example was… / Another example was… / This mattered because…
+        </div>
+
+        <textarea placeholder="Write your final response here..."></textarea>
+
+        <button onclick="submitWork()">Submit</button>
+        <p id="submitMessage" class="result"></p>
+      </section>
+
+      <div class="lesson-nav-row">
+        <a href="course-cold-war.html" class="btn">Back to Unit</a>
+        <a href="coldwar-lesson2-reading.html" class="btn-secondary">Back to Textbook</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function submitWork() {
+      document.getElementById("submitMessage").innerText =
+        "Work submitted. Teacher review tools can be connected later.";
+    }
+  </script>
+
+</body>
+</html>
