@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cold War Lesson 2 Video | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .note-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .note-item {
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .note-item h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    .watch-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .watch-list li {
+      margin-bottom: 8px;
+    }
+
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .lesson-breadcrumb {
+      font-size: 0.85rem;
+      color: #b6c2d1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .lesson-breadcrumb a {
+      color: #b6c2d1;
+      text-decoration: none;
+    }
+
+    .lesson-breadcrumb a:hover {
+      color: var(--accent-gold);
+    }
+
+    .lesson-video {
+      width: 100%;
+      height: 420px;
+      border-radius: 18px;
+      margin-top: 10px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 720px) {
+      .lesson-video {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Cold War</h2>
+      <a href="coldwar-lesson2-video.html" class="active">Lesson 2 Video</a>
+      <a href="coldwar-lesson2-reading.html">Lesson 2 Textbook</a>
+      <a href="coldwar-lesson2-activity.html">Lesson 2 Activity</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
+    </aside>
+
+    <main class="main">
+      <div class="lesson-header">
+        <div class="lesson-breadcrumb">
+          <a href="world-history.html">World History</a> •
+          <a href="course-cold-war.html">Cold War Unit</a> •
+          Lesson 2
+        </div>
+        <div class="page-kicker">World History • Cold War • Lesson 2</div>
+        <h1>Containment and the Early Cold War</h1>
+        <p class="subtle">
+          This lesson introduces the early U.S. strategy of containment and explains how the Truman Doctrine and Marshall Plan shaped the opening years of the Cold War.
+        </p>
+      </div>
+
+      <section class="section">
+        <span class="small-label">Lesson Goal</span>
+        <h2>What students should learn</h2>
+        <p>
+          Students should understand that the United States tried to stop communism from spreading without directly going to war. They should be able to explain containment, the Truman Doctrine, and the Marshall Plan in simple terms.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Before You Watch</h2>
+        <p>
+          Keep these questions in mind while watching the video:
+        </p>
+
+        <ul class="watch-list">
+          <li>What does the word <strong>containment</strong> mean?</li>
+          <li>Why did the United States think communism had to be stopped?</li>
+          <li>How can a country fight ideas without starting a war?</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Watch</h2>
+        <p>
+          Use a short overview video here. The goal is not deep detail. The goal is to make the reading easier to understand.
+        </p>
+
+        <iframe
+          class="lesson-video"
+          src="https://www.youtube.com/embed/9C72ISMF_D0"
+          title="Containment and the Early Cold War"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+
+        <div class="callout">
+          <strong>Think:</strong> Why might the United States want to stop communism from spreading without directly fighting the Soviet Union?
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Quick Notes</h2>
+        <p>
+          Answer these while you watch. Keep your answers short and clear.
+        </p>
+
+        <div class="note-grid">
+          <div class="note-item">
+            <h3>1. Main strategy</h3>
+            <p>What was containment trying to do?</p>
+            <textarea id="q1"></textarea>
+          </div>
+
+          <div class="note-item">
+            <h3>2. Truman Doctrine</h3>
+            <p>How did the Truman Doctrine show containment in action?</p>
+            <textarea id="q2"></textarea>
+          </div>
+
+          <div class="note-item">
+            <h3>3. Marshall Plan</h3>
+            <p>How did economic aid help the U.S. fight communism?</p>
+            <textarea id="q3"></textarea>
+          </div>
+        </div>
+
+        <button onclick="checkAnswers()">Check My Notes</button>
+        <p id="result" class="result"></p>
+      </section>
+
+      <div class="lesson-nav-row">
+        <a href="coldwar-lesson2-reading.html" class="btn">Next: Textbook</a>
+        <a href="course-cold-war.html" class="btn-secondary">Back to Unit</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      let score = 0;
+
+      const q1 = document.getElementById("q1").value.toLowerCase();
+      const q2 = document.getElementById("q2").value.toLowerCase();
+      const q3 = document.getElementById("q3").value.toLowerCase();
+
+      if (q1.includes("stop") || q1.includes("spread") || q1.includes("communism") || q1.includes("containment")) score++;
+      if (q2.includes("greece") || q2.includes("turkey") || q2.includes("support") || q2.includes("help")) score++;
+      if (q3.includes("money") || q3.includes("aid") || q3.includes("rebuild") || q3.includes("economy")) score++;
+
+      document.getElementById("result").innerText =
+        "You hit " + score + " of the 3 key ideas. That’s enough to move into the reading.";
+    }
+  </script>
+
+</body>
+</html>
