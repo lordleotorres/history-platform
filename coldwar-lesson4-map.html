@@ -357,7 +357,7 @@
           <li>First, drag each country into NATO, Warsaw Pact, or Neutral / Other.</li>
           <li>Then choose a color mode and click the countries on the Europe map.</li>
           <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
-          <li>Important: the United States, Canada, East Germany, and West Germany appear in the sorting challenge, but not on the Europe map.</li>
+          <li>Important: the United States and Canada appear in the sorting challenge, but not on the Europe map.</li>
           <li>When you are done, press Check Answers. Reflection questions will appear after that.</li>
         </ul>
       </section>
@@ -410,6 +410,10 @@
           <strong>Map status:</strong> Waiting for map to load.
         </div>
 
+        <div id="map-debug" class="status-box">
+          <strong>Debug:</strong> Click a country and its SVG id will appear here.
+        </div>
+
         <div class="action-row">
           <button id="check-btn" class="action-btn check-btn">Check Answers</button>
           <button id="reset-btn" class="action-btn reset-btn">Reset Activity</button>
@@ -452,6 +456,7 @@
       const countryData = [
         { name: "United States", bucket: "nato", onMap: false },
         { name: "Canada", bucket: "nato", onMap: false },
+
         { name: "United Kingdom", bucket: "nato", onMap: true, svgIds: ["gb", "uk", "GB", "UK"] },
         { name: "France", bucket: "nato", onMap: true, svgIds: ["fr", "FR"] },
         { name: "Belgium", bucket: "nato", onMap: true, svgIds: ["be", "BE"] },
@@ -461,12 +466,12 @@
         { name: "Denmark", bucket: "nato", onMap: true, svgIds: ["dk", "DK"] },
         { name: "Norway", bucket: "nato", onMap: true, svgIds: ["no", "NO"] },
         { name: "Portugal", bucket: "nato", onMap: true, svgIds: ["pt", "PT"] },
-        { name: "West Germany", bucket: "nato", onMap: false },
+        { name: "West Germany", bucket: "nato", onMap: true, svgIds: ["de_west", "west_germany", "wg", "DE_WEST", "WEST_GERMANY"] },
 
-        { name: "Soviet Union", bucket: "warsaw", onMap: false },
-        { name: "East Germany", bucket: "warsaw", onMap: false },
+        { name: "Soviet Union", bucket: "warsaw", onMap: true, svgIds: ["su", "ussr", "soviet_union", "SU", "USSR", "SOVIET_UNION"] },
+        { name: "East Germany", bucket: "warsaw", onMap: true, svgIds: ["de_east", "east_germany", "eg", "DE_EAST", "EAST_GERMANY"] },
         { name: "Poland", bucket: "warsaw", onMap: true, svgIds: ["pl", "PL"] },
-        { name: "Czechoslovakia", bucket: "warsaw", onMap: false },
+        { name: "Czechoslovakia", bucket: "warsaw", onMap: true, svgIds: ["cs", "czsk", "czechoslovakia", "CS", "CZSK", "CZECHOSLOVAKIA"] },
         { name: "Hungary", bucket: "warsaw", onMap: true, svgIds: ["hu", "HU"] },
         { name: "Romania", bucket: "warsaw", onMap: true, svgIds: ["ro", "RO"] },
         { name: "Bulgaria", bucket: "warsaw", onMap: true, svgIds: ["bg", "BG"] },
@@ -476,7 +481,7 @@
         { name: "Switzerland", bucket: "neutral", onMap: true, svgIds: ["ch", "CH"] },
         { name: "Sweden", bucket: "neutral", onMap: true, svgIds: ["se", "SE"] },
         { name: "Finland", bucket: "neutral", onMap: true, svgIds: ["fi", "FI"] },
-        { name: "Yugoslavia", bucket: "neutral", onMap: false },
+        { name: "Yugoslavia", bucket: "neutral", onMap: true, svgIds: ["yu", "yugoslavia", "YU", "YUGOSLAVIA"] },
         { name: "Ireland", bucket: "neutral", onMap: true, svgIds: ["ie", "IE"] },
         { name: "Spain", bucket: "neutral", onMap: true, svgIds: ["es", "ES"] }
       ];
@@ -501,6 +506,7 @@
       const reflectionSection = document.getElementById("reflection-section");
       const svgObject = document.getElementById("europe-map");
       const mapStatus = document.getElementById("map-status");
+      const mapDebug = document.getElementById("map-debug");
 
       function shuffleArray(arr) {
         const copy = [...arr];
@@ -578,6 +584,7 @@
         for (const id of possibleIds) {
           let node = svgDoc.getElementById(id);
           if (node) return node;
+
           node = svgDoc.querySelector(`[id="${id}"]`);
           if (node) return node;
         }
@@ -597,19 +604,21 @@
         }
       }
 
-      function wireMap() {
+      function wireMatchedCountries() {
         svgNodeMap = {};
         let matchedCount = 0;
 
         countryData.filter(c => c.onMap).forEach(country => {
           const node = findNodeByPossibleIds(country.svgIds);
+
           if (node) {
             svgNodeMap[country.name] = node;
             matchedCount++;
 
             node.style.cursor = "pointer";
 
-            node.addEventListener("click", () => {
+            node.addEventListener("click", event => {
+              event.stopPropagation();
               activeMapSelections[country.name] = selectedMode;
               setNodeColor(node, paletteColors[selectedMode]);
               mapStatus.innerHTML = `<strong>Map status:</strong> ${country.name} marked as ${labelBucket(selectedMode)}.`;
@@ -620,12 +629,22 @@
         mapStatus.innerHTML = `<strong>Map status:</strong> Map loaded. Matched ${matchedCount} clickable countries.`;
       }
 
+      function wireDebugClicks() {
+        const allIdNodes = svgDoc.querySelectorAll("[id]");
+
+        allIdNodes.forEach(node => {
+          node.addEventListener("click", event => {
+            mapDebug.innerHTML = `<strong>Debug:</strong> You clicked SVG id = ${node.id}`;
+          });
+        });
+      }
+
       svgObject.addEventListener("load", () => {
         try {
           svgDoc = svgObject.contentDocument;
 
           if (!svgDoc) {
-            mapStatus.innerHTML = "<strong>Map status:</strong> SVG loaded, but contentDocument was empty.";
+            mapStatus.innerHTML = "<strong>Map status:</strong> SVG loaded, but no contentDocument was available.";
             return;
           }
 
@@ -636,7 +655,8 @@
             path.style.pointerEvents = "all";
           });
 
-          wireMap();
+          wireMatchedCountries();
+          wireDebugClicks();
         } catch (error) {
           mapStatus.innerHTML = `<strong>Map status:</strong> Error loading map: ${error.message}`;
         }
@@ -678,12 +698,15 @@
         countryData.forEach(country => {
           const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
           if (!card) return;
+
           const parentZone = card.parentElement;
           const placed = parentZone && parentZone.dataset ? parentZone.dataset.bucket : "bank";
+
           if (placed !== country.bucket) {
             missed.push(`${country.name} → ${labelBucket(country.bucket)}`);
           }
         });
+
         return missed;
       }
 
@@ -745,6 +768,7 @@
         });
 
         mapStatus.innerHTML = "<strong>Map status:</strong> Activity reset.";
+        mapDebug.innerHTML = "<strong>Debug:</strong> Click a country and its SVG id will appear here.";
       });
 
       buildCountryCards();
