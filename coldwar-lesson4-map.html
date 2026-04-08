@@ -1,368 +1,755 @@
-<script>
-  const countryData = [
-    { name: "United States", bucket: "nato", onMap: false },
-    { name: "Canada", bucket: "nato", onMap: false },
-    { name: "United Kingdom", bucket: "nato", onMap: true, svgId: "gb" },
-    { name: "France", bucket: "nato", onMap: true, svgId: "fr" },
-    { name: "Belgium", bucket: "nato", onMap: true, svgId: "be" },
-    { name: "Netherlands", bucket: "nato", onMap: true, svgId: "nl" },
-    { name: "Luxembourg", bucket: "nato", onMap: true, svgId: "lu" },
-    { name: "Italy", bucket: "nato", onMap: true, svgId: "it" },
-    { name: "Denmark", bucket: "nato", onMap: true, svgId: "dk" },
-    { name: "Norway", bucket: "nato", onMap: true, svgId: "no" },
-    { name: "Portugal", bucket: "nato", onMap: true, svgId: "pt" },
-    { name: "West Germany", bucket: "nato", onMap: false },
-
-    { name: "Soviet Union", bucket: "warsaw", onMap: false },
-    { name: "East Germany", bucket: "warsaw", onMap: false },
-    { name: "Poland", bucket: "warsaw", onMap: true, svgId: "pl" },
-    { name: "Czechoslovakia", bucket: "warsaw", onMap: false },
-    { name: "Hungary", bucket: "warsaw", onMap: true, svgId: "hu" },
-    { name: "Romania", bucket: "warsaw", onMap: true, svgId: "ro" },
-    { name: "Bulgaria", bucket: "warsaw", onMap: true, svgId: "bg" },
-    { name: "Albania", bucket: "warsaw", onMap: true, svgId: "al" },
-
-    { name: "Austria", bucket: "neutral", onMap: true, svgId: "at" },
-    { name: "Switzerland", bucket: "neutral", onMap: true, svgId: "ch" },
-    { name: "Sweden", bucket: "neutral", onMap: true, svgId: "se" },
-    { name: "Finland", bucket: "neutral", onMap: true, svgId: "fi" },
-    { name: "Yugoslavia", bucket: "neutral", onMap: false },
-    { name: "Ireland", bucket: "neutral", onMap: true, svgId: "ie" },
-    { name: "Spain", bucket: "neutral", onMap: true, svgId: "es" }
-  ];
-
-  const paletteColors = {
-    nato: "#4a90e2",
-    warsaw: "#e05a5a",
-    neutral: "#8b8f97"
-  };
-
-  let selectedMode = "nato";
-  let svgDoc = null;
-  let activeMapIds = {};
-
-  const countryBank = document.getElementById("country-bank");
-  const dropZones = document.querySelectorAll(".drop-zone");
-  const paletteButtons = document.querySelectorAll(".palette-btn");
-  const checkBtn = document.getElementById("check-btn");
-  const resetBtn = document.getElementById("reset-btn");
-  const resultsBox = document.getElementById("results");
-  const reflectionSection = document.getElementById("reflection-section");
-  const svgObject = document.getElementById("europe-map");
-
-  function shuffleArray(arr) {
-    const copy = [...arr];
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy;
-  }
-
-  function cssEscape(str) {
-    return str.replace(/["\\]/g, "\\$&");
-  }
-
-  function buildCountryCards() {
-    countryBank.innerHTML = "";
-    const shuffled = shuffleArray(countryData);
-
-    shuffled.forEach(country => {
-      const el = document.createElement("div");
-      el.className = "country-card";
-      el.textContent = country.name;
-      el.draggable = true;
-      el.dataset.name = country.name;
-
-      el.addEventListener("dragstart", e => {
-        e.dataTransfer.setData("text/plain", country.name);
-      });
-
-      countryBank.appendChild(el);
-    });
-  }
-
-  dropZones.forEach(zone => {
-    zone.addEventListener("dragover", e => {
-      e.preventDefault();
-      zone.classList.add("drag-over");
-    });
-
-    zone.addEventListener("dragleave", () => {
-      zone.classList.remove("drag-over");
-    });
-
-    zone.addEventListener("drop", e => {
-      e.preventDefault();
-      zone.classList.remove("drag-over");
-      const countryName = e.dataTransfer.getData("text/plain");
-      const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
-      if (card) zone.appendChild(card);
-    });
-  });
-
-  countryBank.addEventListener("dragover", e => {
-    e.preventDefault();
-  });
-
-  countryBank.addEventListener("drop", e => {
-    e.preventDefault();
-    const countryName = e.dataTransfer.getData("text/plain");
-    const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
-    if (card) countryBank.appendChild(card);
-  });
-
-  paletteButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      paletteButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedMode = btn.dataset.mode;
-    });
-  });
-
-  function normalize(str) {
-    return (str || "").toLowerCase().replace(/[\s_\-]/g, "");
-  }
-
-  function getPossibleIds(baseId) {
-    return [
-      baseId,
-      baseId.toUpperCase(),
-      baseId.toLowerCase(),
-      normalize(baseId)
-    ];
-  }
-
-  function findCountryNodeByIdGuess(country) {
-    if (!svgDoc) return null;
-
-    const guesses = getPossibleIds(country.svgId);
-
-    for (const guess of guesses) {
-      let found = svgDoc.getElementById(guess);
-      if (found) return found;
-
-      found = svgDoc.querySelector(`[id="${guess}"]`);
-      if (found) return found;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lesson 4 Map Challenge | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .map-page-shell {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: calc(100vh - 84px);
     }
 
-    return null;
-  }
-
-  function getCountryTarget(node) {
-    if (!node) return null;
-
-    if (node.tagName && (node.tagName.toLowerCase() === "path" || node.tagName.toLowerCase() === "g")) {
-      return node;
+    .map-sidebar {
+      background: #08101f;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding: 26px 18px;
     }
 
-    const pathChild = node.querySelector("path");
-    return pathChild || node;
-  }
-
-  function colorCountryNode(node, bucket) {
-    if (!node) return;
-
-    const fillColor = paletteColors[bucket];
-
-    if (node.tagName && node.tagName.toLowerCase() === "g") {
-      node.querySelectorAll("path").forEach(path => {
-        path.style.fill = fillColor;
-      });
-    } else {
-      node.style.fill = fillColor;
+    .map-sidebar h2 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
     }
-  }
 
-  function resetCountryNode(node) {
-    if (!node) return;
-
-    if (node.tagName && node.tagName.toLowerCase() === "g") {
-      node.querySelectorAll("path").forEach(path => {
-        path.style.fill = "#d0d3d8";
-      });
-    } else {
-      node.style.fill = "#d0d3d8";
+    .map-sidebar a {
+      display: block;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s ease;
     }
-  }
 
-  function ensureDebugBox() {
-    let debugBox = document.getElementById("map-debug-box");
-    if (!debugBox) {
-      debugBox = document.createElement("div");
-      debugBox.id = "map-debug-box";
-      debugBox.style.marginTop = "14px";
-      debugBox.style.padding = "12px";
-      debugBox.style.borderRadius = "12px";
-      debugBox.style.background = "#f3f4f6";
-      debugBox.style.border = "1px solid #dbe4ef";
-      debugBox.style.color = "#475569";
-      debugBox.style.fontSize = "0.92rem";
-      debugBox.innerHTML = "<strong>Map debug:</strong> Click a country to see its SVG id.";
-      document.querySelector(".map-wrapper").after(debugBox);
+    .map-sidebar a:hover,
+    .map-sidebar a.active {
+      background: rgba(196,169,98,0.14);
+      color: #ffffff;
     }
-    return debugBox;
-  }
 
-  function wireMap() {
-    if (!svgDoc) return;
+    .map-main {
+      padding: 42px 34px 70px;
+      max-width: 1400px;
+    }
 
-    const debugBox = ensureDebugBox();
+    .lesson-header {
+      margin-bottom: 30px;
+    }
 
-    svgDoc.querySelectorAll("path, g").forEach(node => {
-      node.style.cursor = "pointer";
+    .page-kicker {
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-      node.addEventListener("click", event => {
-        event.stopPropagation();
+    .lesson-header h1 {
+      margin-bottom: 12px;
+    }
 
-        const clickedId = node.id || "(no id)";
-        debugBox.innerHTML = `<strong>Map debug:</strong> You clicked SVG id = ${clickedId}`;
+    .hero-subtext {
+      color: var(--text-muted);
+      max-width: 900px;
+    }
 
-        const matchedCountry = countryData.find(c => c.onMap && normalize(c.svgId) === normalize(clickedId));
+    .section-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      margin-bottom: 22px;
+    }
 
-        if (matchedCountry) {
-          activeMapIds[matchedCountry.svgId] = selectedMode;
-          colorCountryNode(node, selectedMode);
-        }
-      });
-    });
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
 
-    countryData.filter(c => c.onMap).forEach(country => {
-      const node = findCountryNodeByIdGuess(country);
-      if (node) {
-        node.style.cursor = "pointer";
+    .instruction-list {
+      margin-top: 10px;
+      padding-left: 22px;
+      color: var(--text-muted);
+    }
+
+    .instruction-list li {
+      margin-bottom: 8px;
+    }
+
+    .country-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      margin-bottom: 18px;
+      min-height: 60px;
+      padding: 14px;
+      border: 1px dashed var(--line-light);
+      border-radius: 18px;
+      background: var(--bg-soft);
+    }
+
+    .country-card {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #eef3f9;
+      border: 1px solid #dbe4ef;
+      color: #0f172a;
+      font-weight: 600;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .country-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .sort-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .sort-column {
+      border: 1px solid var(--line-light);
+      border-radius: 18px;
+      background: var(--bg-soft);
+      padding: 16px;
+      min-height: 180px;
+    }
+
+    .sort-column h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .sort-column p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .drop-zone {
+      min-height: 110px;
+      border: 2px dashed #d8e0ea;
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+    }
+
+    .drop-zone.drag-over {
+      background: #f7fafc;
+      border-color: var(--accent-blue);
+    }
+
+    .palette-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      margin-bottom: 18px;
+    }
+
+    .palette-btn {
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line-light);
+      background: #ffffff;
+      color: #0f172a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .palette-btn.active {
+      outline: 2px solid #0f172a;
+      outline-offset: 2px;
+    }
+
+    .mode-note {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .map-wrapper {
+      border: 1px solid var(--line-light);
+      border-radius: 22px;
+      background: #f8fafc;
+      padding: 14px;
+      overflow: auto;
+    }
+
+    #europe-map {
+      width: 100%;
+      min-height: 700px;
+      border: none;
+      background: #f8fafc;
+    }
+
+    .status-box,
+    .results-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line-light);
+      color: #0f172a;
+    }
+
+    .status-box {
+      font-size: 0.95rem;
+    }
+
+    .results-detail {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .action-row,
+    .lesson-nav-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .action-btn {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .check-btn {
+      background: var(--accent-gold);
+      color: #0f172a;
+    }
+
+    .reset-btn {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .reflection-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .reflection-box {
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .reflection-box h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      border-radius: 12px;
+      border: 1px solid var(--line-light);
+      padding: 12px;
+      font-family: "Inter", sans-serif;
+      resize: vertical;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+      .map-page-shell {
+        grid-template-columns: 1fr;
       }
-    });
-  }
 
-  svgObject.addEventListener("load", () => {
-    svgDoc = svgObject.contentDocument;
-    if (!svgDoc) return;
-
-    svgDoc.querySelectorAll("path").forEach(path => {
-      if (!path.style.fill || path.style.fill === "") {
-        path.style.fill = "#d0d3d8";
+      .sort-grid {
+        grid-template-columns: 1fr;
       }
-      path.style.stroke = "#ffffff";
-      path.style.strokeWidth = "1";
-      path.style.pointerEvents = "all";
-    });
 
-    wireMap();
-  });
-
-  function getSortingScore() {
-    let correct = 0;
-    let total = countryData.length;
-
-    countryData.forEach(country => {
-      const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
-      if (!card) return;
-
-      const parentZone = card.parentElement;
-      if (parentZone && parentZone.dataset && parentZone.dataset.bucket === country.bucket) {
-        correct++;
+      .map-main {
+        padding: 30px 18px 60px;
       }
-    });
 
-    return { correct, total };
-  }
-
-  function getMapScore() {
-    const mapCountries = countryData.filter(c => c.onMap);
-    let correct = 0;
-    const total = mapCountries.length;
-
-    mapCountries.forEach(country => {
-      if (activeMapIds[country.svgId] === country.bucket) {
-        correct++;
+      #europe-map {
+        min-height: 560px;
       }
-    });
+    }
+  </style>
+</head>
+<body>
 
-    return { correct, total };
-  }
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
+    </div>
 
-  function listMissedSorting() {
-    const missed = [];
-    countryData.forEach(country => {
-      const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
-      if (!card) return;
-      const parentZone = card.parentElement;
-      const placed = parentZone && parentZone.dataset ? parentZone.dataset.bucket : "bank";
-      if (placed !== country.bucket) {
-        missed.push(`${country.name} → ${labelBucket(country.bucket)}`);
-      }
-    });
-    return missed;
-  }
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="student-portal.html">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
+    </div>
+  </div>
 
-  function listMissedMap() {
-    const missed = [];
-    countryData.filter(c => c.onMap).forEach(country => {
-      const placed = activeMapIds[country.svgId] || "uncolored";
-      if (placed !== country.bucket) {
-        missed.push(`${country.name} → ${labelBucket(country.bucket)} (svg id expected: ${country.svgId})`);
-      }
-    });
-    return missed;
-  }
+  <div class="map-page-shell">
+    <aside class="map-sidebar">
+      <h2>Cold War</h2>
+      <a href="coldwar-lesson4-video.html">Lesson 4 Video</a>
+      <a href="coldwar-lesson4-reading.html">Lesson 4 Textbook</a>
+      <a href="coldwar-lesson4-activity.html">Lesson 4 Activity</a>
+      <a href="coldwar-lesson4-map.html" class="active">Lesson 4 Map Challenge</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
+    </aside>
 
-  function labelBucket(bucket) {
-    if (bucket === "nato") return "NATO";
-    if (bucket === "warsaw") return "Warsaw Pact";
-    return "Neutral / Other";
-  }
-
-  checkBtn.addEventListener("click", () => {
-    const sorting = getSortingScore();
-    const mapping = getMapScore();
-    const totalCorrect = sorting.correct + mapping.correct;
-    const totalPossible = sorting.total + mapping.total;
-
-    const missedSorting = listMissedSorting();
-    const missedMap = listMissedMap();
-
-    resultsBox.classList.remove("hidden");
-    reflectionSection.classList.remove("hidden");
-
-    resultsBox.innerHTML = `
-      <strong>Score: ${totalCorrect} / ${totalPossible}</strong>
-      <div class="results-detail">
-        Sorting: ${sorting.correct} / ${sorting.total}<br>
-        Map: ${mapping.correct} / ${mapping.total}<br><br>
-        <strong>Missed in sorting:</strong><br>
-        ${missedSorting.length ? missedSorting.join("<br>") : "None"}<br><br>
-        <strong>Missed on map:</strong><br>
-        ${missedMap.length ? missedMap.join("<br>") : "None"}
+    <main class="map-main">
+      <div class="lesson-header">
+        <div class="page-kicker">World History • Cold War • Lesson 4</div>
+        <h1>Map Challenge: NATO, Warsaw Pact, and Neutral States</h1>
+        <p class="hero-subtext">
+          Sort the countries, color the map, then reflect on how alliances divided Europe during the Cold War.
+        </p>
       </div>
-    `;
-  });
 
-  resetBtn.addEventListener("click", () => {
-    activeMapIds = {};
-    resultsBox.classList.add("hidden");
-    reflectionSection.classList.add("hidden");
-    resultsBox.innerHTML = "";
-    buildCountryCards();
+      <section class="section-card">
+        <span class="small-label">Instructions</span>
+        <h2>How this works</h2>
+        <ul class="instruction-list">
+          <li>First, drag each country into NATO, Warsaw Pact, or Neutral / Other.</li>
+          <li>Then choose a color mode and click the countries on the Europe map.</li>
+          <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
+          <li>Important: the United States, Canada, East Germany, and West Germany appear in the sorting challenge, but not on the Europe map.</li>
+          <li>When you are done, press Check Answers. Reflection questions will appear after that.</li>
+        </ul>
+      </section>
 
-    dropZones.forEach(zone => {
-      zone.innerHTML = "";
-    });
+      <section class="section-card">
+        <span class="small-label">Step 1</span>
+        <h2>Sort the countries</h2>
 
-    if (svgDoc) {
-      countryData.filter(c => c.onMap).forEach(country => {
-        const node = findCountryNodeByIdGuess(country);
-        if (node) {
-          resetCountryNode(node);
+        <div id="country-bank" class="country-bank"></div>
+
+        <div class="sort-grid">
+          <div class="sort-column">
+            <h3>NATO</h3>
+            <p>United States led alliance with Western Europe and Canada.</p>
+            <div class="drop-zone" data-bucket="nato"></div>
+          </div>
+
+          <div class="sort-column">
+            <h3>Warsaw Pact</h3>
+            <p>Soviet led alliance of communist states in Eastern Europe.</p>
+            <div class="drop-zone" data-bucket="warsaw"></div>
+          </div>
+
+          <div class="sort-column">
+            <h3>Neutral / Other</h3>
+            <p>Countries that did not belong to either Cold War alliance bloc.</p>
+            <div class="drop-zone" data-bucket="neutral"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <span class="small-label">Step 2</span>
+        <h2>Color the map</h2>
+        <p class="mode-note">
+          Choose a color, then click countries on the map. This is a Europe only map, so the United States and Canada are not shown here.
+        </p>
+
+        <div class="palette-row">
+          <button class="palette-btn active" data-mode="nato">Blue = NATO</button>
+          <button class="palette-btn" data-mode="warsaw">Red = Warsaw Pact</button>
+          <button class="palette-btn" data-mode="neutral">Gray = Neutral / Other</button>
+        </div>
+
+        <div class="map-wrapper">
+          <object id="europe-map" type="image/svg+xml" data="images/europe-map.svg"></object>
+        </div>
+
+        <div id="map-status" class="status-box">
+          <strong>Map status:</strong> Waiting for map to load.
+        </div>
+
+        <div class="action-row">
+          <button id="check-btn" class="action-btn check-btn">Check Answers</button>
+          <button id="reset-btn" class="action-btn reset-btn">Reset Activity</button>
+        </div>
+
+        <div id="results" class="results-box hidden"></div>
+      </section>
+
+      <section id="reflection-section" class="section-card hidden">
+        <span class="small-label">Reflection</span>
+        <h2>Check for understanding</h2>
+
+        <div class="reflection-grid">
+          <div class="reflection-box">
+            <h3>1. What is the difference between NATO and the Warsaw Pact?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="reflection-box">
+            <h3>2. Why did these alliances make the Cold War more dangerous?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="reflection-box">
+            <h3>3. Why might countries still choose to join alliances instead of standing alone?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="lesson-nav-row">
+        <a href="course-cold-war.html" class="btn">Back to Unit</a>
+        <a href="coldwar-lesson4-activity.html" class="btn-secondary">Back to Activity</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const countryData = [
+        { name: "United States", bucket: "nato", onMap: false },
+        { name: "Canada", bucket: "nato", onMap: false },
+        { name: "United Kingdom", bucket: "nato", onMap: true, svgIds: ["gb", "uk", "GB", "UK"] },
+        { name: "France", bucket: "nato", onMap: true, svgIds: ["fr", "FR"] },
+        { name: "Belgium", bucket: "nato", onMap: true, svgIds: ["be", "BE"] },
+        { name: "Netherlands", bucket: "nato", onMap: true, svgIds: ["nl", "NL"] },
+        { name: "Luxembourg", bucket: "nato", onMap: true, svgIds: ["lu", "LU"] },
+        { name: "Italy", bucket: "nato", onMap: true, svgIds: ["it", "IT"] },
+        { name: "Denmark", bucket: "nato", onMap: true, svgIds: ["dk", "DK"] },
+        { name: "Norway", bucket: "nato", onMap: true, svgIds: ["no", "NO"] },
+        { name: "Portugal", bucket: "nato", onMap: true, svgIds: ["pt", "PT"] },
+        { name: "West Germany", bucket: "nato", onMap: false },
+
+        { name: "Soviet Union", bucket: "warsaw", onMap: false },
+        { name: "East Germany", bucket: "warsaw", onMap: false },
+        { name: "Poland", bucket: "warsaw", onMap: true, svgIds: ["pl", "PL"] },
+        { name: "Czechoslovakia", bucket: "warsaw", onMap: false },
+        { name: "Hungary", bucket: "warsaw", onMap: true, svgIds: ["hu", "HU"] },
+        { name: "Romania", bucket: "warsaw", onMap: true, svgIds: ["ro", "RO"] },
+        { name: "Bulgaria", bucket: "warsaw", onMap: true, svgIds: ["bg", "BG"] },
+        { name: "Albania", bucket: "warsaw", onMap: true, svgIds: ["al", "AL"] },
+
+        { name: "Austria", bucket: "neutral", onMap: true, svgIds: ["at", "AT"] },
+        { name: "Switzerland", bucket: "neutral", onMap: true, svgIds: ["ch", "CH"] },
+        { name: "Sweden", bucket: "neutral", onMap: true, svgIds: ["se", "SE"] },
+        { name: "Finland", bucket: "neutral", onMap: true, svgIds: ["fi", "FI"] },
+        { name: "Yugoslavia", bucket: "neutral", onMap: false },
+        { name: "Ireland", bucket: "neutral", onMap: true, svgIds: ["ie", "IE"] },
+        { name: "Spain", bucket: "neutral", onMap: true, svgIds: ["es", "ES"] }
+      ];
+
+      const paletteColors = {
+        nato: "#4a90e2",
+        warsaw: "#e05a5a",
+        neutral: "#8b8f97"
+      };
+
+      let selectedMode = "nato";
+      let svgDoc = null;
+      let activeMapSelections = {};
+      let svgNodeMap = {};
+
+      const countryBank = document.getElementById("country-bank");
+      const dropZones = document.querySelectorAll(".drop-zone");
+      const paletteButtons = document.querySelectorAll(".palette-btn");
+      const checkBtn = document.getElementById("check-btn");
+      const resetBtn = document.getElementById("reset-btn");
+      const resultsBox = document.getElementById("results");
+      const reflectionSection = document.getElementById("reflection-section");
+      const svgObject = document.getElementById("europe-map");
+      const mapStatus = document.getElementById("map-status");
+
+      function shuffleArray(arr) {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function cssEscape(str) {
+        return str.replace(/["\\]/g, "\\$&");
+      }
+
+      function buildCountryCards() {
+        countryBank.innerHTML = "";
+        const shuffled = shuffleArray(countryData);
+
+        shuffled.forEach(country => {
+          const el = document.createElement("div");
+          el.className = "country-card";
+          el.textContent = country.name;
+          el.draggable = true;
+          el.dataset.name = country.name;
+
+          el.addEventListener("dragstart", e => {
+            e.dataTransfer.setData("text/plain", country.name);
+          });
+
+          countryBank.appendChild(el);
+        });
+      }
+
+      dropZones.forEach(zone => {
+        zone.addEventListener("dragover", e => {
+          e.preventDefault();
+          zone.classList.add("drag-over");
+        });
+
+        zone.addEventListener("dragleave", () => {
+          zone.classList.remove("drag-over");
+        });
+
+        zone.addEventListener("drop", e => {
+          e.preventDefault();
+          zone.classList.remove("drag-over");
+          const countryName = e.dataTransfer.getData("text/plain");
+          const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
+          if (card) zone.appendChild(card);
+        });
+      });
+
+      countryBank.addEventListener("dragover", e => {
+        e.preventDefault();
+      });
+
+      countryBank.addEventListener("drop", e => {
+        e.preventDefault();
+        const countryName = e.dataTransfer.getData("text/plain");
+        const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
+        if (card) countryBank.appendChild(card);
+      });
+
+      paletteButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          paletteButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedMode = btn.dataset.mode;
+        });
+      });
+
+      function findNodeByPossibleIds(possibleIds) {
+        if (!svgDoc) return null;
+
+        for (const id of possibleIds) {
+          let node = svgDoc.getElementById(id);
+          if (node) return node;
+          node = svgDoc.querySelector(`[id="${id}"]`);
+          if (node) return node;
+        }
+
+        return null;
+      }
+
+      function setNodeColor(node, color) {
+        if (!node) return;
+
+        if (node.tagName && node.tagName.toLowerCase() === "g") {
+          node.querySelectorAll("path").forEach(path => {
+            path.style.fill = color;
+          });
+        } else {
+          node.style.fill = color;
+        }
+      }
+
+      function wireMap() {
+        svgNodeMap = {};
+        let matchedCount = 0;
+
+        countryData.filter(c => c.onMap).forEach(country => {
+          const node = findNodeByPossibleIds(country.svgIds);
+          if (node) {
+            svgNodeMap[country.name] = node;
+            matchedCount++;
+
+            node.style.cursor = "pointer";
+
+            node.addEventListener("click", () => {
+              activeMapSelections[country.name] = selectedMode;
+              setNodeColor(node, paletteColors[selectedMode]);
+              mapStatus.innerHTML = `<strong>Map status:</strong> ${country.name} marked as ${labelBucket(selectedMode)}.`;
+            });
+          }
+        });
+
+        mapStatus.innerHTML = `<strong>Map status:</strong> Map loaded. Matched ${matchedCount} clickable countries.`;
+      }
+
+      svgObject.addEventListener("load", () => {
+        try {
+          svgDoc = svgObject.contentDocument;
+
+          if (!svgDoc) {
+            mapStatus.innerHTML = "<strong>Map status:</strong> SVG loaded, but contentDocument was empty.";
+            return;
+          }
+
+          svgDoc.querySelectorAll("path").forEach(path => {
+            path.style.fill = "#d0d3d8";
+            path.style.stroke = "#ffffff";
+            path.style.strokeWidth = "1";
+            path.style.pointerEvents = "all";
+          });
+
+          wireMap();
+        } catch (error) {
+          mapStatus.innerHTML = `<strong>Map status:</strong> Error loading map: ${error.message}`;
         }
       });
-    }
 
-    const debugBox = document.getElementById("map-debug-box");
-    if (debugBox) {
-      debugBox.innerHTML = "<strong>Map debug:</strong> Click a country to see its SVG id.";
-    }
-  });
+      function getSortingScore() {
+        let correct = 0;
+        let total = countryData.length;
 
-  buildCountryCards();
-</script>
+        countryData.forEach(country => {
+          const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
+          if (!card) return;
+
+          const parentZone = card.parentElement;
+          if (parentZone && parentZone.dataset && parentZone.dataset.bucket === country.bucket) {
+            correct++;
+          }
+        });
+
+        return { correct, total };
+      }
+
+      function getMapScore() {
+        const mapCountries = countryData.filter(c => c.onMap);
+        let correct = 0;
+        const total = mapCountries.length;
+
+        mapCountries.forEach(country => {
+          if (activeMapSelections[country.name] === country.bucket) {
+            correct++;
+          }
+        });
+
+        return { correct, total };
+      }
+
+      function listMissedSorting() {
+        const missed = [];
+        countryData.forEach(country => {
+          const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
+          if (!card) return;
+          const parentZone = card.parentElement;
+          const placed = parentZone && parentZone.dataset ? parentZone.dataset.bucket : "bank";
+          if (placed !== country.bucket) {
+            missed.push(`${country.name} → ${labelBucket(country.bucket)}`);
+          }
+        });
+        return missed;
+      }
+
+      function listMissedMap() {
+        const missed = [];
+        countryData.filter(c => c.onMap).forEach(country => {
+          const placed = activeMapSelections[country.name] || "uncolored";
+          if (placed !== country.bucket) {
+            missed.push(`${country.name} → ${labelBucket(country.bucket)}`);
+          }
+        });
+        return missed;
+      }
+
+      function labelBucket(bucket) {
+        if (bucket === "nato") return "NATO";
+        if (bucket === "warsaw") return "Warsaw Pact";
+        return "Neutral / Other";
+      }
+
+      checkBtn.addEventListener("click", () => {
+        const sorting = getSortingScore();
+        const mapping = getMapScore();
+        const totalCorrect = sorting.correct + mapping.correct;
+        const totalPossible = sorting.total + mapping.total;
+
+        const missedSorting = listMissedSorting();
+        const missedMap = listMissedMap();
+
+        resultsBox.classList.remove("hidden");
+        reflectionSection.classList.remove("hidden");
+
+        resultsBox.innerHTML = `
+          <strong>Score: ${totalCorrect} / ${totalPossible}</strong>
+          <div class="results-detail">
+            Sorting: ${sorting.correct} / ${sorting.total}<br>
+            Map: ${mapping.correct} / ${mapping.total}<br><br>
+            <strong>Missed in sorting:</strong><br>
+            ${missedSorting.length ? missedSorting.join("<br>") : "None"}<br><br>
+            <strong>Missed on map:</strong><br>
+            ${missedMap.length ? missedMap.join("<br>") : "None"}
+          </div>
+        `;
+      });
+
+      resetBtn.addEventListener("click", () => {
+        activeMapSelections = {};
+        resultsBox.classList.add("hidden");
+        reflectionSection.classList.add("hidden");
+        resultsBox.innerHTML = "";
+        buildCountryCards();
+
+        dropZones.forEach(zone => {
+          zone.innerHTML = "";
+        });
+
+        Object.values(svgNodeMap).forEach(node => {
+          setNodeColor(node, "#d0d3d8");
+        });
+
+        mapStatus.innerHTML = "<strong>Map status:</strong> Activity reset.";
+      });
+
+      buildCountryCards();
+    })();
+  </script>
+
+</body>
+</html>
