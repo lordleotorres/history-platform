@@ -12,7 +12,7 @@
     .map-page-shell {
       display: grid;
       grid-template-columns: 260px 1fr;
-      min-height: 100vh;
+      min-height: calc(100vh - 84px);
     }
 
     .map-sidebar {
@@ -295,6 +295,13 @@
       color: #0f172a;
     }
 
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
     textarea {
       width: 100%;
       min-height: 110px;
@@ -330,115 +337,134 @@
 </head>
 <body>
 
-<div class="map-page-shell">
-
-  <aside class="map-sidebar">
-    <h2>Cold War</h2>
-    <a href="coldwar-lesson4-video.html">Lesson 4 Video</a>
-    <a href="coldwar-lesson4-reading.html">Lesson 4 Textbook</a>
-    <a href="coldwar-lesson4-activity.html">Lesson 4 Activity</a>
-    <a href="coldwar-lesson4-map.html" class="active">Lesson 4 Map Challenge</a>
-    <a href="course-cold-war.html">← Back to Unit</a>
-  </aside>
-
-  <main class="map-main">
-
-    <div class="lesson-header">
-      <div class="page-kicker">World History • Cold War • Lesson 4</div>
-      <h1>Map Challenge: NATO, Warsaw Pact, and Neutral States</h1>
-      <p class="hero-subtext">
-        Sort the countries, color the map, then reflect on how alliances divided Europe during the Cold War.
-      </p>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
     </div>
 
-    <section class="section-card">
-      <span class="small-label">Instructions</span>
-      <h2>How this works</h2>
-      <ul class="instruction-list">
-        <li>First, drag each country into NATO, Warsaw Pact, or Neutral / Other.</li>
-        <li>Then choose a color mode and click the countries on the Europe map.</li>
-        <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
-        <li>Important: the United States, Canada, East Germany, and West Germany appear in the sorting challenge, but not on the Europe map portion.</li>
-        <li>When you are done, press Check Answers. Your reflection questions will appear after that.</li>
-      </ul>
-    </section>
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="student-portal.html">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
+    </div>
+  </div>
 
-    <section class="section-card">
-      <span class="small-label">Step 1</span>
-      <h2>Sort the countries</h2>
+  <div class="map-page-shell">
 
-      <div id="country-bank" class="country-bank"></div>
+    <aside class="map-sidebar">
+      <h2>Cold War</h2>
+      <a href="coldwar-lesson4-video.html">Lesson 4 Video</a>
+      <a href="coldwar-lesson4-reading.html">Lesson 4 Textbook</a>
+      <a href="coldwar-lesson4-activity.html">Lesson 4 Activity</a>
+      <a href="coldwar-lesson4-map.html" class="active">Lesson 4 Map Challenge</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
+    </aside>
 
-      <div class="sort-grid">
-        <div class="sort-column">
-          <h3>NATO</h3>
-          <p>United States led alliance with Western Europe and Canada.</p>
-          <div class="drop-zone" data-bucket="nato"></div>
-        </div>
+    <main class="map-main">
 
-        <div class="sort-column">
-          <h3>Warsaw Pact</h3>
-          <p>Soviet led alliance of communist states in Eastern Europe.</p>
-          <div class="drop-zone" data-bucket="warsaw"></div>
-        </div>
-
-        <div class="sort-column">
-          <h3>Neutral / Other</h3>
-          <p>Countries that did not belong to either Cold War alliance bloc.</p>
-          <div class="drop-zone" data-bucket="neutral"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-card">
-      <span class="small-label">Step 2</span>
-      <h2>Color the map</h2>
-      <p class="mode-note">
-        Choose a color, then click countries on the map. This is a Europe-only map, so the United States and Canada are not shown here.
-      </p>
-
-      <div class="palette-row">
-        <button class="palette-btn active" data-mode="nato">Blue = NATO</button>
-        <button class="palette-btn" data-mode="warsaw">Red = Warsaw Pact</button>
-        <button class="palette-btn" data-mode="neutral">Gray = Neutral / Other</button>
+      <div class="lesson-header">
+        <div class="page-kicker">World History • Cold War • Lesson 4</div>
+        <h1>Map Challenge: NATO, Warsaw Pact, and Neutral States</h1>
+        <p class="hero-subtext">
+          Sort the countries, color the map, then reflect on how alliances divided Europe during the Cold War.
+        </p>
       </div>
 
-      <div class="map-wrapper">
-        <object id="europe-map" type="image/svg+xml" data="images/europe-map.svg"></object>
-      </div>
+      <section class="section-card">
+        <span class="small-label">Instructions</span>
+        <h2>How this works</h2>
+        <ul class="instruction-list">
+          <li>First, drag each country into NATO, Warsaw Pact, or Neutral / Other.</li>
+          <li>Then choose a color mode and click the countries on the Europe map.</li>
+          <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
+          <li>Important: the United States, Canada, East Germany, and West Germany appear in the sorting challenge, but not on the Europe map portion.</li>
+          <li>When you are done, press Check Answers. Your reflection questions will appear after that.</li>
+        </ul>
+      </section>
 
-      <div class="action-row">
-        <button id="check-btn" class="action-btn check-btn">Check Answers</button>
-        <button id="reset-btn" class="action-btn reset-btn">Reset Activity</button>
-      </div>
+      <section class="section-card">
+        <span class="small-label">Step 1</span>
+        <h2>Sort the countries</h2>
 
-      <div id="results" class="results-box hidden"></div>
-    </section>
+        <div id="country-bank" class="country-bank"></div>
 
-    <section id="reflection-section" class="section-card hidden">
-      <span class="small-label">Reflection</span>
-      <h2>Check for understanding</h2>
+        <div class="sort-grid">
+          <div class="sort-column">
+            <h3>NATO</h3>
+            <p>United States led alliance with Western Europe and Canada.</p>
+            <div class="drop-zone" data-bucket="nato"></div>
+          </div>
 
-      <div class="reflection-grid">
-        <div class="reflection-box">
-          <h3>1. What is the difference between NATO and the Warsaw Pact?</h3>
-          <textarea placeholder="Write your answer here..."></textarea>
+          <div class="sort-column">
+            <h3>Warsaw Pact</h3>
+            <p>Soviet led alliance of communist states in Eastern Europe.</p>
+            <div class="drop-zone" data-bucket="warsaw"></div>
+          </div>
+
+          <div class="sort-column">
+            <h3>Neutral / Other</h3>
+            <p>Countries that did not belong to either Cold War alliance bloc.</p>
+            <div class="drop-zone" data-bucket="neutral"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <span class="small-label">Step 2</span>
+        <h2>Color the map</h2>
+        <p class="mode-note">
+          Choose a color, then click countries on the map. This is a Europe-only map, so the United States and Canada are not shown here.
+        </p>
+
+        <div class="palette-row">
+          <button class="palette-btn active" data-mode="nato">Blue = NATO</button>
+          <button class="palette-btn" data-mode="warsaw">Red = Warsaw Pact</button>
+          <button class="palette-btn" data-mode="neutral">Gray = Neutral / Other</button>
         </div>
 
-        <div class="reflection-box">
-          <h3>2. Why did these alliances make the Cold War more dangerous?</h3>
-          <textarea placeholder="Write your answer here..."></textarea>
+        <div class="map-wrapper">
+          <object id="europe-map" type="image/svg+xml" data="images/europe-map.svg"></object>
         </div>
 
-        <div class="reflection-box">
-          <h3>3. Why might countries still choose to join alliances instead of standing alone?</h3>
-          <textarea placeholder="Write your answer here..."></textarea>
+        <div class="action-row">
+          <button id="check-btn" class="action-btn check-btn">Check Answers</button>
+          <button id="reset-btn" class="action-btn reset-btn">Reset Activity</button>
         </div>
+
+        <div id="results" class="results-box hidden"></div>
+      </section>
+
+      <section id="reflection-section" class="section-card hidden">
+        <span class="small-label">Reflection</span>
+        <h2>Check for understanding</h2>
+
+        <div class="reflection-grid">
+          <div class="reflection-box">
+            <h3>1. What is the difference between NATO and the Warsaw Pact?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="reflection-box">
+            <h3>2. Why did these alliances make the Cold War more dangerous?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="reflection-box">
+            <h3>3. Why might countries still choose to join alliances instead of standing alone?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="lesson-nav-row">
+        <a href="course-cold-war.html" class="btn">Back to Unit</a>
+        <a href="coldwar-lesson4-activity.html" class="btn-secondary">Back to Activity</a>
       </div>
-    </section>
 
-  </main>
-</div>
+    </main>
+  </div>
 
 <script>
   const countryData = [
@@ -481,7 +507,6 @@
 
   let selectedMode = "nato";
   let svgDoc = null;
-  let svgRoot = null;
   let activeMapIds = {};
 
   const countryBank = document.getElementById("country-bank");
@@ -502,9 +527,14 @@
     return copy;
   }
 
+  function cssEscape(str) {
+    return str.replace(/["\\]/g, "\\$&");
+  }
+
   function buildCountryCards() {
     countryBank.innerHTML = "";
     const shuffled = shuffleArray(countryData);
+
     shuffled.forEach(country => {
       const el = document.createElement("div");
       el.className = "country-card";
@@ -558,10 +588,6 @@
     });
   });
 
-  function cssEscape(str) {
-    return str.replace(/["\\]/g, "\\$&");
-  }
-
   function tryFindCountryNode(id) {
     if (!svgDoc) return null;
     return svgDoc.getElementById(id) || svgDoc.querySelector(`#${CSS.escape(id)}`);
@@ -586,9 +612,7 @@
   svgObject.addEventListener("load", () => {
     svgDoc = svgObject.contentDocument;
     if (!svgDoc) return;
-    svgRoot = svgDoc.querySelector("svg");
 
-    // base styling for all paths if possible
     svgDoc.querySelectorAll("path").forEach(path => {
       if (!path.style.fill || path.style.fill === "") {
         path.style.fill = "#d0d3d8";
