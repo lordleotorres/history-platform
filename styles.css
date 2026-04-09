@@ -95,12 +95,18 @@ p, li {
   color: #d7dee8;
 }
 
+.topnav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
 .topnav-links a {
   text-decoration: none;
   color: #dbe4f0;
   font-weight: 600;
   font-size: 0.95rem;
-  margin-left: 18px;
 }
 
 .topnav-links a:hover {
