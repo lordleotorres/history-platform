@@ -63,19 +63,36 @@ p, li {
 .brand {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
+}
+
+.brand-link {
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .brand-title {
   color: #ffffff;
-  font-size: 1.2rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
   font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
 }
 
 .brand-sub {
   color: #b6c2d1;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
+  font-size: 0.84rem;
+  letter-spacing: 0.03em;
+}
+
+.brand-link:hover .brand-title {
+  color: var(--accent-gold);
+}
+
+.brand-link:hover .brand-sub {
+  color: #d7dee8;
 }
 
 .topnav-links a {
