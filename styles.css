@@ -47,6 +47,7 @@ p, li {
 }
 
 /* TOP BAR */
+
 .topbar {
   position: sticky;
   top: 0;
@@ -78,12 +79,18 @@ p, li {
   letter-spacing: 0.04em;
 }
 
+.topnav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .topnav-links a {
   text-decoration: none;
   color: #dbe4f0;
   font-weight: 600;
   font-size: 0.95rem;
-  margin-left: 18px;
+  margin-left: 0;
 }
 
 .topnav-links a:hover {
@@ -91,6 +98,7 @@ p, li {
 }
 
 /* HERO */
+
 .hero-wrap {
   max-width: 1240px;
   margin: 0 auto;
@@ -178,6 +186,7 @@ p, li {
 }
 
 /* BUTTONS */
+
 .btn,
 .btn-secondary {
   display: inline-block;
@@ -207,6 +216,7 @@ p, li {
 }
 
 /* LIGHT CONTENT ZONES */
+
 .content-wrap {
   background: var(--bg-surface);
   color: var(--text-main);
@@ -238,6 +248,7 @@ p, li {
 }
 
 /* GRID CARDS */
+
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -273,6 +284,7 @@ p, li {
 }
 
 /* FEATURE BLOCK */
+
 .feature-band {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -315,6 +327,7 @@ p, li {
 }
 
 /* COURSES PAGE */
+
 .courses-shell {
   max-width: 1250px;
   margin: 0 auto;
@@ -354,6 +367,7 @@ p, li {
   flex-direction: column;
   justify-content: space-between;
   min-height: 260px;
+  color: var(--text-main);
 }
 
 .course-card h2 {
@@ -414,6 +428,7 @@ p, li {
 }
 
 /* UNIT PAGE */
+
 .unit-page {
   max-width: 1180px;
   margin: 0 auto;
@@ -474,6 +489,7 @@ p, li {
 }
 
 /* LESSON LAYOUT */
+
 .layout {
   display: flex;
   min-height: 100vh;
@@ -680,6 +696,7 @@ iframe {
 }
 
 /* PORTALS */
+
 .portal-shell,
 .dashboard-shell {
   max-width: 1250px;
@@ -725,6 +742,11 @@ iframe {
     gap: 12px;
   }
 
+  .topnav-links {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
   .topnav-links a {
     margin-left: 0;
     margin-right: 14px;
@@ -738,7 +760,8 @@ iframe {
 
   .hero h1,
   .unit-hero h1,
-  .main h1 {
+  .main h1,
+  .courses-hero h1 {
     font-size: 2.3rem;
   }
 
