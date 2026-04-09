@@ -98,16 +98,17 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      align-items: center;
       margin-top: 8px;
     }
 
-    .lesson-links a {
+    .lesson-links a:not(.btn):not(.btn-secondary) {
       color: var(--accent-blue);
       text-decoration: none;
       font-weight: 700;
     }
 
-    .lesson-links a:hover {
+    .lesson-links a:not(.btn):not(.btn-secondary):hover {
       text-decoration: underline;
     }
 
@@ -172,9 +173,9 @@
         </p>
 
         <div class="lesson-links">
-  <a class="btn" href="lesson1-video.html">Open Lesson 1</a>
-  <a class="btn-secondary" href="world-history.html">Back to World History</a>
-</div>
+          <a class="btn" href="lesson1-video.html">Open Lesson 1</a>
+          <a class="btn-secondary" href="world-history.html">Back to World History</a>
+        </div>
       </section>
     </div>
 
