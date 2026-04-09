@@ -131,6 +131,11 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     }
 
+    .country-card.locked {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
     .sort-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -198,6 +203,11 @@
       outline-offset: 2px;
     }
 
+    .palette-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
     .mode-note {
       color: var(--text-muted);
       margin-bottom: 14px;
@@ -253,6 +263,11 @@
       cursor: pointer;
     }
 
+    .action-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
     .check-btn {
       background: var(--accent-gold);
       color: #0f172a;
@@ -261,6 +276,11 @@
     .reset-btn {
       background: #e5e7eb;
       color: #111827;
+    }
+
+    .reveal-btn {
+      background: #dbeafe;
+      color: #1d4ed8;
     }
 
     .reflection-grid {
@@ -357,8 +377,8 @@
           <li>First, drag each country into NATO, Warsaw Pact, or Neutral / Other.</li>
           <li>Then choose a color mode and click the countries on the Europe map.</li>
           <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
-          <li>Important: the United States and Canada appear in the sorting challenge, but not on the Europe map.</li>
-          <li>When you are done, press Check Answers. Reflection questions will appear after that.</li>
+          <li>The United States and Canada appear in the sorting challenge, but not on the Europe map.</li>
+          <li>You get 3 checks total. The 3rd check becomes the recorded interactive score.</li>
         </ul>
       </section>
 
@@ -414,9 +434,14 @@
           <strong>Debug:</strong> Click a country and its SVG id will appear here.
         </div>
 
+        <div id="attempt-status" class="status-box">
+          <strong>Checks used:</strong> 0 / 3
+        </div>
+
         <div class="action-row">
           <button id="check-btn" class="action-btn check-btn">Check Answers</button>
           <button id="reset-btn" class="action-btn reset-btn">Reset Activity</button>
+          <button id="reveal-btn" class="action-btn reveal-btn hidden">Reveal Answers</button>
         </div>
 
         <div id="results" class="results-box hidden"></div>
@@ -496,17 +521,23 @@
       let svgDoc = null;
       let activeMapSelections = {};
       let svgNodeMap = {};
+      let checkCount = 0;
+      let finalLocked = false;
+      let lastMissedSorting = [];
+      let lastMissedMap = [];
 
       const countryBank = document.getElementById("country-bank");
       const dropZones = document.querySelectorAll(".drop-zone");
       const paletteButtons = document.querySelectorAll(".palette-btn");
       const checkBtn = document.getElementById("check-btn");
       const resetBtn = document.getElementById("reset-btn");
+      const revealBtn = document.getElementById("reveal-btn");
       const resultsBox = document.getElementById("results");
       const reflectionSection = document.getElementById("reflection-section");
       const svgObject = document.getElementById("europe-map");
       const mapStatus = document.getElementById("map-status");
       const mapDebug = document.getElementById("map-debug");
+      const attemptStatus = document.getElementById("attempt-status");
 
       function shuffleArray(arr) {
         const copy = [...arr];
@@ -521,6 +552,29 @@
         return str.replace(/["\\]/g, "\\$&");
       }
 
+      function updateAttemptStatus() {
+        attemptStatus.innerHTML = `<strong>Checks used:</strong> ${checkCount} / 3`;
+      }
+
+      function setInteractionLocked(locked) {
+        finalLocked = locked;
+
+        paletteButtons.forEach(btn => {
+          btn.disabled = locked;
+        });
+
+        checkBtn.disabled = locked;
+
+        document.querySelectorAll(".country-card").forEach(card => {
+          card.draggable = !locked;
+          if (locked) {
+            card.classList.add("locked");
+          } else {
+            card.classList.remove("locked");
+          }
+        });
+      }
+
       function buildCountryCards() {
         countryBank.innerHTML = "";
         const shuffled = shuffleArray(countryData);
@@ -529,10 +583,18 @@
           const el = document.createElement("div");
           el.className = "country-card";
           el.textContent = country.name;
-          el.draggable = true;
+          el.draggable = !finalLocked;
           el.dataset.name = country.name;
 
+          if (finalLocked) {
+            el.classList.add("locked");
+          }
+
           el.addEventListener("dragstart", e => {
+            if (finalLocked) {
+              e.preventDefault();
+              return;
+            }
             e.dataTransfer.setData("text/plain", country.name);
           });
 
@@ -542,6 +604,7 @@
 
       dropZones.forEach(zone => {
         zone.addEventListener("dragover", e => {
+          if (finalLocked) return;
           e.preventDefault();
           zone.classList.add("drag-over");
         });
@@ -551,6 +614,7 @@
         });
 
         zone.addEventListener("drop", e => {
+          if (finalLocked) return;
           e.preventDefault();
           zone.classList.remove("drag-over");
           const countryName = e.dataTransfer.getData("text/plain");
@@ -560,10 +624,12 @@
       });
 
       countryBank.addEventListener("dragover", e => {
+        if (finalLocked) return;
         e.preventDefault();
       });
 
       countryBank.addEventListener("drop", e => {
+        if (finalLocked) return;
         e.preventDefault();
         const countryName = e.dataTransfer.getData("text/plain");
         const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
@@ -572,6 +638,7 @@
 
       paletteButtons.forEach(btn => {
         btn.addEventListener("click", () => {
+          if (finalLocked) return;
           paletteButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
           selectedMode = btn.dataset.mode;
@@ -618,6 +685,7 @@
             node.style.cursor = "pointer";
 
             node.addEventListener("click", event => {
+              if (finalLocked) return;
               event.stopPropagation();
               activeMapSelections[country.name] = selectedMode;
               setNodeColor(node, paletteColors[selectedMode]);
@@ -633,7 +701,7 @@
         const allIdNodes = svgDoc.querySelectorAll("[id]");
 
         allIdNodes.forEach(node => {
-          node.addEventListener("click", event => {
+          node.addEventListener("click", () => {
             mapDebug.innerHTML = `<strong>Debug:</strong> You clicked SVG id = ${node.id}`;
           });
         });
@@ -727,7 +795,56 @@
         return "Neutral / Other";
       }
 
+      function renderPracticeResults(totalCorrect, totalPossible, sorting, mapping, missedSorting, missedMap) {
+        resultsBox.classList.remove("hidden");
+        reflectionSection.classList.remove("hidden");
+        revealBtn.classList.remove("hidden");
+
+        resultsBox.innerHTML = `
+          <strong>Practice Score: ${totalCorrect} / ${totalPossible}</strong>
+          <div class="results-detail">
+            Sorting: ${sorting.correct} / ${sorting.total}<br>
+            Map: ${mapping.correct} / ${mapping.total}<br><br>
+            You still have ${missedSorting.length} sorting mistakes and ${missedMap.length} map mistakes.<br>
+            Try again before the final recorded check.
+          </div>
+        `;
+      }
+
+      function renderFinalResults(totalCorrect, totalPossible, sorting, mapping) {
+        resultsBox.classList.remove("hidden");
+        reflectionSection.classList.remove("hidden");
+        revealBtn.classList.remove("hidden");
+
+        resultsBox.innerHTML = `
+          <strong>Final Recorded Interactive Score: ${totalCorrect} / ${totalPossible}</strong>
+          <div class="results-detail">
+            Sorting: ${sorting.correct} / ${sorting.total}<br>
+            Map: ${mapping.correct} / ${mapping.total}<br><br>
+            This was your 3rd check, so the interactive score is now locked.
+          </div>
+        `;
+      }
+
+      function revealAnswers() {
+        resultsBox.classList.remove("hidden");
+        resultsBox.innerHTML += `
+          <div class="results-detail" style="margin-top:16px;">
+            <strong>Missed in sorting:</strong><br>
+            ${lastMissedSorting.length ? lastMissedSorting.join("<br>") : "None"}<br><br>
+            <strong>Missed on map:</strong><br>
+            ${lastMissedMap.length ? lastMissedMap.join("<br>") : "None"}
+          </div>
+        `;
+        revealBtn.disabled = true;
+      }
+
       checkBtn.addEventListener("click", () => {
+        if (finalLocked) return;
+
+        checkCount++;
+        updateAttemptStatus();
+
         const sorting = getSortingScore();
         const mapping = getMapScore();
         const totalCorrect = sorting.correct + mapping.correct;
@@ -736,27 +853,35 @@
         const missedSorting = listMissedSorting();
         const missedMap = listMissedMap();
 
-        resultsBox.classList.remove("hidden");
-        reflectionSection.classList.remove("hidden");
+        lastMissedSorting = missedSorting;
+        lastMissedMap = missedMap;
 
-        resultsBox.innerHTML = `
-          <strong>Score: ${totalCorrect} / ${totalPossible}</strong>
-          <div class="results-detail">
-            Sorting: ${sorting.correct} / ${sorting.total}<br>
-            Map: ${mapping.correct} / ${mapping.total}<br><br>
-            <strong>Missed in sorting:</strong><br>
-            ${missedSorting.length ? missedSorting.join("<br>") : "None"}<br><br>
-            <strong>Missed on map:</strong><br>
-            ${missedMap.length ? missedMap.join("<br>") : "None"}
-          </div>
-        `;
+        if (checkCount < 3) {
+          renderPracticeResults(totalCorrect, totalPossible, sorting, mapping, missedSorting, missedMap);
+        } else {
+          renderFinalResults(totalCorrect, totalPossible, sorting, mapping);
+          setInteractionLocked(true);
+        }
       });
+
+      revealBtn.addEventListener("click", revealAnswers);
 
       resetBtn.addEventListener("click", () => {
         activeMapSelections = {};
+        svgNodeMap = {};
+        checkCount = 0;
+        finalLocked = false;
+        lastMissedSorting = [];
+        lastMissedMap = [];
+
         resultsBox.classList.add("hidden");
         reflectionSection.classList.add("hidden");
         resultsBox.innerHTML = "";
+        revealBtn.classList.add("hidden");
+        revealBtn.disabled = false;
+
+        updateAttemptStatus();
+        setInteractionLocked(false);
         buildCountryCards();
 
         dropZones.forEach(zone => {
@@ -767,11 +892,21 @@
           setNodeColor(node, "#d0d3d8");
         });
 
+        if (svgDoc) {
+          countryData.filter(c => c.onMap).forEach(country => {
+            const node = findNodeByPossibleIds(country.svgIds);
+            if (node) {
+              setNodeColor(node, "#d0d3d8");
+            }
+          });
+        }
+
         mapStatus.innerHTML = "<strong>Map status:</strong> Activity reset.";
         mapDebug.innerHTML = "<strong>Debug:</strong> Click a country and its SVG id will appear here.";
       });
 
       buildCountryCards();
+      updateAttemptStatus();
     })();
   </script>
 
