@@ -46,8 +46,6 @@ p, li {
   line-height: 1.7;
 }
 
-/* ---------- TOP BAR ---------- */
-
 .topbar {
   position: sticky;
   top: 0;
@@ -67,12 +65,6 @@ p, li {
   gap: 2px;
 }
 
-.brand-link {
-  text-decoration: none;
-  display: inline-flex;
-  flex-direction: column;
-}
-
 .brand-title {
   color: #ffffff;
   font-family: "Playfair Display", Georgia, serif;
@@ -87,14 +79,6 @@ p, li {
   font-size: 0.66rem;
   letter-spacing: 0.02em;
   line-height: 1.35;
-}
-
-.brand-link:hover .brand-title {
-  color: var(--accent-gold);
-}
-
-.brand-link:hover .brand-sub {
-  color: #d7dee8;
 }
 
 .topnav-links {
@@ -113,8 +97,6 @@ p, li {
 .topnav-links a:hover {
   color: var(--accent-gold);
 }
-
-/* ---------- HERO ---------- */
 
 .hero-wrap {
   max-width: 1240px;
@@ -205,8 +187,6 @@ p, li {
   font-size: 0.95rem;
 }
 
-/* ---------- BUTTONS ---------- */
-
 .btn,
 .btn-secondary {
   display: inline-block;
@@ -252,8 +232,6 @@ button:hover {
   opacity: 0.96;
 }
 
-/* ---------- LIGHT CONTENT ZONES ---------- */
-
 .content-wrap {
   background: var(--bg-surface);
   color: var(--text-main);
@@ -284,8 +262,6 @@ button:hover {
   line-height: 1.75;
   font-size: 0.95rem;
 }
-
-/* ---------- GRID CARDS ---------- */
 
 .grid-4 {
   display: grid;
@@ -322,8 +298,6 @@ button:hover {
 .card-accent-blue {
   border-top: 4px solid var(--accent-blue);
 }
-
-/* ---------- FEATURE BLOCK ---------- */
 
 .feature-band {
   display: grid;
@@ -376,8 +350,6 @@ button:hover {
 .feature-side .eyebrow {
   color: var(--accent-gold);
 }
-
-/* ---------- COURSES PAGE ---------- */
 
 .courses-shell,
 .portal-shell,
@@ -479,8 +451,6 @@ button:hover {
   box-shadow: var(--shadow-soft);
 }
 
-/* ---------- UNIT PAGE ---------- */
-
 .unit-page {
   max-width: 1180px;
   margin: 0 auto;
@@ -539,8 +509,6 @@ button:hover {
 .lesson-links a:hover {
   text-decoration: underline;
 }
-
-/* ---------- LESSON LAYOUT ---------- */
 
 .layout {
   display: flex;
@@ -730,8 +698,6 @@ iframe {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
-
-/* ---------- RESPONSIVE ---------- */
 
 @media (max-width: 980px) {
   .hero,
