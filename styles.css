@@ -195,12 +195,22 @@ p, li {
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  line-height: 1.2;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
 }
 
 .btn {
   background: var(--accent-blue);
   color: #ffffff;
+  border: none;
+}
+
+.btn:hover {
+  background: #244a7a;
+  color: #ffffff;
+  transform: translateY(-1px);
+  opacity: 0.98;
 }
 
 .btn-secondary {
@@ -209,10 +219,11 @@ p, li {
   border: 1px solid rgba(196,169,98,0.45);
 }
 
-.btn:hover,
 .btn-secondary:hover {
+  background: rgba(196,169,98,0.08);
+  color: var(--accent-gold);
   transform: translateY(-1px);
-  opacity: 0.95;
+  opacity: 0.98;
 }
 
 /* LIGHT CONTENT ZONES */
@@ -492,16 +503,20 @@ p, li {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  align-items: center;
   margin-top: 12px;
 }
 
 .lesson-links a {
-  color: var(--accent-blue);
   text-decoration: none;
   font-weight: 700;
 }
 
-.lesson-links a:hover {
+.lesson-links a:not(.btn):not(.btn-secondary) {
+  color: var(--accent-blue);
+}
+
+.lesson-links a:not(.btn):not(.btn-secondary):hover {
   text-decoration: underline;
 }
 
@@ -687,6 +702,29 @@ button:hover {
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 22px;
+}
+
+.lesson-nav-row .btn {
+  background: var(--accent-blue);
+  color: #ffffff !important;
+  border: none;
+  box-shadow: 0 6px 16px rgba(47,91,149,0.35);
+}
+
+.lesson-nav-row .btn:hover {
+  background: #244a7a;
+  color: #ffffff !important;
+}
+
+.lesson-nav-row .btn-secondary {
+  color: var(--accent-gold);
+  border: 1px solid rgba(196,169,98,0.5);
+  background: transparent;
+}
+
+.lesson-nav-row .btn-secondary:hover {
+  background: rgba(196,169,98,0.08);
+  color: var(--accent-gold);
 }
 
 .result {
