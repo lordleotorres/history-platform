@@ -1,1 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lesson 4 Map Challenge | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .map-page-shell {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: calc(100vh - 84px);
+    }
 
+    .map-sidebar {
+      background: #08101f;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding: 26px 18px;
+    }
+
+    .map-sidebar h2 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+
+    .map-sidebar a {
+      display: block;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .map-sidebar a:hover,
+    .map-sidebar a.active {
+      background: rgba(196,169,98,0.14);
+      color: #ffffff;
+    }
+
+    .map-main {
+      padding: 42px 34px 70px;
+      max-width: 1400px;
+    }
+
+    .lesson-header {
+      margin-bottom: 30px;
+    }
+
+    .page-kicker {
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .lesson-header h1 {
+      margin-bottom: 12px;
+    }
+
+    .hero-subtext {
+      color: #cbd5e1;
+      max-width: 900px;
+    }
+
+    .section-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      margin-bottom: 22px;
+      color: var(--text-main);
+    }
+
+    .section-card * {
+      opacity: 1 !important;
+    }
+
+    .section-card h2,
+    .section-card h3,
+    .sort-column h3,
+    .reflection-box h3 {
+      color: #0f172a !important;
+      margin-top: 0;
+    }
+
+    .section-card p,
+    .section-card li,
+    .sort-column p,
+    .mode-note,
+    .results-detail {
+      color: #475569 !important;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .instruction-list {
+      margin-top: 10px;
+      padding-left: 22px;
+    }
+
+    .instruction-list li {
+      margin-bottom: 8px;
+    }
+
+    .country-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      margin-bottom: 18px;
+      min-height: 60px;
+      padding: 14px;
+      border: 1px dashed var(--line-light);
+      border-radius: 18px;
+      background: var(--bg-soft);
+    }
+
+    .country-card {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #eef3f9;
+      border: 1px solid #dbe4ef;
+      color: #0f172a;
+      font-weight: 600;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .country-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .country-card.locked {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .sort-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .sort-column {
+      border: 1px solid var(--line-light);
+      border-radius: 18px;
+      background: var(--bg-soft);
+      padding: 16px;
+      min-height: 180px;
+    }
+
+    .drop-zone {
+      min-height: 110px;
+      border: 2px dashed #d8e0ea;
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+    }
+
+    .drop-zone.drag-over {
+      background: #f7fafc;
+      border-color: var(--accent-blue);
+    }
+
+    .palette-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      margin-bottom: 18px;
+    }
+
+    .palette-btn {
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line-light);
+      background: #ffffff;
+      color: #0f172a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .palette-btn.active {
+      outline: 2px solid #0f172a;
+      outline-offset: 2px;
+    }
+
+    .palette-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .mode-note {
+      margin-bottom: 14px;
+    }
+
+    .map-wrapper {
+      border: 1px solid var(--line-light);
+      border-radius: 22px;
+      background: #f8fafc;
+      padding: 14px;
+      overflow: auto;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    #europe-map {
+      width: 100%;
+      height: 560px;
+      min-height: 560px;
+      border: none;
+      background: #f8fafc;
+      display: block;
+    }
+
+    .status-box,
+    .results-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line-light);
+      color: #0f172a;
+    }
+
+    .status-box {
+      font-size: 0.95rem;
+    }
+
+    .action-row,
+    .lesson-nav-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .action-btn {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .action-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .check-btn {
+      background: var(--accent-gold);
+      color: #0f172a;
+    }
+
+    .reset-btn {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .reveal-btn {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .reflection-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .reflection-box {
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      border-radius: 12px;
+      border: 1px solid var(--line-light);
+      padding: 12px;
+      font-family: "Inter", sans-serif;
+      resize: vertical;
+      color: #0f172a;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+      .map-page-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sort-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .map-main {
+        padding: 30px 18px 60px;
+      }
+
+      #europe-map {
+        height: 520px;
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      #europe-map {
+        height: 460px;
+        min-height: 460px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
+    </div>
+
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="student-portal.html">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
+    </div>
+  </div>
+
+  <div class="map-page-shell">
+    <aside class="map-sidebar">
+      <h2>Cold War</h2>
+      <a href="coldwar-lesson4-video.html">Lesson 4 Video</a>
+      <a href="coldwar-lesson4-reading.html">Lesson 4 Textbook</a>
+      <a href="coldwar-lesson4-activity.html">Lesson 4 Activity</a>
+      <a href="coldwar-lesson4-map.html" class="active">Lesson 4 Map Challenge</a>
+      <a href="course-cold-war.html">← Back to Unit</a>
+    </aside>
+
+    <main class="map-main">
+      <div class="lesson-header">
+        <div class="page-kicker">World History • Cold War • Lesson 4</div>
+        <h1>Map Challenge: NATO, Warsaw Pact, and Neutral States</h1>
+        <p class="hero-subtext">
+          Sort the countries, color the map, then reflect on how alliances divided Europe during the Cold War.
+        </p>
+      </div>
+
+      <section class="section-card">
+        <span class="small-label">Instructions</span>
+        <h2>How this works</h2>
+        <ul class="instruction-list">
+          <li>First, drag each country into NATO, Warsaw Pact, or Neutral / Other.</li>
+          <li>Then choose a color mode and click the countries on the Europe map.</li>
+          <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
+          <li>The United States and Canada appear in the sorting challenge, but not on the Europe map.</li>
+          <li>Berlin is shown automatically as a divided city and is not part of the student clicking challenge.</li>
+          <li>You get 3 checks total. The 3rd check becomes the recorded interactive score.</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <span class="small-label">Step 1</span>
+        <h2>Sort the countries</h2>
+
+        <div id="country-bank" class="country-bank"></div>
+
+        <div class="sort-grid">
+          <div class="sort-column">
+            <h3>NATO</h3>
+            <p>United States led alliance with Western Europe and Canada.</p>
+            <div class="drop-zone" data-bucket="nato"></div>
+          </div>
+
+          <div class="sort-column">
+            <h3>Warsaw Pact</h3>
+            <p>Soviet led alliance of communist states in Eastern Europe.</p>
+            <div class="drop-zone" data-bucket="warsaw"></div>
+          </div>
+
+          <div class="sort-column">
+            <h3>Neutral / Other</h3>
+            <p>Countries that did not belong to either Cold War alliance bloc.</p>
+            <div class="drop-zone" data-bucket="neutral"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <span class="small-label">Step 2</span>
+        <h2>Color the map</h2>
+        <p class="mode-note">
+          Choose a color, then click countries on the map. This is a Europe-only map, so the United States and Canada are not shown here.
+        </p>
+
+        <div class="palette-row">
+          <button class="palette-btn active" data-mode="nato">Blue = NATO</button>
+          <button class="palette-btn" data-mode="warsaw">Red = Warsaw Pact</button>
+          <button class="palette-btn" data-mode="neutral">Gray = Neutral / Other</button>
+        </div>
+
+        <div class="map-wrapper">
+          <object id="europe-map" type="image/svg+xml" data="images/europe-map.svg"></object>
+        </div>
+
+        <div id="map-status" class="status-box">
+          <strong>Map status:</strong> Waiting for map to load.
+        </div>
+
+        <div id="map-debug" class="status-box">
+          <strong>Debug:</strong> Click a country and its SVG id will appear here.
+        </div>
+
+        <div id="attempt-status" class="status-box">
+          <strong>Checks used:</strong> 0 / 3
+        </div>
+
+        <div class="action-row">
+          <button id="check-btn" class="action-btn check-btn">Check Answers</button>
+          <button id="reset-btn" class="action-btn reset-btn">Reset Activity</button>
+          <button id="reveal-btn" class="action-btn reveal-btn hidden">Reveal Answers</button>
+        </div>
+
+        <div id="results" class="results-box hidden"></div>
+      </section>
+
+      <section id="reflection-section" class="section-card hidden">
+        <span class="small-label">Reflection</span>
+        <h2>Check for understanding</h2>
+
+        <div class="reflection-grid">
+          <div class="reflection-box">
+            <h3>1. What is the difference between NATO and the Warsaw Pact?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="reflection-box">
+            <h3>2. Why did these alliances make the Cold War more dangerous?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="reflection-box">
+            <h3>3. Why might countries still choose to join alliances instead of standing alone?</h3>
+            <textarea placeholder="Write your answer here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="lesson-nav-row">
+        <a href="course-cold-war.html" class="btn">Back to Unit</a>
+        <a href="coldwar-lesson4-activity.html" class="btn-secondary">Back to Activity</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const countryData = [
+        { name: "United States", bucket: "nato", onMap: false },
+        { name: "Canada", bucket: "nato", onMap: false },
+
+        { name: "United Kingdom", bucket: "nato", onMap: true, svgIds: ["gb", "uk", "GB", "UK"] },
+        { name: "France", bucket: "nato", onMap: true, svgIds: ["fr", "FR"] },
+        { name: "Belgium", bucket: "nato", onMap: true, svgIds: ["be", "BE"] },
+        { name: "Netherlands", bucket: "nato", onMap: true, svgIds: ["nl", "NL"] },
+        { name: "Luxembourg", bucket: "nato", onMap: true, svgIds: ["lu", "LU"] },
+        { name: "Italy", bucket: "nato", onMap: true, svgIds: ["it", "IT"] },
+        { name: "Denmark", bucket: "nato", onMap: true, svgIds: ["dk", "DK"] },
+        { name: "Norway", bucket: "nato", onMap: true, svgIds: ["no", "NO"] },
+        { name: "Portugal", bucket: "nato", onMap: true, svgIds: ["pt", "PT"] },
+        { name: "Greece", bucket: "nato", onMap: true, svgIds: ["gr", "GR", "greece", "GREECE"] },
+        { name: "Turkey", bucket: "nato", onMap: true, svgIds: ["tr", "TR", "turkey", "TURKEY"] },
+        { name: "Iceland", bucket: "nato", onMap: true, svgIds: ["is", "IS", "iceland", "ICELAND"] },
+        { name: "West Germany", bucket: "nato", onMap: true, svgIds: ["de_west", "west_germany", "wg", "DE_WEST", "WEST_GERMANY", "germany_west", "GERMANY_WEST"] },
+
+        { name: "Soviet Union", bucket: "warsaw", onMap: true, svgIds: ["su", "ussr", "soviet_union", "SU", "USSR", "SOVIET_UNION"] },
+        { name: "East Germany", bucket: "warsaw", onMap: true, svgIds: ["de_east", "east_germany", "eg", "DE_EAST", "EAST_GERMANY", "germany_east", "GERMANY_EAST"] },
+        { name: "Poland", bucket: "warsaw", onMap: true, svgIds: ["pl", "PL"] },
+        { name: "Czechoslovakia", bucket: "warsaw", onMap: true, svgIds: ["cs", "czsk", "czechoslovakia", "CS", "CZSK", "CZECHOSLOVAKIA", "cz", "CZ"] },
+        { name: "Hungary", bucket: "warsaw", onMap: true, svgIds: ["hu", "HU"] },
+        { name: "Romania", bucket: "warsaw", onMap: true, svgIds: ["ro", "RO"] },
+        { name: "Bulgaria", bucket: "warsaw", onMap: true, svgIds: ["bg", "BG"] },
+        { name: "Albania", bucket: "warsaw", onMap: true, svgIds: ["al", "AL"] },
+
+        { name: "Austria", bucket: "neutral", onMap: true, svgIds: ["at", "AT"] },
+        { name: "Switzerland", bucket: "neutral", onMap: true, svgIds: ["ch", "CH"] },
+        { name: "Sweden", bucket: "neutral", onMap: true, svgIds: ["se", "SE"] },
+        { name: "Finland", bucket: "neutral", onMap: true, svgIds: ["fi", "FI"] },
+        { name: "Yugoslavia", bucket: "neutral", onMap: true, svgIds: ["yu", "yugoslavia", "YU", "YUGOSLAVIA"] },
+        { name: "Ireland", bucket: "neutral", onMap: true, svgIds: ["ie", "IE"] },
+        { name: "Spain", bucket: "neutral", onMap: true, svgIds: ["es", "ES"] }
+      ];
+
+      const paletteColors = {
+        nato: "#4a90e2",
+        warsaw: "#e05a5a",
+        neutral: "#8b8f97"
+      };
+
+      let selectedMode = "nato";
+      let svgDoc = null;
+      let activeMapSelections = {};
+      let svgNodeMap = {};
+      let checkCount = 0;
+      let finalLocked = false;
+      let lastMissedSorting = [];
+      let lastMissedMap = [];
+
+      const countryBank = document.getElementById("country-bank");
+      const dropZones = document.querySelectorAll(".drop-zone");
+      const paletteButtons = document.querySelectorAll(".palette-btn");
+      const checkBtn = document.getElementById("check-btn");
+      const resetBtn = document.getElementById("reset-btn");
+      const revealBtn = document.getElementById("reveal-btn");
+      const resultsBox = document.getElementById("results");
+      const reflectionSection = document.getElementById("reflection-section");
+      const svgObject = document.getElementById("europe-map");
+      const mapStatus = document.getElementById("map-status");
+      const mapDebug = document.getElementById("map-debug");
+      const attemptStatus = document.getElementById("attempt-status");
+
+      function shuffleArray(arr) {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function cssEscape(str) {
+        return str.replace(/["\\]/g, "\\$&");
+      }
+
+      function updateAttemptStatus() {
+        attemptStatus.innerHTML = `<strong>Checks used:</strong> ${checkCount} / 3`;
+      }
+
+      function setInteractionLocked(locked) {
+        finalLocked = locked;
+
+        paletteButtons.forEach(btn => {
+          btn.disabled = locked;
+        });
+
+        checkBtn.disabled = locked;
+
+        document.querySelectorAll(".country-card").forEach(card => {
+          card.draggable = !locked;
+          if (locked) {
+            card.classList.add("locked");
+          } else {
+            card.classList.remove("locked");
+          }
+        });
+      }
+
+      function buildCountryCards() {
+        countryBank.innerHTML = "";
+        const shuffled = shuffleArray(countryData);
+
+        shuffled.forEach(country => {
+          const el = document.createElement("div");
+          el.className = "country-card";
+          el.textContent = country.name;
+          el.draggable = !finalLocked;
+          el.dataset.name = country.name;
+
+          if (finalLocked) {
+            el.classList.add("locked");
+          }
+
+          el.addEventListener("dragstart", e => {
+            if (finalLocked) {
+              e.preventDefault();
+              return;
+            }
+            e.dataTransfer.setData("text/plain", country.name);
+          });
+
+          countryBank.appendChild(el);
+        });
+      }
+
+      dropZones.forEach(zone => {
+        zone.addEventListener("dragover", e => {
+          if (finalLocked) return;
+          e.preventDefault();
+          zone.classList.add("drag-over");
+        });
+
+        zone.addEventListener("dragleave", () => {
+          zone.classList.remove("drag-over");
+        });
+
+        zone.addEventListener("drop", e => {
+          if (finalLocked) return;
+          e.preventDefault();
+          zone.classList.remove("drag-over");
+          const countryName = e.dataTransfer.getData("text/plain");
+          const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
+          if (card) zone.appendChild(card);
+        });
+      });
+
+      countryBank.addEventListener("dragover", e => {
+        if (finalLocked) return;
+        e.preventDefault();
+      });
+
+      countryBank.addEventListener("drop", e => {
+        if (finalLocked) return;
+        e.preventDefault();
+        const countryName = e.dataTransfer.getData("text/plain");
+        const card = document.querySelector(`.country-card[data-name="${cssEscape(countryName)}"]`);
+        if (card) countryBank.appendChild(card);
+      });
+
+      paletteButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (finalLocked) return;
+          paletteButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedMode = btn.dataset.mode;
+        });
+      });
+
+      function findNodeByPossibleIds(possibleIds) {
+        if (!svgDoc) return null;
+
+        for (const id of possibleIds) {
+          let node = svgDoc.getElementById(id);
+          if (node) return node;
+
+          node = svgDoc.querySelector(`[id="${id}"]`);
+          if (node) return node;
+        }
+
+        return null;
+      }
+
+      function setNodeColor(node, color) {
+        if (!node) return;
+
+        if (node.tagName && node.tagName.toLowerCase() === "g") {
+          node.querySelectorAll("path").forEach(path => {
+            path.style.fill = color;
+          });
+        } else {
+          node.style.fill = color;
+        }
+      }
+
+      function tryAutoColorBerlin() {
+        if (!svgDoc) return;
+
+        const westBerlinIds = ["berlin_west", "west_berlin", "BERLIN_WEST", "WEST_BERLIN"];
+        const eastBerlinIds = ["berlin_east", "east_berlin", "BERLIN_EAST", "EAST_BERLIN"];
+
+        const westBerlin = findNodeByPossibleIds(westBerlinIds);
+        const eastBerlin = findNodeByPossibleIds(eastBerlinIds);
+
+        if (westBerlin) {
+          setNodeColor(westBerlin, paletteColors.nato);
+          westBerlin.style.pointerEvents = "none";
+        }
+
+        if (eastBerlin) {
+          setNodeColor(eastBerlin, paletteColors.warsaw);
+          eastBerlin.style.pointerEvents = "none";
+        }
+      }
+
+      function wireMatchedCountries() {
+        svgNodeMap = {};
+        let matchedCount = 0;
+
+        countryData.filter(c => c.onMap).forEach(country => {
+          const node = findNodeByPossibleIds(country.svgIds);
+
+          if (node) {
+            svgNodeMap[country.name] = node;
+            matchedCount++;
+
+            node.style.cursor = "pointer";
+
+            node.addEventListener("click", event => {
+              if (finalLocked) return;
+              event.stopPropagation();
+              activeMapSelections[country.name] = selectedMode;
+              setNodeColor(node, paletteColors[selectedMode]);
+              mapStatus.innerHTML = `<strong>Map status:</strong> ${country.name} marked as ${labelBucket(selectedMode)}.`;
+            });
+          }
+        });
+
+        mapStatus.innerHTML = `<strong>Map status:</strong> Map loaded. Matched ${matchedCount} clickable countries.`;
+      }
+
+      function wireDebugClicks() {
+        const allIdNodes = svgDoc.querySelectorAll("[id]");
+
+        allIdNodes.forEach(node => {
+          node.addEventListener("click", () => {
+            mapDebug.innerHTML = `<strong>Debug:</strong> You clicked SVG id = ${node.id}`;
+          });
+        });
+      }
+
+      svgObject.addEventListener("load", () => {
+        try {
+          svgDoc = svgObject.contentDocument;
+
+          if (!svgDoc) {
+            mapStatus.innerHTML = "<strong>Map status:</strong> SVG loaded, but no contentDocument was available.";
+            return;
+          }
+
+          svgDoc.querySelectorAll("path").forEach(path => {
+            path.style.fill = "#d0d3d8";
+            path.style.stroke = "#ffffff";
+            path.style.strokeWidth = "1";
+            path.style.pointerEvents = "all";
+          });
+
+          wireMatchedCountries();
+          wireDebugClicks();
+          tryAutoColorBerlin();
+        } catch (error) {
+          mapStatus.innerHTML = `<strong>Map status:</strong> Error loading map: ${error.message}`;
+        }
+      });
+
+      function getSortingScore() {
+        let correct = 0;
+        let total = countryData.length;
+
+        countryData.forEach(country => {
+          const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
+          if (!card) return;
+
+          const parentZone = card.parentElement;
+          if (parentZone && parentZone.dataset && parentZone.dataset.bucket === country.bucket) {
+            correct++;
+          }
+        });
+
+        return { correct, total };
+      }
+
+      function getMapScore() {
+        const mapCountries = countryData.filter(c => c.onMap);
+        let correct = 0;
+        const total = mapCountries.length;
+
+        mapCountries.forEach(country => {
+          if (activeMapSelections[country.name] === country.bucket) {
+            correct++;
+          }
+        });
+
+        return { correct, total };
+      }
+
+      function listMissedSorting() {
+        const missed = [];
+        countryData.forEach(country => {
+          const card = document.querySelector(`.country-card[data-name="${cssEscape(country.name)}"]`);
+          if (!card) return;
+
+          const parentZone = card.parentElement;
+          const placed = parentZone && parentZone.dataset ? parentZone.dataset.bucket : "bank";
+
+          if (placed !== country.bucket) {
+            missed.push(`${country.name} → ${labelBucket(country.bucket)}`);
+          }
+        });
+
+        return missed;
+      }
+
+      function listMissedMap() {
+        const missed = [];
+        countryData.filter(c => c.onMap).forEach(country => {
+          const placed = activeMapSelections[country.name] || "uncolored";
+          if (placed !== country.bucket) {
+            missed.push(`${country.name} → ${labelBucket(country.bucket)}`);
+          }
+        });
+        return missed;
+      }
+
+      function labelBucket(bucket) {
+        if (bucket === "nato") return "NATO";
+        if (bucket === "warsaw") return "Warsaw Pact";
+        return "Neutral / Other";
+      }
+
+      function renderPracticeResults(totalCorrect, totalPossible, sorting, mapping, missedSorting, missedMap) {
+        resultsBox.classList.remove("hidden");
+        reflectionSection.classList.remove("hidden");
+        revealBtn.classList.remove("hidden");
+
+        resultsBox.innerHTML = `
+          <strong>Practice Score: ${totalCorrect} / ${totalPossible}</strong>
+          <div class="results-detail">
+            Sorting: ${sorting.correct} / ${sorting.total}<br>
+            Map: ${mapping.correct} / ${mapping.total}<br><br>
+            You still have ${missedSorting.length} sorting mistakes and ${missedMap.length} map mistakes.<br>
+            Try again before the final recorded check.
+          </div>
+        `;
+      }
+
+      function renderFinalResults(totalCorrect, totalPossible, sorting, mapping) {
+        resultsBox.classList.remove("hidden");
+        reflectionSection.classList.remove("hidden");
+        revealBtn.classList.remove("hidden");
+
+        resultsBox.innerHTML = `
+          <strong>Final Recorded Interactive Score: ${totalCorrect} / ${totalPossible}</strong>
+          <div class="results-detail">
+            Sorting: ${sorting.correct} / ${sorting.total}<br>
+            Map: ${mapping.correct} / ${mapping.total}<br><br>
+            This was your 3rd check, so the interactive score is now locked.
+          </div>
+        `;
+      }
+
+      function revealAnswers() {
+        resultsBox.classList.remove("hidden");
+        resultsBox.innerHTML += `
+          <div class="results-detail" style="margin-top:16px;">
+            <strong>Missed in sorting:</strong><br>
+            ${lastMissedSorting.length ? lastMissedSorting.join("<br>") : "None"}<br><br>
+            <strong>Missed on map:</strong><br>
+            ${lastMissedMap.length ? lastMissedMap.join("<br>") : "None"}
+          </div>
+        `;
+        revealBtn.disabled = true;
+      }
+
+      checkBtn.addEventListener("click", () => {
+        if (finalLocked) return;
+
+        checkCount++;
+        updateAttemptStatus();
+
+        const sorting = getSortingScore();
+        const mapping = getMapScore();
+        const totalCorrect = sorting.correct + mapping.correct;
+        const totalPossible = sorting.total + mapping.total;
+
+        const missedSorting = listMissedSorting();
+        const missedMap = listMissedMap();
+
+        lastMissedSorting = missedSorting;
+        lastMissedMap = missedMap;
+
+        if (checkCount < 3) {
+          renderPracticeResults(totalCorrect, totalPossible, sorting, mapping, missedSorting, missedMap);
+        } else {
+          renderFinalResults(totalCorrect, totalPossible, sorting, mapping);
+          setInteractionLocked(true);
+        }
+      });
+
+      revealBtn.addEventListener("click", revealAnswers);
+
+      resetBtn.addEventListener("click", () => {
+        activeMapSelections = {};
+        svgNodeMap = {};
+        checkCount = 0;
+        finalLocked = false;
+        lastMissedSorting = [];
+        lastMissedMap = [];
+
+        resultsBox.classList.add("hidden");
+        reflectionSection.classList.add("hidden");
+        resultsBox.innerHTML = "";
+        revealBtn.classList.add("hidden");
+        revealBtn.disabled = false;
+
+        updateAttemptStatus();
+        setInteractionLocked(false);
+        buildCountryCards();
+
+        dropZones.forEach(zone => {
+          zone.innerHTML = "";
+        });
+
+        if (svgDoc) {
+          countryData.filter(c => c.onMap).forEach(country => {
+            const node = findNodeByPossibleIds(country.svgIds);
+            if (node) {
+              setNodeColor(node, "#d0d3d8");
+            }
+          });
+          tryAutoColorBerlin();
+        }
+
+        mapStatus.innerHTML = "<strong>Map status:</strong> Activity reset.";
+        mapDebug.innerHTML = "<strong>Debug:</strong> Click a country and its SVG id will appear here.";
+      });
+
+      buildCountryCards();
+      updateAttemptStatus();
+    })();
+  </script>
+
+</body>
+</html>
