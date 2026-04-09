@@ -67,7 +67,7 @@
     }
 
     .hero-subtext {
-      color: var(--text-muted);
+      color: #cbd5e1;
       max-width: 900px;
     }
 
@@ -78,6 +78,14 @@
       box-shadow: var(--shadow-soft);
       padding: 26px;
       margin-bottom: 22px;
+      color: var(--text-main);
+    }
+
+    .section-card h2,
+    .section-card h3 {
+      color: #0f172a;
+      opacity: 1;
+      margin-top: 0;
     }
 
     .small-label {
@@ -219,13 +227,17 @@
       background: #f8fafc;
       padding: 14px;
       overflow: auto;
+      max-width: 1050px;
+      margin: 0 auto;
     }
 
     #europe-map {
       width: 100%;
-      min-height: 700px;
+      height: 560px;
+      min-height: 560px;
       border: none;
       background: #f8fafc;
+      display: block;
     }
 
     .status-box,
@@ -310,6 +322,7 @@
       padding: 12px;
       font-family: "Inter", sans-serif;
       resize: vertical;
+      color: #0f172a;
     }
 
     .hidden {
@@ -330,7 +343,15 @@
       }
 
       #europe-map {
-        min-height: 560px;
+        height: 520px;
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      #europe-map {
+        height: 460px;
+        min-height: 460px;
       }
     }
   </style>
@@ -378,6 +399,7 @@
           <li>Then choose a color mode and click the countries on the Europe map.</li>
           <li>Blue means NATO, red means Warsaw Pact, and gray means Neutral / Other.</li>
           <li>The United States and Canada appear in the sorting challenge, but not on the Europe map.</li>
+          <li>Berlin is shown automatically as a divided city and is not part of the student clicking challenge.</li>
           <li>You get 3 checks total. The 3rd check becomes the recorded interactive score.</li>
         </ul>
       </section>
@@ -413,7 +435,7 @@
         <span class="small-label">Step 2</span>
         <h2>Color the map</h2>
         <p class="mode-note">
-          Choose a color, then click countries on the map. This is a Europe only map, so the United States and Canada are not shown here.
+          Choose a color, then click countries on the map. This is a Europe-only map, so the United States and Canada are not shown here.
         </p>
 
         <div class="palette-row">
@@ -491,12 +513,15 @@
         { name: "Denmark", bucket: "nato", onMap: true, svgIds: ["dk", "DK"] },
         { name: "Norway", bucket: "nato", onMap: true, svgIds: ["no", "NO"] },
         { name: "Portugal", bucket: "nato", onMap: true, svgIds: ["pt", "PT"] },
-        { name: "West Germany", bucket: "nato", onMap: true, svgIds: ["de_west", "west_germany", "wg", "DE_WEST", "WEST_GERMANY"] },
+        { name: "Greece", bucket: "nato", onMap: true, svgIds: ["gr", "GR", "greece", "GREECE"] },
+        { name: "Turkey", bucket: "nato", onMap: true, svgIds: ["tr", "TR", "turkey", "TURKEY"] },
+        { name: "Iceland", bucket: "nato", onMap: true, svgIds: ["is", "IS", "iceland", "ICELAND"] },
+        { name: "West Germany", bucket: "nato", onMap: true, svgIds: ["de_west", "west_germany", "wg", "DE_WEST", "WEST_GERMANY", "germany_west", "GERMANY_WEST"] },
 
         { name: "Soviet Union", bucket: "warsaw", onMap: true, svgIds: ["su", "ussr", "soviet_union", "SU", "USSR", "SOVIET_UNION"] },
-        { name: "East Germany", bucket: "warsaw", onMap: true, svgIds: ["de_east", "east_germany", "eg", "DE_EAST", "EAST_GERMANY"] },
+        { name: "East Germany", bucket: "warsaw", onMap: true, svgIds: ["de_east", "east_germany", "eg", "DE_EAST", "EAST_GERMANY", "germany_east", "GERMANY_EAST"] },
         { name: "Poland", bucket: "warsaw", onMap: true, svgIds: ["pl", "PL"] },
-        { name: "Czechoslovakia", bucket: "warsaw", onMap: true, svgIds: ["cs", "czsk", "czechoslovakia", "CS", "CZSK", "CZECHOSLOVAKIA"] },
+        { name: "Czechoslovakia", bucket: "warsaw", onMap: true, svgIds: ["cs", "czsk", "czechoslovakia", "CS", "CZSK", "CZECHOSLOVAKIA", "cz", "CZ"] },
         { name: "Hungary", bucket: "warsaw", onMap: true, svgIds: ["hu", "HU"] },
         { name: "Romania", bucket: "warsaw", onMap: true, svgIds: ["ro", "RO"] },
         { name: "Bulgaria", bucket: "warsaw", onMap: true, svgIds: ["bg", "BG"] },
@@ -671,6 +696,26 @@
         }
       }
 
+      function tryAutoColorBerlin() {
+        if (!svgDoc) return;
+
+        const westBerlinIds = ["berlin_west", "west_berlin", "BERLIN_WEST", "WEST_BERLIN"];
+        const eastBerlinIds = ["berlin_east", "east_berlin", "BERLIN_EAST", "EAST_BERLIN"];
+
+        const westBerlin = findNodeByPossibleIds(westBerlinIds);
+        const eastBerlin = findNodeByPossibleIds(eastBerlinIds);
+
+        if (westBerlin) {
+          setNodeColor(westBerlin, paletteColors.nato);
+          westBerlin.style.pointerEvents = "none";
+        }
+
+        if (eastBerlin) {
+          setNodeColor(eastBerlin, paletteColors.warsaw);
+          eastBerlin.style.pointerEvents = "none";
+        }
+      }
+
       function wireMatchedCountries() {
         svgNodeMap = {};
         let matchedCount = 0;
@@ -725,6 +770,7 @@
 
           wireMatchedCountries();
           wireDebugClicks();
+          tryAutoColorBerlin();
         } catch (error) {
           mapStatus.innerHTML = `<strong>Map status:</strong> Error loading map: ${error.message}`;
         }
@@ -888,10 +934,6 @@
           zone.innerHTML = "";
         });
 
-        Object.values(svgNodeMap).forEach(node => {
-          setNodeColor(node, "#d0d3d8");
-        });
-
         if (svgDoc) {
           countryData.filter(c => c.onMap).forEach(country => {
             const node = findNodeByPossibleIds(country.svgIds);
@@ -899,6 +941,7 @@
               setNodeColor(node, "#d0d3d8");
             }
           });
+          tryAutoColorBerlin();
         }
 
         mapStatus.innerHTML = "<strong>Map status:</strong> Activity reset.";
