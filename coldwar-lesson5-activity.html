@@ -11,14 +11,9 @@
   <link rel="stylesheet" href="styles.css"/>
 
   <style>
-    .activity-intro,
-    .scenario-box {
-      margin-top: 22px;
-    }
-
     .doc-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
       margin-top: 20px;
     }
@@ -29,228 +24,202 @@
       border-radius: 22px;
       padding: 20px;
       box-shadow: var(--shadow-soft);
-      color: var(--text-main);
       display: flex;
       flex-direction: column;
     }
 
     .doc-card img {
       width: 100%;
-      height: 320px;
+      height: 300px;
       object-fit: contain;
       background: #f8fafc;
-      border: 1px solid var(--line-light);
       border-radius: 14px;
-      padding: 10px;
       margin-bottom: 14px;
-    }
-
-    .doc-card h3 {
-      color: #0f172a;
-      font-size: 1.2rem;
-      margin-bottom: 6px;
-      line-height: 1.2;
     }
 
     .doc-meta {
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .doc-excerpt {
-      background: var(--bg-soft);
-      border: 1px solid var(--line-light);
-      border-left: 3px solid var(--accent-gold);
-      border-radius: 14px;
-      padding: 14px;
+      background: #f8fafc;
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 12px;
+      padding: 16px;
       margin-bottom: 16px;
-      color: #334155;
-      line-height: 1.72;
-      font-size: 0.97rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #1e293b;
     }
 
     .doc-excerpt p {
-      margin-top: 0;
       margin-bottom: 12px;
-      color: #475569;
     }
 
-    .doc-excerpt p:last-child {
-      margin-bottom: 0;
-    }
-
-    .question-block {
-      margin-top: auto;
-    }
-
-    .question-block p {
-      margin-top: 0;
-      margin-bottom: 8px;
-      color: #0f172a;
-      font-weight: 600;
-    }
-
-    .scenario-box ul {
-      margin: 10px 0 14px;
-      padding-left: 20px;
-    }
-
-    .scenario-box li {
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .small-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(196,169,98,0.14);
-      color: var(--accent-gold);
-      font-size: 0.82rem;
-      font-weight: 700;
+    .question-block textarea {
+      width: 100%;
+      min-height: 90px;
+      border-radius: 10px;
+      border: 1px solid var(--line-light);
+      padding: 10px;
     }
 
     @media (max-width: 1100px) {
       .doc-grid {
         grid-template-columns: 1fr;
       }
-
-      .doc-card img {
-        height: 360px;
-      }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="topbar">
-    <div class="brand">
-      <div class="brand-title">Historia</div>
-      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
-    </div>
-
-    <div class="topnav-links">
-      <a href="index.html">Home</a>
-      <a href="courses.html">Courses</a>
-      <a href="student-portal.html">Student Portal</a>
-      <a href="teacher-portal.html">Teacher Portal</a>
-    </div>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-title">Historia</div>
+    <div class="brand-sub">History, Geography and Civics empowered by AI</div>
   </div>
 
-  <div class="layout">
+  <div class="topnav-links">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="student-portal.html">Student Portal</a>
+    <a href="teacher-portal.html">Teacher Portal</a>
+  </div>
+</div>
 
-    <aside class="sidebar">
-      <h2>Cold War</h2>
-      <a href="coldwar-lesson5-video.html">Lesson 5 Video</a>
-      <a href="coldwar-lesson5-reading.html">Lesson 5 Textbook</a>
-      <a href="coldwar-lesson5-activity.html" class="active">Lesson 5 Activity</a>
-      <a href="course-cold-war.html">← Back to Unit</a>
-    </aside>
+<div class="layout">
 
-    <main class="main">
+  <aside class="sidebar">
+    <h2>Cold War</h2>
+    <a href="coldwar-lesson5-video.html">Lesson 5 Video</a>
+    <a href="coldwar-lesson5-reading.html">Lesson 5 Textbook</a>
+    <a href="coldwar-lesson5-activity.html" class="active">Lesson 5 Activity</a>
+    <a href="course-cold-war.html">← Back to Unit</a>
+  </aside>
 
-      <div class="lesson-header">
-        <div class="page-kicker">World History • Cold War • Lesson 5</div>
-        <h1>The Cold War Goes Global: Korea and Proxy Wars</h1>
-        <p class="subtle">
-          In this activity, you will compare primary sources from Ho Chi Minh and Harry Truman in order to understand how different leaders described war, freedom, aggression, and the spread of communism.
-        </p>
-      </div>
+  <main class="main">
 
-      <section class="section activity-intro">
-        <span class="small-label">Your Task</span>
-        <h2>Read, Compare, Decide</h2>
-        <p>
-          Read all three documents carefully. As you read, pay attention to how each document explains conflict, freedom, revolution, and danger. Then answer the response box under each source. After that, you will step into the role of an American advisor in 1950 and make a recommendation.
-        </p>
-      </section>
+    <div class="lesson-header">
+      <div class="page-kicker">World History • Cold War • Lesson 5</div>
+      <h1>The Cold War Goes Global: Korea and Proxy Wars</h1>
+      <p class="subtle">
+        Compare how different leaders describe freedom, war, and the spread of communism.
+      </p>
+    </div>
 
-      <section class="section">
-        <span class="small-label">Primary Sources</span>
-        <h2>Three Documents, Three Perspectives</h2>
+    <section class="section">
+      <h2>Primary Sources</h2>
 
-        <div class="doc-grid">
+      <div class="doc-grid">
 
-          <div class="doc-card">
-            <img src="images/vietnam-declaration.jpg" alt="Vietnam Declaration of Independence">
+        <!-- HO CHI MINH -->
+        <div class="doc-card">
+          <img src="images/vietnam-declaration.jpg">
 
-            <h3>Tuyên Ngôn Độc Lập</h3>
-            <p class="doc-meta"><em>(Declaration of Independence of the Democratic Republic of Vietnam)</em><br>Ho Chi Minh • September 2, 1945</p>
+          <h3>Tuyên Ngôn Độc Lập</h3>
+          <p class="doc-meta">
+            (Declaration of Independence of Vietnam)<br>
+            Ho Chi Minh • September 2, 1945
+          </p>
 
-            <div class="doc-excerpt">
-              <p>[Insert upgraded Ho Chi Minh excerpt here]</p>
-            </div>
+          <div class="doc-excerpt">
+            <p>"All men are created equal... Life, Liberty, and the pursuit of Happiness."</p>
 
-            <div class="question-block">
-              <p>What message is Ho Chi Minh sending, and why might this language appeal to people in Vietnam?</p>
-              <textarea placeholder="Write your response here..."></textarea>
-            </div>
+            <p>"All peoples on the earth are equal from birth... have a right to live, to be happy and free."</p>
+
+            <p>"For more than eighty years, the French imperialists... have violated our Fatherland."</p>
+
+            <p>"They have built more prisons than schools... drowned our uprisings in rivers of blood."</p>
+
+            <p>"They have robbed us of our rice fields... reduced our people to extreme poverty."</p>
+
+            <p>"A people who have courageously opposed French domination... must be free and independent."</p>
           </div>
 
-          <div class="doc-card">
-            <img src="images/truman-korea-statement.png" alt="Statement on Korea">
-
-            <h3>Statement on Korea</h3>
-            <p class="doc-meta">Harry S. Truman • June 27, 1950</p>
-
-            <div class="doc-excerpt">
-              <p>[Insert upgraded Truman Korea excerpt here]</p>
-            </div>
-
-            <div class="question-block">
-              <p>What concerns does Truman express here, and why would this alarm American leaders?</p>
-              <textarea placeholder="Write your response here..."></textarea>
-            </div>
+          <div class="question-block">
+            <p>What message is Ho Chi Minh sending, and why might this appeal to people in Vietnam?</p>
+            <textarea></textarea>
           </div>
-
-          <div class="doc-card">
-            <img src="images/truman-proclamation.png" alt="National Emergency Proclamation">
-
-            <h3>National Emergency Proclamation</h3>
-            <p class="doc-meta">Harry S. Truman • December 16, 1950</p>
-
-            <div class="doc-excerpt">
-              <p>[Insert upgraded Truman proclamation excerpt here]</p>
-            </div>
-
-            <div class="question-block">
-              <p>How does Truman describe the danger of communism, and what fears is he trying to communicate?</p>
-              <textarea placeholder="Write your response here..."></textarea>
-            </div>
-          </div>
-
         </div>
-      </section>
 
-      <section class="section scenario-box">
-        <span class="small-label">Scenario</span>
-        <h2>You Are Advising the President</h2>
-        <p>
-          It is the early 1950s. Korea is at war. Communist governments and movements are gaining strength in Asia. American leaders are trying to decide whether these events are isolated struggles or signs of a much larger global threat.
-        </p>
-        <p>
-          Based on the documents above, what would most concern American leaders?
-        </p>
-        <ul>
-          <li>The possibility that communist governments could spread into more countries</li>
-          <li>The fear that revolutions in Asia might lead to wider regional instability</li>
-          <li>The belief that the United States must act to defend freedom and contain communism</li>
-        </ul>
-        <p>
-          Write a short recommendation to the President. What do you think American leaders in 1950 would argue the United States should do, and why?
-        </p>
-        <textarea placeholder="Write your recommendation here..."></textarea>
-      </section>
+        <!-- TRUMAN KOREA -->
+        <div class="doc-card">
+          <img src="images/truman-korea-statement.png">
 
-      <div class="lesson-nav-row">
-        <a href="coldwar-lesson5-reading.html" class="btn-secondary">Back to Textbook</a>
-        <a href="course-cold-war.html" class="btn">Back to Unit</a>
+          <h3>Statement on Korea</h3>
+          <p class="doc-meta">
+            Harry S. Truman • June 27, 1950
+          </p>
+
+          <div class="doc-excerpt">
+            <p>"Government forces... were attacked by invading forces from North Korea."</p>
+
+            <p>"The United Nations called upon the invading troops to cease hostilities... but they have not done so."</p>
+
+            <p>"I have ordered United States air and sea forces to give the Korean Government troops cover and support."</p>
+
+            <p>"Communism has passed beyond subversion... and will now use armed invasion and war."</p>
+          </div>
+
+          <div class="question-block">
+            <p>What concerns does Truman express, and why would this alarm American leaders?</p>
+            <textarea></textarea>
+          </div>
+        </div>
+
+        <!-- TRUMAN PROCLAMATION -->
+        <div class="doc-card">
+          <img src="images/truman-proclamation.png">
+
+          <h3>National Emergency Proclamation</h3>
+          <p class="doc-meta">
+            Harry S. Truman • December 16, 1950
+          </p>
+
+          <div class="doc-excerpt">
+            <p>"Recent events in Korea... constitute a grave threat to the peace of the world."</p>
+
+            <p>"World conquest by communist imperialism is the goal..."</p>
+
+            <p>"The people... would no longer enjoy freedom of speech... or the right to choose their government."</p>
+
+            <p>"I proclaim the existence of a national emergency."</p>
+          </div>
+
+          <div class="question-block">
+            <p>How does Truman describe communism, and what fears is he communicating?</p>
+            <textarea></textarea>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-    </main>
-  </div>
+    <section class="section">
+      <h2>You Are Advising the President</h2>
+
+      <p>
+        It is 1950. Korea is at war. Communist movements are spreading in Asia.
+        American leaders must decide how serious this threat is.
+      </p>
+
+      <p>
+        Based on the documents, what should the United States do?
+      </p>
+
+      <textarea placeholder="Write your recommendation here..."></textarea>
+    </section>
+
+    <div class="lesson-nav-row">
+      <a href="coldwar-lesson5-reading.html" class="btn-secondary">Back to Textbook</a>
+      <a href="course-cold-war.html" class="btn">Back to Unit</a>
+    </div>
+
+  </main>
+</div>
 
 </body>
 </html>
