@@ -10,10 +10,101 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .reading-block + .reading-block {
+      margin-top: 34px;
+    }
+
+    .reading-block h3 {
+      margin-bottom: 12px;
+    }
+
+    .response-box {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .response-box h4 {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .response-box p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .vocab-item {
+      padding: 16px;
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .vocab-item strong {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .lesson-nav-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .small-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .lesson-breadcrumb {
+      font-size: 0.85rem;
+      color: #b6c2d1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .lesson-breadcrumb a {
+      color: #b6c2d1;
+      text-decoration: none;
+    }
+
+    .lesson-breadcrumb a:hover {
+      color: var(--accent-gold);
+    }
+
+    @media (max-width: 820px) {
+      .vocab-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="brand">
       <div class="brand-title">Historia</div>
@@ -30,7 +121,6 @@
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
       <h2>Cold War</h2>
       <a href="coldwar-lesson5-video.html">Lesson 5 Video</a>
@@ -39,154 +129,139 @@
       <a href="course-cold-war.html">← Back to Unit</a>
     </aside>
 
-    <!-- MAIN -->
     <main class="main">
 
-      <!-- HEADER -->
       <div class="lesson-header">
+        <div class="lesson-breadcrumb">
+          <a href="world-history.html">World History</a> •
+          <a href="course-cold-war.html">Cold War Unit</a> •
+          Lesson 5
+        </div>
         <div class="page-kicker">World History • Cold War • Lesson 5</div>
         <h1>The Cold War Goes Global: Korea and Proxy Wars</h1>
         <p class="subtle">
-          This reading explains how the Cold War spread beyond Europe and became a global conflict through proxy wars.
+          This reading explains how the Cold War spread beyond Europe and became a wider global conflict through Korea, Vietnam, and other proxy wars.
         </p>
       </div>
 
-      <!-- VOCAB -->
       <section class="section">
         <span class="small-label">Key Vocabulary</span>
 
         <div class="vocab-grid">
           <div class="vocab-item">
             <strong>Proxy War</strong>
-            A conflict where major powers support opposing sides without directly fighting each other.
+            A conflict in which larger powers support opposing sides without directly going to war against each other.
           </div>
 
           <div class="vocab-item">
             <strong>Korean War</strong>
-            A war (1950–1953) between North Korea and South Korea, supported by larger Cold War powers.
+            A war fought from 1950 to 1953 between North Korea and South Korea, with major support from Cold War powers.
           </div>
 
           <div class="vocab-item">
             <strong>Containment</strong>
-            A U.S. policy aimed at stopping the spread of communism.
+            A United States policy aimed at stopping the spread of communism into new places.
           </div>
 
           <div class="vocab-item">
             <strong>Division</strong>
-            The splitting of a country or region into opposing political systems.
+            The splitting of a country or region into separate political systems or rival governments.
           </div>
         </div>
       </section>
 
-      <!-- READING -->
       <section class="section">
         <span class="small-label">Reading</span>
 
-        <!-- BLOCK 1 -->
         <div class="reading-block">
-          <h3>The Cold War Expands</h3>
+          <h3>The Cold War Expands Beyond Europe</h3>
           <p>
-            At first, the Cold War was mainly focused on Europe. But it did not stay there. As tensions grew, both the United States and the Soviet Union became involved in conflicts around the world.
+            When World War II ended in 1945, the alliance between the United States and the Soviet Union quickly began to break apart. Both countries had helped defeat Nazi Germany, but they did not agree on how the postwar world should be organized. The United States supported democratic governments and capitalist economies, while the Soviet Union supported communist governments and state control.
           </p>
           <p>
-            These conflicts were rarely direct wars between the two superpowers. Instead, they supported different sides in other countries. This allowed them to compete without risking a full-scale war between themselves.
+            At first, most of the tension was centered in Europe. Germany was divided. Berlin was divided. Eastern Europe began falling under Soviet influence, while Western Europe drew closer to the United States. By the late 1940s, the Cold War was already shaping the map of Europe.
+          </p>
+          <p>
+            But the Cold War did not stay there. As the years moved into the 1950s, both superpowers started competing for influence in Asia, the Middle East, Latin America, and Africa. These struggles were often not direct wars between the United States and the Soviet Union. Instead, each side supported governments, armies, or revolutionary movements in other countries. That is what made many of these conflicts <strong>proxy wars</strong>: powerful countries were competing through other people’s wars.
+          </p>
+          <p>
+            This mattered because both sides feared that a direct war between superpowers could become catastrophic, especially once nuclear weapons entered the picture. So instead of openly fighting each other, they tried to gain ground through allies, aid, military support, and regional wars.
           </p>
 
           <div class="response-box">
-            <h4>Quick Response</h4>
-            <p>Why might the United States and Soviet Union avoid fighting each other directly?</p>
+            <h4>Response</h4>
+            <p>Why would the United States and the Soviet Union choose to compete through proxy wars instead of directly declaring war on each other?</p>
             <textarea placeholder="Write your answer here..."></textarea>
           </div>
         </div>
 
-        <!-- BLOCK 2 -->
         <div class="reading-block">
           <h3>Korea Becomes Divided</h3>
           <p>
-            After World War II, Korea was divided into two parts. The north became communist and was supported by the Soviet Union. The south became non-communist and was supported by the United States.
+            Korea became one of the first major places where the Cold War turned into open fighting. Before World War II, Korea had been controlled by Japan. When Japan surrendered in 1945, Korea was suddenly freed, but it was also left in a difficult position. The country was divided at the 38th parallel as a temporary arrangement: Soviet forces occupied the North, while American forces occupied the South.
           </p>
           <p>
-            This division reflected the larger Cold War conflict. Korea became one of the first places where tensions turned into real fighting.
+            What began as a temporary military arrangement soon hardened into a political <strong>division</strong>. In the North, a communist government formed under <strong>Kim Il-sung</strong>, backed by the Soviet Union. In the South, a non-communist government formed under <strong>Syngman Rhee</strong>, backed by the United States. Each side claimed to represent the true future of Korea.
+          </p>
+          <p>
+            This meant Korea was no longer simply recovering from Japanese rule. It had become a Cold War front line. The United States viewed South Korea as part of its larger policy of <strong>containment</strong>, trying to stop communism from spreading farther. The Soviet Union saw North Korea as part of its own sphere of influence in Asia.
+          </p>
+          <p>
+            In June 1950, North Korea invaded South Korea. That invasion began the <strong>Korean War</strong>. American forces, fighting under the banner of the United Nations, entered the war to support South Korea. China later entered on the side of North Korea, while the Soviet Union supplied support from behind the scenes.
+          </p>
+          <p>
+            Even though the major powers were deeply involved, the United States and Soviet Union still avoided directly declaring war on one another. That is why Korea became such an important example of a <strong>proxy war</strong>. It showed how the Cold War could erupt into real violence without becoming a full U.S.–Soviet war.
+          </p>
+          <p>
+            After three years of brutal fighting, the war ended in 1953 in a stalemate. Korea remained divided near the same line where the conflict had begun. No final peace treaty ended the war, and the peninsula remained tense long after the guns quieted.
           </p>
 
           <div class="callout">
-            <strong>Main Idea:</strong> Korea became a symbol of the global Cold War divide between communism and democracy.
-          </div>
-
-          <div class="response-box">
-            <h4>Quick Response</h4>
-            <p>How did Korea reflect the larger Cold War conflict?</p>
-            <textarea placeholder="Write your answer here..."></textarea>
+            <strong>Main Idea:</strong> Korea showed that the Cold War was no longer only a European struggle. It had become a military and ideological conflict that could spread into Asia and beyond.
           </div>
         </div>
 
-        <!-- BLOCK 3 -->
         <div class="reading-block">
-          <h3>The Korean War</h3>
+          <h3>Vietnam and the Wider Global Cold War</h3>
           <p>
-            In 1950, North Korea invaded South Korea. This started the Korean War. The United States quickly stepped in to defend South Korea, while China and the Soviet Union supported North Korea.
+            Korea was not the end of Cold War expansion. In fact, it was only the beginning. Another major struggle emerged in Vietnam. After World War II, Vietnamese nationalist leader <strong>Ho Chi Minh</strong> declared independence from French colonial rule in 1945. However, the French tried to reassert control, and conflict grew between communist-led nationalist forces and anti-communist powers.
           </p>
           <p>
-            Even though the superpowers were involved, they avoided directly declaring war on each other. This made the conflict a proxy war.
-          </p>
-
-          <div class="response-box">
-            <h4>Quick Response</h4>
-            <p>Why is the Korean War considered a proxy war?</p>
-            <textarea placeholder="Write your answer here..."></textarea>
-          </div>
-        </div>
-
-        <!-- BLOCK 4 -->
-        <div class="reading-block">
-          <h3>Stalemate and Consequences</h3>
-          <p>
-            The Korean War ended in a stalemate in 1953. Korea remained divided along nearly the same line where the war began. No clear victory was achieved.
+            During the 1950s, Vietnam became increasingly tied to Cold War politics. After the French were defeated at Dien Bien Phu in 1954, Vietnam was temporarily divided. A communist government led the North, while the South was backed by the United States and its allies. Once again, a local conflict was pulled into the larger Cold War struggle.
           </p>
           <p>
-            However, the war had major consequences. It showed that the Cold War could turn into real fighting. It also increased fear and tension between both sides.
+            By the 1960s, the United States had become heavily involved in Vietnam, first through military aid and advisors, and later through large numbers of troops. American leaders feared that if Vietnam became fully communist, nearby countries might follow. This fear was often described through the “domino theory,” the idea that one communist victory could lead to many more.
+          </p>
+          <p>
+            Vietnam mattered not only because of what happened there, but because of what it did to American politics and culture. The war lasted for years, cost enormous numbers of lives, and deeply divided the United States at home. Many Americans began to question government decisions, official explanations, and the wider purpose of fighting communism abroad.
+          </p>
+          <p>
+            The Cold War also spread into Latin America and the Middle East. In places such as Cuba, Chile, Afghanistan, Iran, and elsewhere, the United States and Soviet Union supported different governments, movements, coups, and rebellions. Each side believed it was defending its interests, but many countries found themselves trapped in the middle of a global rivalry.
+          </p>
+          <p>
+            By the 1960s and 1970s, the Cold War had clearly become global. It was no longer just about Berlin or Eastern Europe. It had become a struggle over influence, ideology, and power across the world.
           </p>
 
           <div class="callout">
-            <strong>Important Pattern:</strong> Proxy wars allowed the Cold War to spread while avoiding direct conflict between superpowers.
+            <strong>Important Pattern:</strong> Proxy wars allowed the Cold War to spread into many regions. Local struggles became part of a larger global contest between the United States and the Soviet Union.
           </div>
         </div>
-
-        <!-- BLOCK 5 -->
-        <div class="reading-block">
-          <h3>A Global Cold War</h3>
-          <p>
-            After Korea, the Cold War continued to spread. Conflicts in places like Vietnam, Latin America, and the Middle East became part of the larger struggle.
-          </p>
-          <p>
-            The Cold War was no longer just about Europe. It had become a global conflict that affected countries all over the world.
-          </p>
-
-          <div class="response-box">
-            <h4>Quick Response</h4>
-            <p>How did proxy wars make the Cold War global?</p>
-            <textarea placeholder="Write your answer here..."></textarea>
-          </div>
-        </div>
-
       </section>
 
-      <!-- WRAP UP -->
       <section class="section">
         <span class="small-label">Wrap Up</span>
         <h2>Main Idea</h2>
         <p>
-          The Korean War showed that the Cold War could turn into real conflict. Through proxy wars, the United States and Soviet Union competed globally without directly fighting each other.
+          The Cold War spread far beyond Europe because the United States and Soviet Union competed for influence across the world. Korea became one of the first major proxy wars, and Vietnam later showed how these conflicts could grow longer, more costly, and more politically divisive.
         </p>
 
         <div class="response-box">
           <h4>Final Response</h4>
-          <p>In your own words, explain how proxy wars made the Cold War more dangerous.</p>
+          <p>How did conflicts in Korea and Vietnam show that the Cold War had become a global struggle rather than only a European one?</p>
           <textarea placeholder="Write 4–6 sentences here..."></textarea>
         </div>
       </section>
 
-      <!-- NAV -->
       <div class="lesson-nav-row">
         <a href="coldwar-lesson5-activity.html" class="btn">Next: Activity</a>
         <a href="coldwar-lesson5-video.html" class="btn-secondary">Back to Video</a>
