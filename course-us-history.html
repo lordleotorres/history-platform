@@ -1,1 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U.S. History | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .unit-intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
 
+    .unit-intro-card,
+    .lesson-launch-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      padding: 28px;
+    }
+
+    .unit-intro-card h2,
+    .lesson-launch-card h2 {
+      color: #0f172a;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+
+    .unit-intro-card p,
+    .lesson-launch-card p {
+      color: var(--text-muted);
+      margin-top: 0;
+    }
+
+    .unit-list {
+      margin: 18px 0 0;
+      padding-left: 20px;
+    }
+
+    .unit-list li {
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .lesson-status {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(196,169,98,0.14);
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .lesson-row {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .lesson-card {
+      background: #ffffff;
+      border: 1px solid var(--line-light);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .lesson-card h3 {
+      color: #0f172a;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .lesson-card p {
+      color: var(--text-muted);
+      margin-top: 0;
+      margin-bottom: 16px;
+      max-width: 860px;
+    }
+
+    .lesson-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .lesson-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .lesson-links a:not(.btn):not(.btn-secondary) {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .lesson-links a:not(.btn):not(.btn-secondary):hover {
+      text-decoration: underline;
+    }
+
+    .inactive-link {
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .unit-intro-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
+    </div>
+
+    <div class="topnav-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="student-portal.html">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
+    </div>
+  </div>
+
+  <div class="unit-page">
+    <div class="unit-hero">
+      <div class="eyebrow">High School Social Studies</div>
+      <h1>U.S. History Since 1877</h1>
+      <p>
+        This course follows the Texas U.S. History pathway from Reconstruction’s aftermath to the present, combining major eras, recurring TEKS skills, and STAR-focused coverage into a full-year structure.
+      </p>
+    </div>
+
+    <div class="unit-intro-grid">
+      <section class="unit-intro-card">
+        <h2>Course Focus</h2>
+        <p>
+          Students trace how the United States changed politically, economically, socially, and culturally from 1877 to the present while practicing source analysis, historical writing, maps, charts, claims, and civic discourse.
+        </p>
+
+        <ul class="unit-list">
+          <li>Cover every major era from 1877 to the present</li>
+          <li>Keep the sequence aligned to TEKS and STAR expectations</li>
+          <li>Build recurring practice with primary and secondary sources</li>
+          <li>Embed economics, government, geography, and citizenship throughout</li>
+          <li>Use visual review, timelines, and turning points to strengthen retention</li>
+        </ul>
+      </section>
+
+      <section class="lesson-launch-card">
+        <div class="lesson-status">Course pathway</div>
+        <h2>Start Here</h2>
+        <p>
+          Begin with foundational U.S. History review and the turning points after 1877, then move unit by unit through industrialization, reform, world wars, the Cold War, civil rights, and modern America.
+        </p>
+
+        <div class="lesson-links">
+          <a class="btn" href="us-history-unit1.html">Open Unit 1</a>
+          <a class="btn-secondary" href="courses.html">Back to Courses</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="lesson-row">
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 1</div>
+        <h3>Foundations, Turning Points, and Historical Skills</h3>
+        <p>
+          Students establish the full course timeline, review founding principles during Celebrate Freedom Week, identify the major eras from 1877 to the present, and begin working with claims, evidence, timelines, maps, and source evaluation.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">Foundations</span>
+          <span class="pill">Skills</span>
+          <span class="pill">Turning Points</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit1.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 2</div>
+        <h3>The Gilded Age and the West, 1877–1898</h3>
+        <p>
+          Covers industrialization, railroads, labor unions, farmers, entrepreneurship, big business, Indian policy, urbanization, immigration, women, minorities, and political machines in the post-Reconstruction era.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1877–1898</span>
+          <span class="pill">Industry</span>
+          <span class="pill">Urbanization</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit2.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 3</div>
+        <h3>Imperialism, Progressivism, and World War I</h3>
+        <p>
+          Follows the emergence of the United States as a world power through the Spanish-American War, expansionism, Progressive reforms, reform leaders, third parties, and World War I.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1898–1918</span>
+          <span class="pill">Imperialism</span>
+          <span class="pill">Progressive Era</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit3.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 4</div>
+        <h3>The 1920s: Conflict, Change, and Modern Culture</h3>
+        <p>
+          Focuses on immigration, nativism, the Red Scare, Prohibition, race relations, eugenics, the changing role of women, the Scopes Trial, and major individuals such as Henry Ford, Marcus Garvey, and Charles Lindbergh.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1920s</span>
+          <span class="pill">Culture</span>
+          <span class="pill">Modern America</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit4.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 5</div>
+        <h3>The Great Depression and the New Deal</h3>
+        <p>
+          Students examine the causes of the Depression, its social and economic effects, New Deal programs, New Deal opposition, and the long-term impact of federal agencies and government expansion.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1929–1941</span>
+          <span class="pill">Economics</span>
+          <span class="pill">Government</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit5.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 6</div>
+        <h3>World War II and the Home Front</h3>
+        <p>
+          Covers causes of U.S. entry, wartime leadership, major military events, the Holocaust, Japanese American internment, atomic weapons, the home front, and the contributions of diverse military units and leaders.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1939–1945</span>
+          <span class="pill">World War II</span>
+          <span class="pill">Home Front</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit6.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 7</div>
+        <h3>The Cold War at Home and Abroad</h3>
+        <p>
+          Includes containment, the Truman Doctrine, Marshall Plan, Berlin Airlift, NATO, McCarthyism, HUAC, the arms and space races, Korea, Vietnam, the Domino Theory, and public responses to the Vietnam War.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1945–1991</span>
+          <span class="pill">Cold War</span>
+          <span class="pill">Foreign Policy</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit7.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 8</div>
+        <h3>Civil Rights and Expanding Democracy</h3>
+        <p>
+          Traces the civil rights movement from its earlier roots through the 20th century, including Jim Crow, Brown, MLK Jr., Rosa Parks, César Chávez, Dolores Huerta, women’s rights, political organizations, and major legislation.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">Civil Rights</span>
+          <span class="pill">Citizenship</span>
+          <span class="pill">Supreme Court</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit8.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 9</div>
+        <h3>The United States from the 1970s through 1990</h3>
+        <p>
+          Explores détente, Nixon, Reagan, the conservative resurgence, the Middle East, the Iran Hostage Crisis, the Iran-Contra Affair, the War on Drugs, and the AIDS epidemic.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1970s–1990</span>
+          <span class="pill">Politics</span>
+          <span class="pill">Society</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit9.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 10</div>
+        <h3>The United States from the 1990s into the 21st Century</h3>
+        <p>
+          Covers the end of the Cold War, the Persian Gulf War, 9/11, the War on Terror, third parties in modern elections, immigration, health care, education, multinational corporations, and the modern economy.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1990s–Present</span>
+          <span class="pill">Modern U.S.</span>
+          <span class="pill">World Affairs</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit10.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Embedded Across Units</div>
+        <h3>Geography, Economics, Government, Culture, and Skills</h3>
+        <p>
+          Rather than isolating these into one small corner, the course repeatedly embeds migration, environment, trade, constitutional issues, citizenship, arts and culture, science and technology, source evaluation, claim-writing, civil discourse, charts, maps, and simulations across the year.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">Embedded TEKS</span>
+          <span class="pill">STAR Skills</span>
+          <span class="pill">Review Spiral</span>
+        </div>
+
+        <div class="lesson-links">
+          <span class="inactive-link">Built into every unit</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</body>
+</html>
