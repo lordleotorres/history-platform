@@ -72,6 +72,13 @@
       border-radius: 22px;
       padding: 26px;
       box-shadow: var(--shadow-soft);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+      border-color: rgba(196,169,98,0.35);
     }
 
     .lesson-card h3 {
@@ -117,8 +124,38 @@
       font-weight: 700;
     }
 
+    .course-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .course-map-item {
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid var(--line-light);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .course-map-item strong {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 4px;
+      font-size: 0.96rem;
+    }
+
+    .course-map-item span {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
     @media (max-width: 980px) {
       .unit-intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .course-map {
         grid-template-columns: 1fr;
       }
     }
@@ -145,7 +182,7 @@
       <div class="eyebrow">High School Social Studies</div>
       <h1>U.S. History Since 1877</h1>
       <p>
-        This course follows the Texas U.S. History pathway from Reconstruction’s aftermath to the present, combining major eras, recurring TEKS skills, and STAR-focused coverage into a full-year structure.
+        This course follows the Texas U.S. History pathway from Reconstruction’s aftermath to the present, organizing the story of modern America into clear units built around major turning points, recurring TEKS skills, and strong day-to-day classroom structure.
       </p>
     </div>
 
@@ -153,7 +190,7 @@
       <section class="unit-intro-card">
         <h2>Course Focus</h2>
         <p>
-          Students trace how the United States changed politically, economically, socially, and culturally from 1877 to the present while practicing source analysis, historical writing, maps, charts, claims, and civic discourse.
+          Students trace how the United States changed politically, economically, socially, and culturally from 1877 to the present while practicing source analysis, historical writing, maps, charts, claims, civic discourse, and long-term chronological thinking.
         </p>
 
         <ul class="unit-list">
@@ -162,14 +199,30 @@
           <li>Build recurring practice with primary and secondary sources</li>
           <li>Embed economics, government, geography, and citizenship throughout</li>
           <li>Use visual review, timelines, and turning points to strengthen retention</li>
+          <li>Break large historical eras into manageable, teacher-friendly units</li>
         </ul>
+
+        <div class="course-map">
+          <div class="course-map-item">
+            <strong>Early Modern U.S.</strong>
+            <span>Foundations, industrialization, the West, and reform</span>
+          </div>
+          <div class="course-map-item">
+            <strong>America Abroad</strong>
+            <span>Imperialism, world conflict, and global leadership</span>
+          </div>
+          <div class="course-map-item">
+            <strong>Modern America</strong>
+            <span>Depression, war, civil rights, Cold War, and beyond</span>
+          </div>
+        </div>
       </section>
 
       <section class="lesson-launch-card">
         <div class="lesson-status">Course pathway</div>
         <h2>Start Here</h2>
         <p>
-          Begin with foundational U.S. History review and the turning points after 1877, then move unit by unit through industrialization, reform, world wars, the Cold War, civil rights, and modern America.
+          Begin with foundational review and historical skills, then move through industrialization, imperialism, reform, world war, the 1920s, the Depression, World War II, the Cold War, civil rights, and the modern United States.
         </p>
 
         <div class="lesson-links">
@@ -219,15 +272,15 @@
 
       <section class="lesson-card">
         <div class="eyebrow">Unit 3</div>
-        <h3>Imperialism, Progressivism, and World War I</h3>
+        <h3>Imperialism and the United States as a World Power</h3>
         <p>
-          Follows the emergence of the United States as a world power through the Spanish-American War, expansionism, Progressive reforms, reform leaders, third parties, and World War I.
+          Focuses on the Spanish-American War, overseas expansion, yellow journalism, debates over empire, the Open Door Policy, Theodore Roosevelt’s foreign policy, and the growing role of the United States in world affairs.
         </p>
 
         <div class="lesson-meta">
-          <span class="pill">1898–1918</span>
+          <span class="pill">1890s–1910s</span>
           <span class="pill">Imperialism</span>
-          <span class="pill">Progressive Era</span>
+          <span class="pill">Foreign Policy</span>
         </div>
 
         <div class="lesson-links">
@@ -237,6 +290,42 @@
 
       <section class="lesson-card">
         <div class="eyebrow">Unit 4</div>
+        <h3>The Progressive Era</h3>
+        <p>
+          Examines reform movements aimed at government corruption, business regulation, public health, labor conditions, women’s rights, voting reform, and social justice through the work of activists, muckrakers, and national leaders.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">Progressivism</span>
+          <span class="pill">Reform</span>
+          <span class="pill">Citizenship</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit4.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 5</div>
+        <h3>World War I and America’s Emerging Global Role</h3>
+        <p>
+          Traces the causes of World War I, American neutrality, entry into the war, wartime mobilization, propaganda, civil liberties issues, the experiences of soldiers and civilians, and the debate over Wilson’s peace plan and the Treaty of Versailles.
+        </p>
+
+        <div class="lesson-meta">
+          <span class="pill">1914–1919</span>
+          <span class="pill">World War I</span>
+          <span class="pill">Mobilization</span>
+        </div>
+
+        <div class="lesson-links">
+          <a href="us-history-unit5.html">Open Unit</a>
+        </div>
+      </section>
+
+      <section class="lesson-card">
+        <div class="eyebrow">Unit 6</div>
         <h3>The 1920s: Conflict, Change, and Modern Culture</h3>
         <p>
           Focuses on immigration, nativism, the Red Scare, Prohibition, race relations, eugenics, the changing role of women, the Scopes Trial, and major individuals such as Henry Ford, Marcus Garvey, and Charles Lindbergh.
@@ -249,12 +338,12 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit4.html">Open Unit</a>
+          <a href="us-history-unit6.html">Open Unit</a>
         </div>
       </section>
 
       <section class="lesson-card">
-        <div class="eyebrow">Unit 5</div>
+        <div class="eyebrow">Unit 7</div>
         <h3>The Great Depression and the New Deal</h3>
         <p>
           Students examine the causes of the Depression, its social and economic effects, New Deal programs, New Deal opposition, and the long-term impact of federal agencies and government expansion.
@@ -267,12 +356,12 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit5.html">Open Unit</a>
+          <a href="us-history-unit7.html">Open Unit</a>
         </div>
       </section>
 
       <section class="lesson-card">
-        <div class="eyebrow">Unit 6</div>
+        <div class="eyebrow">Unit 8</div>
         <h3>World War II and the Home Front</h3>
         <p>
           Covers causes of U.S. entry, wartime leadership, major military events, the Holocaust, Japanese American internment, atomic weapons, the home front, and the contributions of diverse military units and leaders.
@@ -285,12 +374,12 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit6.html">Open Unit</a>
+          <a href="us-history-unit8.html">Open Unit</a>
         </div>
       </section>
 
       <section class="lesson-card">
-        <div class="eyebrow">Unit 7</div>
+        <div class="eyebrow">Unit 9</div>
         <h3>The Cold War at Home and Abroad</h3>
         <p>
           Includes containment, the Truman Doctrine, Marshall Plan, Berlin Airlift, NATO, McCarthyism, HUAC, the arms and space races, Korea, Vietnam, the Domino Theory, and public responses to the Vietnam War.
@@ -303,15 +392,15 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit7.html">Open Unit</a>
+          <a href="us-history-unit9.html">Open Unit</a>
         </div>
       </section>
 
       <section class="lesson-card">
-        <div class="eyebrow">Unit 8</div>
+        <div class="eyebrow">Unit 10</div>
         <h3>Civil Rights and Expanding Democracy</h3>
         <p>
-          Traces the civil rights movement from its earlier roots through the 20th century, including Jim Crow, Brown, MLK Jr., Rosa Parks, César Chávez, Dolores Huerta, women’s rights, political organizations, and major legislation.
+          Traces the civil rights movement from its earlier roots through the 20th century, including Jim Crow, Brown, Martin Luther King Jr., Rosa Parks, César Chávez, Dolores Huerta, women’s rights, political organizations, and major legislation.
         </p>
 
         <div class="lesson-meta">
@@ -321,12 +410,12 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit8.html">Open Unit</a>
+          <a href="us-history-unit10.html">Open Unit</a>
         </div>
       </section>
 
       <section class="lesson-card">
-        <div class="eyebrow">Unit 9</div>
+        <div class="eyebrow">Unit 11</div>
         <h3>The United States from the 1970s through 1990</h3>
         <p>
           Explores détente, Nixon, Reagan, the conservative resurgence, the Middle East, the Iran Hostage Crisis, the Iran-Contra Affair, the War on Drugs, and the AIDS epidemic.
@@ -339,12 +428,12 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit9.html">Open Unit</a>
+          <a href="us-history-unit11.html">Open Unit</a>
         </div>
       </section>
 
       <section class="lesson-card">
-        <div class="eyebrow">Unit 10</div>
+        <div class="eyebrow">Unit 12</div>
         <h3>The United States from the 1990s into the 21st Century</h3>
         <p>
           Covers the end of the Cold War, the Persian Gulf War, 9/11, the War on Terror, third parties in modern elections, immigration, health care, education, multinational corporations, and the modern economy.
@@ -357,7 +446,7 @@
         </div>
 
         <div class="lesson-links">
-          <a href="us-history-unit10.html">Open Unit</a>
+          <a href="us-history-unit12.html">Open Unit</a>
         </div>
       </section>
 
