@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historical Thinking | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-soft: #13263a;
+      --gold: #c8a96b;
+      --gold-soft: #e3d3af;
+      --paper: #fbfaf7;
+      --paper-2: #f3efe7;
+      --ink: #1e2935;
+      --muted: #5f6b78;
+      --line: rgba(200, 169, 107, 0.22);
+      --shadow: 0 22px 60px rgba(7, 16, 26, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(200, 169, 107, 0.10), transparent 30%),
+        linear-gradient(180deg, #f7f3eb 0%, #f3eee4 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: linear-gradient(180deg, #0c1827 0%, #102234 100%);
+      color: white;
+      padding: 30px 24px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .brand-mark {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+    }
+
+    .brand-tag {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .side-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.42);
+      margin: 26px 0 12px;
+    }
+
+    .nav-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: rgba(255,255,255,0.88);
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      display: block;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(200,169,107,0.28);
+      color: white;
+    }
+
+    .main {
+      padding: 36px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(13,27,42,0.98), rgba(19,38,58,0.93));
+      color: white;
+      border-radius: 30px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(200,169,107,0.18);
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.74rem;
+      color: var(--gold-soft);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+      color: var(--gold-soft);
+      line-height: 1.02;
+    }
+
+    .hero p {
+      max-width: 860px;
+      font-size: 1.04rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.86);
+      margin: 18px 0 0;
+    }
+
+    .section-card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 14px 34px rgba(16, 24, 32, 0.06);
+      margin-bottom: 26px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      color: var(--navy);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .resource-card {
+      background: linear-gradient(180deg, #fffdf9 0%, #f7f2e8 100%);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 245px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(16, 24, 32, 0.09);
+    }
+
+    .resource-type {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: #84673d;
+      font-weight: 700;
+    }
+
+    .resource-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1.2rem;
+    }
+
+    .resource-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.96rem;
+      flex-grow: 1;
+    }
+
+    .resource-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #445161;
+      line-height: 1.55;
+      font-size: 0.93rem;
+    }
+
+    .resource-card button,
+    .prototype-bar button,
+    .timebox-actions button,
+    .month-chip,
+    .tag {
+      font: inherit;
+    }
+
+    .resource-button,
+    .prototype-button,
+    .ghost-button {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: 600;
+    }
+
+    .resource-button,
+    .prototype-button {
+      background: var(--navy);
+      color: white;
+    }
+
+    .resource-button:hover,
+    .prototype-button:hover {
+      background: #12253a;
+      transform: translateY(-1px);
+    }
+
+    .ghost-button {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(13,27,42,0.16);
+    }
+
+    .ghost-button:hover {
+      background: #f8f4ec;
+    }
+
+    .prototype-panel {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .prototype-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .prototype-bar button.active {
+      background: var(--gold);
+      color: #1a1a1a;
+    }
+
+    .timebox-stage {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: white;
+      padding: 18px;
+    }
+
+    .timebox-grid {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(66px, 1fr));
+      gap: 8px;
+    }
+
+    .year-box {
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      border: 1px solid rgba(13,27,42,0.10);
+      background: linear-gradient(180deg, #fffefb 0%, #f5efe3 100%);
+      position: relative;
+      padding: 10px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-align: left;
+    }
+
+    .year-box:hover,
+    .year-box.active {
+      transform: translateY(-3px);
+      border-color: rgba(200,169,107,0.6);
+      box-shadow: 0 12px 24px rgba(16,24,32,0.10);
+      background: linear-gradient(180deg, #fffefb 0%, #efe2c8 100%);
+    }
+
+    .year-num {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.82rem;
+      color: #6d655a;
+      font-weight: 700;
+    }
+
+    .year-badge {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font-size: 0.72rem;
+      color: #88672b;
+      background: rgba(200,169,107,0.16);
+      padding: 4px 7px;
+      border-radius: 999px;
+    }
+
+    .inspector {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f5efe5 100%);
+      padding: 22px;
+      min-height: 740px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .inspector h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+    }
+
+    .inspector-sub {
+      margin: 10px 0 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .concept-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: #8c6d38;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .tag-row,
+    .month-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: white;
+      color: var(--navy);
+      border: 1px solid rgba(13,27,42,0.1);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .month-chip {
+      border: 1px solid rgba(13,27,42,0.12);
+      background: white;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 0.84rem;
+      transition: 0.2s ease;
+    }
+
+    .month-chip:hover,
+    .month-chip.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    .event-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .event-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(13,27,42,0.08);
+      border-left: 4px solid var(--gold);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .event-card h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    .event-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.93rem;
+    }
+
+    .event-meta {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-pill {
+      font-size: 0.76rem;
+      color: #73571f;
+      background: rgba(200,169,107,0.15);
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-weight: 700;
+    }
+
+    .timebox-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      border: 1px dashed rgba(13,27,42,0.16);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.66);
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .feature-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: #faf7f1;
+      border: 1px solid var(--line);
+    }
+
+    .feature-item strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 1200px) {
+      .resource-grid,
+      .prototype-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .inspector {
+        position: static;
+        min-height: unset;
+      }
+    }
+
+    @media (max-width: 940px) {
+      .site-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+      }
+
+      .main {
+        padding: 22px;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">Historia</div>
+        <div class="brand-tag">Historical Thinking empowered through AI</div>
+      </div>
+
+      <div class="side-label">Navigation</div>
+      <nav class="nav-links">
+        <a href="#overview" class="active">Historical Thinking Overview</a>
+        <a href="#resources">Core Skill Resources</a>
+        <a href="#timebox">Historical TimeBox</a>
+        <a href="#features">Future Expansion</a>
+      </nav>
+
+      <div class="side-label">Resource Ideas</div>
+      <nav class="nav-links">
+        <a href="#resources">Primary Source Analysis</a>
+        <a href="#resources">Secondary Source Analysis</a>
+        <a href="#resources">Claim-Evidence-Reasoning</a>
+        <a href="#resources">Contextualization</a>
+        <a href="#resources">Comparison</a>
+        <a href="#resources">Cause and Effect</a>
+        <a href="#resources">Historical TimeBox</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section class="hero" id="overview">
+        <div class="eyebrow">Historical Thinking Toolkit</div>
+        <h1>Tools that teach students to think like historians.</h1>
+        <p>
+          This page turns the historical thinking tab into a true resource hub. Each tool supports core social studies skills that fit naturally with TEKS-style instruction: sourcing, evidence, context, comparison, chronology, cause and effect, and argument. The signature feature below is the <strong>Historical TimeBox</strong>, a digital century grid that lets students zoom into a year and build a layered picture of people, events, places, culture, and connections.
+        </p>
+      </section>
+
+      <section class="section-card" id="resources">
+        <div class="section-heading">
+          <div>
+            <h2>Core Historical Thinking Resources</h2>
+          </div>
+          <p>These are broad, durable skills that make sense in Government, World Geography, World History, and U.S. History. They are classroom-friendly, TEKS-aligned in spirit, and common across strong social studies instruction.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="resource-type">Source Work</div>
+            <h3>Primary Source Analysis</h3>
+            <p>Students examine original documents, speeches, maps, letters, laws, posters, and images by asking who created the source, why it was made, and what it reveals.</p>
+            <ul>
+              <li>Sourcing</li>
+              <li>Close reading</li>
+              <li>Bias and perspective</li>
+            </ul>
+            <button class="resource-button">Open Resource</button>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-type">Source Work</div>
+            <h3>Secondary Source Analysis</h3>
+            <p>Students work with textbook excerpts, historians’ arguments, encyclopedia entries, or articles in order to summarize interpretations and test how evidence is used.</p>
+            <ul>
+              <li>Summarizing argument</li>
+              <li>Evaluating credibility</li>
+              <li>Comparing interpretations</li>
+            </ul>
+            <button class="resource-button">Open Resource</button>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-type">Argument</div>
+            <h3>Claim, Evidence, Reasoning</h3>
+            <p>Students make a historical claim, support it with evidence, and explain why that evidence matters. This works beautifully with writing, speaking, and discussion.</p>
+            <ul>
+              <li>Historical argumentation</li>
+              <li>Text evidence</li>
+              <li>Short constructed response</li>
+            </ul>
+            <button class="resource-button">Open Resource</button>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-type">Context</div>
+            <h3>Contextualization</h3>
+            <p>Students place events, people, and movements in a broader setting so they can explain not just what happened, but what world those events emerged from.</p>
+            <ul>
+              <li>Background knowledge</li>
+              <li>Time and place</li>
+              <li>World before the event</li>
+            </ul>
+            <button class="resource-button">Open Resource</button>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-type">Connections</div>
+            <h3>Comparison</h3>
+            <p>Students compare leaders, empires, revolutions, regions, or ideas in order to spot patterns, differences, continuities, and surprising parallels.</p>
+            <ul>
+              <li>Similarities and differences</li>
+              <li>Cross-regional thinking</li>
+              <li>Pattern recognition</li>
+            </ul>
+            <button class="resource-button">Open Resource</button>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-type">Chronology</div>
+            <h3>Cause and Effect</h3>
+            <p>Students trace how one development leads to another. This skill is essential for understanding why change happens over time and why turning points matter.</p>
+            <ul>
+              <li>Short-term vs long-term causes</li>
+              <li>Immediate vs lasting effects</li>
+              <li>Turning points</li>
+            </ul>
+            <button class="resource-button">Open Resource</button>
+          </article>
+
+          <article class="resource-card" style="grid-column: span 3; background: linear-gradient(135deg, #fffaf0 0%, #f1e6cf 100%); border-color: rgba(200,169,107,0.36);">
+            <div class="resource-type">Signature Tool</div>
+            <h3>Historical TimeBox</h3>
+            <p>The Historical TimeBox turns a century into a visible field of years. Students can zoom into a single year and build a layered historical picture: events, people, places, books, films, politics, wars, inventions, and cultural life. Instead of history as a thin line, it becomes a structured landscape.</p>
+            <ul>
+              <li>Chronology by year and decade</li>
+              <li>Cause and effect across a century</li>
+              <li>Layered thinking inside one year</li>
+            </ul>
+            <a href="#timebox"><button class="resource-button">Open TimeBox Prototype</button></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-card" id="timebox">
+        <div class="section-heading">
+          <div>
+            <h2>Historical TimeBox Prototype</h2>
+          </div>
+          <p>Click a year in the century grid. The right panel zooms in and shows a layered historical view of that year. This is not just a calendar. It is a framework for stacking people, events, places, culture, and ideas into one visual historical field.</p>
+        </div>
+
+        <div class="prototype-panel">
+          <div>
+            <div class="prototype-bar">
+              <button class="prototype-button active" data-century="1900">20th Century</button>
+              <button class="prototype-button" data-century="1800">19th Century</button>
+              <button class="prototype-button" data-century="1700">18th Century</button>
+            </div>
+
+            <div class="timebox-stage">
+              <div class="timebox-grid" id="timeboxGrid"></div>
+            </div>
+          </div>
+
+          <aside class="inspector">
+            <div class="concept-label">Zoomed Historical Layer</div>
+            <h3 id="inspectorTitle">1900</h3>
+            <p class="inspector-sub" id="inspectorText">Select a year to open its layered historical view. Students should be able to connect events, figures, places, and cultural artifacts inside one year rather than seeing time as a flat list.</p>
+
+            <div class="concept-label">Layers of the Year</div>
+            <div class="tag-row" id="tagRow"></div>
+
+            <div class="concept-label">Month View</div>
+            <div class="month-row" id="monthRow"></div>
+
+            <div class="concept-label">Events and Connections</div>
+            <div class="event-list" id="eventList"></div>
+
+            <div class="timebox-actions">
+              <button class="prototype-button">Open Full Year Workspace</button>
+              <button class="ghost-button">Add Student Entry</button>
+            </div>
+
+            <div class="note-box">
+              <strong>Curriculum idea:</strong> this right panel can become a student workspace. They could drag in images, add notes, sort by category, tag people and places, or build mini webs of causation and connection inside one year.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-card" id="features">
+        <div class="section-heading">
+          <div>
+            <h2>Where This Can Go Next</h2>
+          </div>
+          <p>This gives you the shell. From here, you can split each tool into its own page or let each card open an interactive student workspace.</p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature-item"><strong>1. Resource subpages</strong>Create separate HTML pages for Primary Source Analysis, Secondary Source Analysis, CER, Contextualization, Comparison, Cause and Effect, and the full Historical TimeBox.</div>
+          <div class="feature-item"><strong>2. Student saving</strong>Let students save notes to local storage or to a database so the TimeBox becomes a living portfolio.</div>
+          <div class="feature-item"><strong>3. Image and map layers</strong>Inside each year, allow students to attach maps, paintings, photographs, film posters, and biographies.</div>
+          <div class="feature-item"><strong>4. Teacher prompts</strong>Add “Today I will / So that I can / I know I’ve got it when…” prompts above each tool.</div>
+          <div class="feature-item"><strong>5. Assessment mode</strong>Turn the TimeBox into a graded activity where students justify why certain years are turning points.</div>
+          <div class="feature-item"><strong>6. Chronology webs</strong>Inside the year view, add draggable nodes and lines so students can literally build the layered network you were describing.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const prototypeData = {
+      1900: {
+        label: '20th Century',
+        years: Array.from({ length: 100 }, (_, i) => 1900 + i),
+        samples: {
+          1914: {
+            text: 'A turning-point year where imperial rivalry, alliance systems, militarism, and nationalism collided in a global war. A student should see how one year can hold diplomacy, violence, propaganda, movement, and memory all at once.',
+            tags: ['War', 'Europe', 'Nationalism', 'Empire', 'Propaganda', 'Turning Point'],
+            months: ['Jan', 'Jun', 'Jul', 'Aug', 'Dec'],
+            events: [
+              {
+                title: 'Assassination at Sarajevo',
+                body: 'The killing of Archduke Franz Ferdinand becomes the spark that ignites a wider European crisis.',
+                meta: ['June', 'People', 'Event', 'Austria-Hungary']
+              },
+              {
+                title: 'Alliance System Activated',
+                body: 'Mobilizations and declarations of war reveal that the conflict had deeper roots than a single assassination.',
+                meta: ['July-August', 'Causation', 'Diplomacy']
+              },
+              {
+                title: 'Culture and Memory Layer',
+                body: 'Students can attach wartime posters, poetry, photographs, and maps to see how war reshapes public imagination.',
+                meta: ['Culture', 'Media', 'Historical Memory']
+              }
+            ]
+          },
+          1945: {
+            text: 'This year is perfect for showing overlap: the end of one war, the beginning of a new world order, the atomic age, the United Nations, and the first outlines of the Cold War.',
+            tags: ['World War II', 'UN', 'Atomic Age', 'Cold War', 'Human Rights'],
+            months: ['Feb', 'May', 'Aug', 'Oct'],
+            events: [
+              {
+                title: 'War Ends in Europe and Asia',
+                body: 'Students can compare the end stages of WWII in Europe and the Pacific while tracing the human cost and political aftermath.',
+                meta: ['Conflict', 'Global', 'Turning Point']
+              },
+              {
+                title: 'Atomic Bombings',
+                body: 'A single year can hold scientific innovation, moral crisis, military strategy, and long-term geopolitical consequences.',
+                meta: ['Science', 'Ethics', 'Japan']
+              },
+              {
+                title: 'United Nations Begins',
+                body: 'Students can connect diplomacy, peacekeeping hopes, and the desire to prevent another world war.',
+                meta: ['Institution', 'Diplomacy', 'Global Order']
+              }
+            ]
+          },
+          1968: {
+            text: 'A layered year of protest, upheaval, reform, violence, culture, and global student activism. Great for showing that one year can pulse in many places at once.',
+            tags: ['Civil Rights', 'Youth', 'Protest', 'Cold War', 'Culture'],
+            months: ['Jan', 'Apr', 'Jun', 'Aug', 'Oct'],
+            events: [
+              {
+                title: 'Global Protest Wave',
+                body: 'Students can compare movements in the United States, Europe, Latin America, and elsewhere to see common frustrations and different outcomes.',
+                meta: ['Comparison', 'Global', 'Youth']
+              },
+              {
+                title: 'Assassinations and Shock',
+                body: 'The year also carries grief and rupture, reminding students that public hope and public trauma can coexist.',
+                meta: ['Politics', 'Violence', 'Memory']
+              },
+              {
+                title: 'Culture as Historical Evidence',
+                body: 'Music, film, posters, and photography become part of the year’s historical layer, not just background decoration.',
+                meta: ['Culture', 'Media', 'Visual Sources']
+              }
+            ]
+          }
+        }
+      },
+      1800: {
+        label: '19th Century',
+        years: Array.from({ length: 100 }, (_, i) => 1800 + i),
+        samples: {
+          1848: {
+            text: 'A revolutionary year full of nationalism, liberal reform, social unrest, and political experiments across Europe. This is exactly the kind of year your layered TimeBox can make visible.',
+            tags: ['Revolution', 'Nationalism', 'Europe', 'Reform', 'Liberalism'],
+            months: ['Feb', 'Mar', 'Jun', 'Dec'],
+            events: [
+              {
+                title: 'Revolutions Across Europe',
+                body: 'Students can compare why uprisings happened in different places and why some succeeded while others failed.',
+                meta: ['Europe', 'Comparison', 'Causation']
+              },
+              {
+                title: 'Ideas on the Move',
+                body: 'Nationalism, liberalism, and social critique all overlap inside the same year, making it ideal for concept-mapping.',
+                meta: ['Ideas', 'Politics', 'Change Over Time']
+              },
+              {
+                title: 'Voices and Print Culture',
+                body: 'Pamphlets, newspapers, and speeches can be attached as evidence so students see how ideas spread.',
+                meta: ['Media', 'Primary Sources', 'Culture']
+              }
+            ]
+          }
+        }
+      },
+      1700: {
+        label: '18th Century',
+        years: Array.from({ length: 100 }, (_, i) => 1700 + i),
+        samples: {
+          1776: {
+            text: 'A year where revolution, ideas, war, empire, pamphlets, and competing visions of liberty all coexist. It should never feel like one lonely date on a line.',
+            tags: ['Revolution', 'Liberty', 'Empire', 'War', 'Political Thought'],
+            months: ['Jan', 'Jul', 'Sep', 'Dec'],
+            events: [
+              {
+                title: 'Declaration and Debate',
+                body: 'Students can study not just the Declaration, but also the debates around independence, loyalty, and rights.',
+                meta: ['Documents', 'Politics', 'North America']
+              },
+              {
+                title: 'War in Motion',
+                body: 'A year contains troop movement, local experience, battlefronts, and international implications all at once.',
+                meta: ['Conflict', 'Map Layer', 'Cause and Effect']
+              },
+              {
+                title: 'Ideas Beyond the Battlefield',
+                body: 'Philosophical language about rights and government gives the year a conceptual layer beyond immediate events.',
+                meta: ['Enlightenment', 'Ideas', 'Historical Significance']
+              }
+            ]
+          }
+        }
+      }
+    };
+
+    const fallbackSample = year => ({
+      text: 'This year is ready for student layering. Add people, places, conflicts, inventions, books, speeches, art, or turning points so students can build a dense historical field rather than a flat timeline entry.',
+      tags: ['People', 'Places', 'Events', 'Culture', 'Ideas'],
+      months: ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov'],
+      events: [
+        {
+          title: 'Historical Event Slot',
+          body: 'Add a major political, military, social, economic, or cultural event tied to this year.',
+          meta: ['Event', 'Chronology']
+        },
+        {
+          title: 'Figure or Place Slot',
+          body: 'Attach a leader, artist, inventor, movement, or important location that helps students deepen context.',
+          meta: ['People', 'Place', 'Context']
+        },
+        {
+          title: 'Connection Slot',
+          body: 'Explain what this year connects to before and after it so the year becomes part of a chain of change.',
+          meta: ['Causation', 'Continuity', 'Turning Point']
+        }
+      ]
+    });
+
+    const grid = document.getElementById('timeboxGrid');
+    const title = document.getElementById('inspectorTitle');
+    const text = document.getElementById('inspectorText');
+    const tagRow = document.getElementById('tagRow');
+    const monthRow = document.getElementById('monthRow');
+    const eventList = document.getElementById('eventList');
+    const centuryButtons = document.querySelectorAll('[data-century]');
+
+    let currentCentury = 1900;
+    let currentYear = 1900;
+
+    function renderCentury(startYear) {
+      currentCentury = Number(startYear);
+      grid.innerHTML = '';
+      const config = prototypeData[currentCentury];
+
+      config.years.forEach(year => {
+        const sample = config.samples[year];
+        const card = document.createElement('button');
+        card.className = 'year-box';
+        card.innerHTML = `
+          <span class="year-num">${year}</span>
+          <span class="year-badge">${sample ? 'Layered' : 'Open'}</span>
+        `;
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.year-box').forEach(box => box.classList.remove('active'));
+          card.classList.add('active');
+          renderInspector(year);
+        });
+        grid.appendChild(card);
+      });
+
+      const firstSampleYear = Number(Object.keys(config.samples)[0]) || config.years[0];
+      currentYear = firstSampleYear;
+      grid.children[config.years.indexOf(firstSampleYear)].classList.add('active');
+      renderInspector(firstSampleYear);
+    }
+
+    function renderInspector(year) {
+      currentYear = Number(year);
+      const config = prototypeData[currentCentury];
+      const sample = config.samples[currentYear] || fallbackSample(currentYear);
+
+      title.textContent = currentYear;
+      text.textContent = sample.text;
+
+      tagRow.innerHTML = '';
+      sample.tags.forEach(tag => {
+        const el = document.createElement('span');
+        el.className = 'tag';
+        el.textContent = tag;
+        tagRow.appendChild(el);
+      });
+
+      monthRow.innerHTML = '';
+      sample.months.forEach((month, index) => {
+        const chip = document.createElement('button');
+        chip.className = 'month-chip' + (index === 0 ? ' active' : '');
+        chip.textContent = month;
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.month-chip').forEach(m => m.classList.remove('active'));
+          chip.classList.add('active');
+        });
+        monthRow.appendChild(chip);
+      });
+
+      eventList.innerHTML = '';
+      sample.events.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'event-card';
+        card.innerHTML = `
+          <h4>${item.title}</h4>
+          <p>${item.body}</p>
+          <div class="event-meta">
+            ${item.meta.map(meta => `<span class="meta-pill">${meta}</span>`).join('')}
+          </div>
+        `;
+        eventList.appendChild(card);
+      });
+    }
+
+    centuryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        centuryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        renderCentury(button.dataset.century);
+      });
+    });
+
+    renderCentury(1900);
+  </script>
+</body>
+</html>
