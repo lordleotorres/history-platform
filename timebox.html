@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historical TimeBox | Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0d1b2a;
+      --gold:#c8a96b;
+      --paper:#fbfaf7;
+      --ink:#1e2935;
+      --muted:#5f6b78;
+      --line:rgba(200,169,107,0.25);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, sans-serif;background:#f3eee4;color:var(--ink)}
+    .topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:var(--navy);color:white}
+    .brand-title{font-family:Playfair Display,serif;font-size:1.6rem;color:var(--gold)}
+    .container{padding:24px}
+    .header{margin-bottom:20px}
+    .header h1{margin:0;font-family:Playfair Display,serif}
+
+    .layout{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+    .grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+    .year-box{
+      aspect-ratio:1;
+      border:1px solid #ccc;
+      border-radius:10px;
+      background:white;
+      position:relative;
+      cursor:pointer;
+    }
+    .year-box:hover{background:#f7f3eb}
+    .year-label{
+      position:absolute;
+      top:6px;
+      left:6px;
+      font-size:0.7rem;
+      color:#666;
+    }
+
+    .panel{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+    }
+
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+    .tag{background:#eee;padding:4px 8px;border-radius:6px;font-size:0.8rem}
+
+    .event{margin-top:10px;padding:10px;border-left:4px solid var(--gold);background:#faf7f1}
+
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand-title">Historia</div>
+  <div>TimeBox</div>
+</div>
+
+<div class="container">
+  <div class="header">
+    <h1>Historical TimeBox</h1>
+    <p>Click a year to explore layered historical thinking.</p>
+  </div>
+
+  <div class="layout">
+    <div class="grid" id="grid"></div>
+
+    <div class="panel">
+      <h2 id="yearTitle">Select a Year</h2>
+      <p id="yearDesc">Click any year to begin.</p>
+
+      <div class="tags" id="tags"></div>
+
+      <div id="events"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const data = {
+  1914:{
+    desc:"Start of World War I.",
+    tags:["War","Europe","Nationalism"],
+    events:["Assassination of Franz Ferdinand","WWI begins"]
+  },
+  1945:{
+    desc:"End of WWII and start of new world order.",
+    tags:["WWII","UN","Atomic Age"],
+    events:["Germany surrenders","Atomic bombs dropped"]
+  }
+};
+
+const grid = document.getElementById('grid');
+
+for(let i=1900;i<2000;i++){
+  const box=document.createElement('div');
+  box.className='year-box';
+  box.innerHTML=`<div class='year-label'>${i}</div>`;
+  box.onclick=()=>openYear(i);
+  grid.appendChild(box);
+}
+
+function openYear(year){
+  const d=data[year]||{desc:"Add student data.",tags:[],events:[]};
+  document.getElementById('yearTitle').textContent=year;
+  document.getElementById('yearDesc').textContent=d.desc;
+
+  const tagsDiv=document.getElementById('tags');
+  tagsDiv.innerHTML='';
+  d.tags.forEach(t=>{
+    const el=document.createElement('div');
+    el.className='tag';
+    el.textContent=t;
+    tagsDiv.appendChild(el);
+  });
+
+  const eventsDiv=document.getElementById('events');
+  eventsDiv.innerHTML='';
+  d.events.forEach(e=>{
+    const el=document.createElement('div');
+    el.className='event';
+    el.textContent=e;
+    eventsDiv.appendChild(el);
+  });
+}
+</script>
+
+</body>
+</html>
