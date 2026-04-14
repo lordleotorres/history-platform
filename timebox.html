@@ -11,13 +11,14 @@
     :root{
       --navy:#0d1b2a;
       --navy-soft:#13263a;
+      --navy-deep:#08131f;
       --gold:#c8a96b;
       --gold-soft:#e3d3af;
-      --paper:#fbfaf7;
-      --paper-2:#f3efe7;
+      --paper:#f5f7fb;
+      --paper-2:#e9eef5;
       --ink:#1e2935;
       --muted:#5f6b78;
-      --line:rgba(200,169,107,0.22);
+      --line:rgba(13,27,42,0.10);
       --shadow:0 22px 60px rgba(7,16,26,0.12);
       --radius:22px;
     }
@@ -30,7 +31,7 @@
       color:var(--ink);
       background:
         radial-gradient(circle at top left, rgba(200,169,107,0.10), transparent 30%),
-        linear-gradient(180deg, #f7f3eb 0%, #f3eee4 100%);
+        linear-gradient(180deg, #eef3f9 0%, #e6edf6 100%);
     }
 
     .topbar{
@@ -116,7 +117,7 @@
       gap:14px;
       align-items:center;
       justify-content:space-between;
-      background:rgba(255,255,255,0.92);
+      background:rgba(255,255,255,0.94);
       border:1px solid var(--line);
       border-radius:22px;
       padding:18px 20px;
@@ -172,14 +173,14 @@
 
     .layout{
       display:grid;
-      grid-template-columns:1.45fr 0.95fr;
+      grid-template-columns:1.55fr 0.85fr;
       gap:24px;
       align-items:start;
     }
 
     .grid-panel,
     .side-panel{
-      background:rgba(255,255,255,0.92);
+      background:rgba(255,255,255,0.94);
       border:1px solid var(--line);
       border-radius:24px;
       padding:24px;
@@ -220,7 +221,7 @@
       aspect-ratio:1 / 1;
       border-radius:16px;
       border:1px solid rgba(13,27,42,0.10);
-      background:linear-gradient(180deg, #fffefb 0%, #f5efe3 100%);
+      background:linear-gradient(180deg, #ffffff 0%, #eef3f9 100%);
       padding:10px;
       cursor:pointer;
       transition:0.2s ease;
@@ -230,9 +231,9 @@
     .year-box:hover,
     .year-box.active{
       transform:translateY(-3px);
-      border-color:rgba(200,169,107,0.6);
+      border-color:rgba(200,169,107,0.55);
       box-shadow:0 12px 24px rgba(16,24,32,0.10);
-      background:linear-gradient(180deg, #fffefb 0%, #efe2c8 100%);
+      background:linear-gradient(180deg, #ffffff 0%, #e7eef7 100%);
     }
 
     .year-num{
@@ -240,14 +241,15 @@
       top:10px;
       left:10px;
       font-size:0.8rem;
-      color:#6d655a;
+      color:#5f6b78;
       font-weight:700;
+      z-index:2;
     }
 
     .span-overlay{
       position:absolute;
       inset:0;
-      opacity:0.22;
+      opacity:0.16;
       pointer-events:none;
     }
 
@@ -258,8 +260,9 @@
       display:flex;
       flex-wrap:wrap;
       gap:4px;
-      width:34px;
+      width:36px;
       justify-content:flex-end;
+      z-index:2;
     }
 
     .badge-dot{
@@ -269,26 +272,17 @@
       border:1px solid rgba(0,0,0,0.08);
     }
 
-    .significance-star{
-      position:absolute;
-      top:8px;
-      right:8px;
-      font-size:0.85rem;
-      color:#8a6b2f;
-      font-weight:700;
-      line-height:1;
-    }
-
     .year-status{
       position:absolute;
       left:10px;
       bottom:10px;
       font-size:0.68rem;
-      color:#88672b;
-      background:rgba(200,169,107,0.16);
+      color:#5f6b78;
+      background:rgba(13,27,42,0.06);
       padding:4px 7px;
       border-radius:999px;
       font-weight:700;
+      z-index:2;
     }
 
     .selected-year{
@@ -320,13 +314,13 @@
 
     .category-grid{
       display:grid;
-      gap:14px;
+      gap:12px;
     }
 
     .category-card{
       border:1px solid rgba(13,27,42,0.10);
       border-radius:18px;
-      background:linear-gradient(180deg, #fffdf9 0%, #f8f3ea 100%);
+      background:linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
       padding:14px;
     }
 
@@ -343,8 +337,7 @@
       line-height:1.5;
     }
 
-    .category-card input,
-    .category-card textarea{
+    .category-card input{
       width:100%;
       border:1px solid rgba(13,27,42,0.12);
       border-radius:12px;
@@ -356,8 +349,44 @@
     }
 
     .category-card textarea{
-      min-height:72px;
+      width:100%;
+      border:1px solid rgba(13,27,42,0.12);
+      border-radius:12px;
+      background:white;
+      font:inherit;
+      color:var(--ink);
+      padding:10px 12px;
+      margin-top:8px;
+      min-height:64px;
       resize:vertical;
+    }
+
+    .span-entry-list{
+      display:grid;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .span-entry{
+      border:1px solid rgba(13,27,42,0.08);
+      border-left:4px solid var(--gold);
+      border-radius:14px;
+      background:#fff;
+      padding:10px 12px;
+    }
+
+    .span-entry strong{
+      display:block;
+      color:var(--navy);
+      font-size:0.93rem;
+      margin-bottom:4px;
+    }
+
+    .span-entry span{
+      color:var(--muted);
+      font-size:0.84rem;
+      line-height:1.5;
+      display:block;
     }
 
     .span-fields{
@@ -402,7 +431,7 @@
     }
 
     .btn-secondary:hover{
-      background:#f8f4ec;
+      background:#edf3fb;
     }
 
     .helper-note{
@@ -410,7 +439,7 @@
       border:1px dashed rgba(13,27,42,0.16);
       border-radius:18px;
       padding:14px;
-      background:rgba(255,255,255,0.66);
+      background:rgba(244,247,251,0.9);
       color:var(--muted);
       line-height:1.6;
       font-size:0.9rem;
@@ -418,21 +447,17 @@
 
     .c-events{ background:#d9534f; }
     .c-people{ background:#4f79d9; }
-    .c-places{ background:#4fd97c; }
-    .c-ideas{ background:#9b59b6; }
+    .c-places{ background:#31a56f; }
+    .c-ideas{ background:#8b5cf6; }
     .c-culture{ background:#c8a96b; }
-    .c-tech{ background:#1abc9c; }
-    .c-economy{ background:#f39c12; }
-    .c-cause{ background:#555; }
+    .c-tech{ background:#169bb1; }
 
     .overlay-events{ background:#d9534f; }
     .overlay-people{ background:#4f79d9; }
-    .overlay-places{ background:#4fd97c; }
-    .overlay-ideas{ background:#9b59b6; }
+    .overlay-places{ background:#31a56f; }
+    .overlay-ideas{ background:#8b5cf6; }
     .overlay-culture{ background:#c8a96b; }
-    .overlay-tech{ background:#1abc9c; }
-    .overlay-economy{ background:#f39c12; }
-    .overlay-cause{ background:#555; }
+    .overlay-tech{ background:#169bb1; }
 
     @media (max-width: 1180px){
       .layout{
@@ -460,409 +485,80 @@
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="brand-block">
-      <div class="brand-title">Historia</div>
-      <div class="brand-sub">Historical TimeBox</div>
-    </div>
-    <a href="historical-thinking.html">Back to Historical Thinking</a>
+
+<div class="topbar">
+  <div class="brand-title">Historia</div>
+  <div>TimeBox</div>
+</div>
+
+<div class="container">
+  <div class="header">
+    <h1>Historical TimeBox</h1>
+    <p>Click a year to explore layered historical thinking.</p>
   </div>
 
-  <main class="page">
-    <section class="hero">
-      <div class="eyebrow">Interactive Chronology Tool</div>
-      <h1>Build history year by year.</h1>
-      <p>
-        Click a year, then use the side panel to add historical information. This version focuses on the 1700s, 1800s, 1900s, and 2000s. Students can tag years with categories, mark significance, and shade event spans across multiple years.
-      </p>
-    </section>
+  <div class="layout">
+    <div class="grid" id="grid"></div>
 
-    <section class="toolbar">
-      <div class="toolbar-left">
-        <label for="centurySelect">Select Century</label>
-        <select id="centurySelect">
-          <option value="1700">1700s</option>
-          <option value="1800">1800s</option>
-          <option value="1900" selected>1900s</option>
-          <option value="2000">2000s</option>
-        </select>
-      </div>
+    <div class="panel">
+      <h2 id="yearTitle">Select a Year</h2>
+      <p id="yearDesc">Click any year to begin.</p>
 
-      <div class="legend">
-        <span class="legend-item"><i class="legend-dot c-events"></i>Major Events</span>
-        <span class="legend-item"><i class="legend-dot c-people"></i>People</span>
-        <span class="legend-item"><i class="legend-dot c-places"></i>Places</span>
-        <span class="legend-item"><i class="legend-dot c-ideas"></i>Ideas</span>
-        <span class="legend-item"><i class="legend-dot c-culture"></i>Culture</span>
-        <span class="legend-item"><i class="legend-dot c-tech"></i>Technology</span>
-        <span class="legend-item"><i class="legend-dot c-economy"></i>Economy</span>
-        <span class="legend-item"><i class="legend-dot c-cause"></i>Cause / Effect</span>
-        <span class="legend-item">★ Significance</span>
-      </div>
-    </section>
+      <div class="tags" id="tags"></div>
 
-    <section class="layout">
-      <div class="grid-panel">
-        <div class="panel-heading">
-          <div>
-            <h2 id="gridTitle">20th Century Grid</h2>
-          </div>
-          <p>
-            Each square is a year. Click a year to build it. Colored dots show which categories have been added. Light shading shows historical spans that stretch across multiple years.
-          </p>
-        </div>
+      <div id="events"></div>
+    </div>
+  </div>
+</div>
 
-        <div class="timebox-grid" id="timeboxGrid"></div>
-      </div>
+<script>
+const data = {
+  1914:{
+    desc:"Start of World War I.",
+    tags:["War","Europe","Nationalism"],
+    events:["Assassination of Franz Ferdinand","WWI begins"]
+  },
+  1945:{
+    desc:"End of WWII and start of new world order.",
+    tags:["WWII","UN","Atomic Age"],
+    events:["Germany surrenders","Atomic bombs dropped"]
+  }
+};
 
-      <aside class="side-panel">
-        <div class="selected-year">
-          <div class="label">Selected Year</div>
-          <h3 id="selectedYearTitle">1900</h3>
-          <p>
-            Use the category panels below to add structured historical information to this year.
-          </p>
-        </div>
+const grid = document.getElementById('grid');
 
-        <div class="category-grid">
-          <div class="category-card">
-            <h4>Major Events</h4>
-            <p>Wars, elections, treaties, protests, crises, disasters, revolutions.</p>
-            <input id="eventsInput" type="text" placeholder="Example: World War I begins">
-          </div>
+for(let i=1900;i<2000;i++){
+  const box=document.createElement('div');
+  box.className='year-box';
+  box.innerHTML=`<div class='year-label'>${i}</div>`;
+  box.onclick=()=>openYear(i);
+  grid.appendChild(box);
+}
 
-          <div class="category-card">
-            <h4>Important People</h4>
-            <p>Leaders, inventors, reformers, artists, generals, writers, presidents.</p>
-            <input id="peopleInput" type="text" placeholder="Example: Theodore Roosevelt">
-          </div>
+function openYear(year){
+  const d=data[year]||{desc:"Add student data.",tags:[],events:[]};
+  document.getElementById('yearTitle').textContent=year;
+  document.getElementById('yearDesc').textContent=d.desc;
 
-          <div class="category-card">
-            <h4>Places</h4>
-            <p>Cities, countries, empires, regions, battlefields, capitals.</p>
-            <input id="placesInput" type="text" placeholder="Example: Sarajevo">
-          </div>
+  const tagsDiv=document.getElementById('tags');
+  tagsDiv.innerHTML='';
+  d.tags.forEach(t=>{
+    const el=document.createElement('div');
+    el.className='tag';
+    el.textContent=t;
+    tagsDiv.appendChild(el);
+  });
 
-          <div class="category-card">
-            <h4>Ideas and Movements</h4>
-            <p>Nationalism, industrialization, civil rights, imperialism, reform.</p>
-            <input id="ideasInput" type="text" placeholder="Example: Nationalism intensifies">
-          </div>
+  const eventsDiv=document.getElementById('events');
+  eventsDiv.innerHTML='';
+  d.events.forEach(e=>{
+    const el=document.createElement('div');
+    el.className='event';
+    el.textContent=e;
+    eventsDiv.appendChild(el);
+  });
+}
+</script>
 
-          <div class="category-card">
-            <h4>Culture and Daily Life</h4>
-            <p>Books, music, film, religion, fashion, social life, popular culture.</p>
-            <input id="cultureInput" type="text" placeholder="Example: Jazz culture expands">
-          </div>
-
-          <div class="category-card">
-            <h4>Science and Technology</h4>
-            <p>Inventions, medicine, transportation, communication, scientific breakthroughs.</p>
-            <input id="techInput" type="text" placeholder="Example: Radio use expands">
-          </div>
-
-          <div class="category-card">
-            <h4>Economy and Work</h4>
-            <p>Depressions, labor, trade, inflation, unemployment, business growth.</p>
-            <input id="economyInput" type="text" placeholder="Example: Stock market crashes">
-          </div>
-
-          <div class="category-card">
-            <h4>Cause and Effect</h4>
-            <p>What led to this year’s changes? What came from them?</p>
-            <textarea id="causeInput" placeholder="Example: Militarism and alliances helped push Europe toward war."></textarea>
-          </div>
-
-          <div class="category-card">
-            <h4>Historical Significance</h4>
-            <p>Why does this year matter? Mark major turning points with a significance note.</p>
-            <textarea id="significanceInput" placeholder="Example: This year marks a turning point in global conflict."></textarea>
-          </div>
-
-          <div class="category-card">
-            <h4>Historical Span</h4>
-            <p>Shade a range of years for long events like wars, depressions, or movements.</p>
-            <input id="spanLabelInput" type="text" placeholder="Example: World War I">
-            <div class="span-fields">
-              <input id="spanStartInput" type="number" placeholder="Start Year">
-              <input id="spanEndInput" type="number" placeholder="End Year">
-            </div>
-            <select id="spanCategorySelect" style="margin-top:8px;">
-              <option value="events">Major Events</option>
-              <option value="people">People</option>
-              <option value="places">Places</option>
-              <option value="ideas">Ideas</option>
-              <option value="culture">Culture</option>
-              <option value="tech">Technology</option>
-              <option value="economy">Economy</option>
-              <option value="cause">Cause / Effect</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn" id="saveYearBtn">Save Year</button>
-          <button class="btn-secondary" id="clearYearBtn">Clear Year</button>
-        </div>
-
-        <div class="helper-note">
-          This build is meant to be your strong first step: students can click a year, fill in categories, and visually mark that year on the timeline. Later, you can add saving, multiple entries per category, image markers, compare mode, and teacher templates.
-        </div>
-      </aside>
-    </section>
-  </main>
-
-  <script>
-    const centurySelect = document.getElementById('centurySelect');
-    const gridTitle = document.getElementById('gridTitle');
-    const timeboxGrid = document.getElementById('timeboxGrid');
-    const selectedYearTitle = document.getElementById('selectedYearTitle');
-
-    const eventsInput = document.getElementById('eventsInput');
-    const peopleInput = document.getElementById('peopleInput');
-    const placesInput = document.getElementById('placesInput');
-    const ideasInput = document.getElementById('ideasInput');
-    const cultureInput = document.getElementById('cultureInput');
-    const techInput = document.getElementById('techInput');
-    const economyInput = document.getElementById('economyInput');
-    const causeInput = document.getElementById('causeInput');
-    const significanceInput = document.getElementById('significanceInput');
-
-    const spanLabelInput = document.getElementById('spanLabelInput');
-    const spanStartInput = document.getElementById('spanStartInput');
-    const spanEndInput = document.getElementById('spanEndInput');
-    const spanCategorySelect = document.getElementById('spanCategorySelect');
-
-    const saveYearBtn = document.getElementById('saveYearBtn');
-    const clearYearBtn = document.getElementById('clearYearBtn');
-
-    let currentCentury = 1900;
-    let selectedYear = 1900;
-
-    const yearStore = {};
-
-    function getCenturyTitle(startYear) {
-      if (startYear === 1700) return '18th Century Grid';
-      if (startYear === 1800) return '19th Century Grid';
-      if (startYear === 1900) return '20th Century Grid';
-      if (startYear === 2000) return '21st Century Grid';
-      return `${startYear}s Grid`;
-    }
-
-    function ensureCenturyStore(century) {
-      if (!yearStore[century]) {
-        yearStore[century] = {};
-      }
-      return yearStore[century];
-    }
-
-    function getSelectedYearData() {
-      const store = ensureCenturyStore(currentCentury);
-      if (!store[selectedYear]) {
-        store[selectedYear] = {
-          events: '',
-          people: '',
-          places: '',
-          ideas: '',
-          culture: '',
-          tech: '',
-          economy: '',
-          cause: '',
-          significance: '',
-          spans: []
-        };
-      }
-      return store[selectedYear];
-    }
-
-    function renderGrid() {
-      timeboxGrid.innerHTML = '';
-      gridTitle.textContent = getCenturyTitle(currentCentury);
-
-      for (let i = 0; i < 100; i++) {
-        const year = currentCentury + i;
-        const box = document.createElement('button');
-        box.type = 'button';
-        box.className = 'year-box';
-        if (year === selectedYear) box.classList.add('active');
-        box.dataset.year = year;
-
-        const yearNumber = document.createElement('span');
-        yearNumber.className = 'year-num';
-        yearNumber.textContent = year;
-        box.appendChild(yearNumber);
-
-        applySpanOverlaysToBox(box, year);
-        applyBadgesToBox(box, year);
-
-        box.addEventListener('click', () => {
-          selectedYear = year;
-          selectedYearTitle.textContent = year;
-          loadSelectedYearIntoPanel();
-          renderGrid();
-        });
-
-        timeboxGrid.appendChild(box);
-      }
-    }
-
-    function applySpanOverlaysToBox(box, year) {
-      const store = ensureCenturyStore(currentCentury);
-
-      Object.values(store).forEach(entry => {
-        if (!entry.spans) return;
-
-        entry.spans.forEach(span => {
-          if (
-            Number.isFinite(span.start) &&
-            Number.isFinite(span.end) &&
-            year >= span.start &&
-            year <= span.end
-          ) {
-            const overlay = document.createElement('div');
-            overlay.className = `span-overlay overlay-${span.category}`;
-            box.appendChild(overlay);
-          }
-        });
-      });
-    }
-
-    function applyBadgesToBox(box, year) {
-      const store = ensureCenturyStore(currentCentury);
-      const entry = store[year];
-
-      if (!entry) return;
-
-      const badgeCluster = document.createElement('div');
-      badgeCluster.className = 'badge-cluster';
-
-      const categoryMap = [
-        ['events', 'c-events'],
-        ['people', 'c-people'],
-        ['places', 'c-places'],
-        ['ideas', 'c-ideas'],
-        ['culture', 'c-culture'],
-        ['tech', 'c-tech'],
-        ['economy', 'c-economy'],
-        ['cause', 'c-cause']
-      ];
-
-      let hasAny = false;
-
-      categoryMap.forEach(([key, cls]) => {
-        if (entry[key] && String(entry[key]).trim() !== '') {
-          const dot = document.createElement('span');
-          dot.className = `badge-dot ${cls}`;
-          badgeCluster.appendChild(dot);
-          hasAny = true;
-        }
-      });
-
-      if (hasAny) {
-        box.appendChild(badgeCluster);
-
-        const status = document.createElement('span');
-        status.className = 'year-status';
-        status.textContent = 'Built';
-        box.appendChild(status);
-      }
-
-      if (entry.significance && String(entry.significance).trim() !== '') {
-        const star = document.createElement('span');
-        star.className = 'significance-star';
-        star.textContent = '★';
-        box.appendChild(star);
-      }
-    }
-
-    function loadSelectedYearIntoPanel() {
-      const entry = getSelectedYearData();
-
-      selectedYearTitle.textContent = selectedYear;
-      eventsInput.value = entry.events || '';
-      peopleInput.value = entry.people || '';
-      placesInput.value = entry.places || '';
-      ideasInput.value = entry.ideas || '';
-      cultureInput.value = entry.culture || '';
-      techInput.value = entry.tech || '';
-      economyInput.value = entry.economy || '';
-      causeInput.value = entry.cause || '';
-      significanceInput.value = entry.significance || '';
-
-      spanLabelInput.value = '';
-      spanStartInput.value = '';
-      spanEndInput.value = '';
-      spanCategorySelect.value = 'events';
-    }
-
-    function saveYear() {
-      const entry = getSelectedYearData();
-
-      entry.events = eventsInput.value.trim();
-      entry.people = peopleInput.value.trim();
-      entry.places = placesInput.value.trim();
-      entry.ideas = ideasInput.value.trim();
-      entry.culture = cultureInput.value.trim();
-      entry.tech = techInput.value.trim();
-      entry.economy = economyInput.value.trim();
-      entry.cause = causeInput.value.trim();
-      entry.significance = significanceInput.value.trim();
-
-      const spanLabel = spanLabelInput.value.trim();
-      const spanStart = parseInt(spanStartInput.value, 10);
-      const spanEnd = parseInt(spanEndInput.value, 10);
-      const spanCategory = spanCategorySelect.value;
-
-      if (
-        spanLabel &&
-        Number.isFinite(spanStart) &&
-        Number.isFinite(spanEnd) &&
-        spanStart <= spanEnd
-      ) {
-        entry.spans.push({
-          label: spanLabel,
-          start: spanStart,
-          end: spanEnd,
-          category: spanCategory
-        });
-      }
-
-      renderGrid();
-    }
-
-    function clearYear() {
-      const store = ensureCenturyStore(currentCentury);
-      store[selectedYear] = {
-        events: '',
-        people: '',
-        places: '',
-        ideas: '',
-        culture: '',
-        tech: '',
-        economy: '',
-        cause: '',
-        significance: '',
-        spans: []
-      };
-
-      loadSelectedYearIntoPanel();
-      renderGrid();
-    }
-
-    centurySelect.addEventListener('change', () => {
-      currentCentury = parseInt(centurySelect.value, 10);
-      selectedYear = currentCentury;
-      ensureCenturyStore(currentCentury);
-      loadSelectedYearIntoPanel();
-      renderGrid();
-    });
-
-    saveYearBtn.addEventListener('click', saveYear);
-    clearYearBtn.addEventListener('click', clearYear);
-
-    ensureCenturyStore(currentCentury);
-    loadSelectedYearIntoPanel();
-    renderGrid();
-  </script>
 </body>
 </html>
