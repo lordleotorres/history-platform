@@ -5,38 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Historical Thinking | Historia</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f8f6f2;
+      background: #f5f3ef;
       color: #1c1c1c;
     }
 
-    /* HEADER */
+    /* HEADER (matches your screenshot) */
     .topbar {
-      background: #0b1e2d;
-      padding: 14px 40px;
+      background: linear-gradient(to right, #0b1e2d, #0f2a3d);
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .topbar h1 {
-      font-family: 'Playfair Display', serif;
-      color: #d4af37;
-      font-size: 22px;
+    .brand {
+      color: white;
+    }
+
+    .brand h1 {
       margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: #b8c2cc;
     }
 
     .topbar nav a {
-      color: white;
-      margin-left: 20px;
+      color: #dbe3ea;
+      margin-left: 24px;
       text-decoration: none;
       font-size: 14px;
+    }
+
+    .topbar nav a:hover {
+      color: white;
     }
 
     /* LAYOUT */
@@ -44,83 +57,89 @@
       display: flex;
     }
 
-    /* SIDEBAR */
+    /* SIDEBAR (smaller + cleaner) */
     .sidebar {
-      width: 220px;
+      width: 200px;
       background: #0b1e2d;
       padding: 20px;
       height: 100vh;
     }
 
-    .sidebar h2 {
-      font-family: 'Playfair Display', serif;
-      color: #d4af37;
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-
     .sidebar a {
       display: block;
-      color: #ddd;
+      color: #c9d3dc;
       text-decoration: none;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-size: 14px;
     }
 
     .sidebar a:hover {
-      color: #fff;
+      color: white;
     }
 
     /* MAIN */
     .main {
       flex: 1;
-      padding: 40px;
+      padding: 50px;
     }
 
     .title {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 34px;
+      margin-bottom: 8px;
     }
 
     .subtitle {
       color: #666;
       margin-bottom: 30px;
+      font-size: 15px;
     }
 
-    /* CARDS */
+    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
 
+    /* CARD (this is where we FIXED the ugliness) */
     .card {
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid #e2e0db;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
     .card h3 {
-      margin-top: 0;
-      font-size: 18px;
+      margin: 0 0 6px;
+      font-size: 17px;
+      font-weight: 600;
     }
 
     .card p {
       font-size: 14px;
-      color: #555;
+      color: #666;
+      margin-bottom: 12px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 10px;
-      padding: 8px 14px;
+      padding: 7px 12px;
       background: #0b1e2d;
       color: white;
       border-radius: 6px;
       text-decoration: none;
       font-size: 13px;
+    }
+
+    .btn:hover {
+      background: #132f47;
     }
 
     /* FOOTER */
@@ -137,7 +156,11 @@
 
   <!-- HEADER -->
   <div class="topbar">
-    <h1>Historia</h1>
+    <div class="brand">
+      <h1>Historia</h1>
+      <p>History, Geography and Civics empowered by AI</p>
+    </div>
+
     <nav>
       <a href="index.html">Home</a>
       <a href="courses.html">Courses</a>
@@ -149,19 +172,17 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-      <h2>Historia</h2>
-
       <a href="historical-thinking.html">Overview</a>
       <a href="primary-source.html">Primary Source</a>
       <a href="secondary-source.html">Secondary Source</a>
-      <a href="cer.html">Claim-Evidence</a>
+      <a href="cer.html">Claim–Evidence</a>
       <a href="contextualization.html">Context</a>
       <a href="comparison.html">Comparison</a>
       <a href="cause-effect.html">Cause & Effect</a>
       <a href="timebox.html">TimeBox</a>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <div class="main">
       <div class="title">Historical Thinking</div>
       <div class="subtitle">Core tools students use to understand history.</div>
@@ -170,43 +191,43 @@
 
         <div class="card">
           <h3>Primary Source</h3>
-          <p>Analyze original documents and images.</p>
+          <p>Analyze original documents.</p>
           <a class="btn" href="primary-source.html">Open</a>
         </div>
 
         <div class="card">
           <h3>Secondary Source</h3>
-          <p>Evaluate interpretations and arguments.</p>
+          <p>Evaluate interpretations.</p>
           <a class="btn" href="secondary-source.html">Open</a>
         </div>
 
         <div class="card">
           <h3>Claim & Evidence</h3>
-          <p>Build arguments using evidence.</p>
+          <p>Build arguments.</p>
           <a class="btn" href="cer.html">Open</a>
         </div>
 
         <div class="card">
           <h3>Context</h3>
-          <p>Place events in time and place.</p>
+          <p>Place events in time.</p>
           <a class="btn" href="contextualization.html">Open</a>
         </div>
 
         <div class="card">
           <h3>Comparison</h3>
-          <p>Identify similarities and differences.</p>
+          <p>Find similarities.</p>
           <a class="btn" href="comparison.html">Open</a>
         </div>
 
         <div class="card">
           <h3>Cause & Effect</h3>
-          <p>Trace why events happen.</p>
+          <p>Trace change.</p>
           <a class="btn" href="cause-effect.html">Open</a>
         </div>
 
         <div class="card">
           <h3>Historical TimeBox</h3>
-          <p>Explore history through structured time.</p>
+          <p>Explore structured time.</p>
           <a class="btn" href="timebox.html">Open</a>
         </div>
 
@@ -215,7 +236,6 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     © 2026 Historia
   </div>
