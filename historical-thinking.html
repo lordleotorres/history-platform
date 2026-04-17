@@ -4,241 +4,347 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Historical Thinking | Historia</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f5f3ef;
-      color: #1c1c1c;
+    .thinking-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: calc(100vh - 76px);
     }
 
-    /* HEADER (matches your screenshot) */
-    .topbar {
-      background: linear-gradient(to right, #0b1e2d, #0f2a3d);
-      padding: 18px 40px;
+    .thinking-sidebar {
+      background: linear-gradient(180deg, #071326 0%, #0b1d36 100%);
+      color: #ffffff;
+      padding: 28px 22px 30px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .thinking-sidebar-label {
+      color: rgba(255,255,255,0.48);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin: 4px 0 12px;
+      font-weight: 700;
+    }
+
+    .thinking-nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .thinking-nav a {
+      display: block;
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      padding: 13px 14px;
+      border-radius: 16px;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      border: 1px solid transparent;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .thinking-nav a:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .thinking-nav a.active {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #ffffff;
+    }
+
+    .thinking-main {
+      background: #f7f3eb;
+      padding: 32px 30px 50px;
+    }
+
+    .thinking-hero {
+      background: linear-gradient(135deg, #0d1f39 0%, #163054 100%);
+      border-radius: 28px;
+      padding: 34px 36px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+    }
+
+    .thinking-hero .eyebrow {
+      color: #d8b36a;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .thinking-hero h1 {
+      color: #f8f4ec;
+      font-size: clamp(2.3rem, 4vw, 4rem);
+      line-height: 0.98;
+      margin: 0 0 16px;
+      max-width: 720px;
+    }
+
+    .thinking-hero p {
+      color: rgba(248,244,236,0.88);
+      font-size: 1.04rem;
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0;
+    }
+
+    .thinking-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .thinking-intro-card,
+    .thinking-note-card {
+      background: #ffffff;
+      border: 1px solid #eadfcd;
+      border-radius: 24px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .thinking-intro-card h2,
+    .thinking-note-card h2 {
+      color: #14253d;
+      font-size: 1.6rem;
+      margin: 0 0 8px;
+    }
+
+    .thinking-intro-card p,
+    .thinking-note-card p {
+      color: #5f6774;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .thinking-module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .thinking-card {
+      background: #ffffff;
+      border: 1px solid #eadfcd;
+      border-radius: 24px;
+      padding: 22px 22px 20px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+    }
+
+    .thinking-card-label {
+      color: #b08d4a;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .thinking-card h3 {
+      color: #14253d;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      margin: 0 0 10px;
+    }
+
+    .thinking-card p {
+      color: #5f6774;
+      line-height: 1.65;
+      margin: 0 0 16px;
+      flex-grow: 1;
+    }
+
+    .thinking-card .btn {
+      margin-top: auto;
+      align-self: flex-start;
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .site-footer {
+      background: #08172c;
+      color: rgba(255,255,255,0.78);
+      padding: 22px 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.95rem;
+    }
+
+    .site-footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .brand {
-      color: white;
+    @media (max-width: 1180px) {
+      .thinking-module-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .thinking-intro {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .brand h1 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-    }
+    @media (max-width: 860px) {
+      .thinking-layout {
+        grid-template-columns: 1fr;
+      }
 
-    .brand p {
-      margin: 2px 0 0;
-      font-size: 13px;
-      color: #b8c2cc;
-    }
+      .thinking-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
 
-    .topbar nav a {
-      color: #dbe3ea;
-      margin-left: 24px;
-      text-decoration: none;
-      font-size: 14px;
-    }
+      .thinking-module-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .topbar nav a:hover {
-      color: white;
-    }
+      .thinking-main {
+        padding: 22px 18px 38px;
+      }
 
-    /* LAYOUT */
-    .layout {
-      display: flex;
-    }
-
-    /* SIDEBAR (smaller + cleaner) */
-    .sidebar {
-      width: 200px;
-      background: #0b1e2d;
-      padding: 20px;
-      height: 100vh;
-    }
-
-    .sidebar a {
-      display: block;
-      color: #c9d3dc;
-      text-decoration: none;
-      margin-bottom: 14px;
-      font-size: 14px;
-    }
-
-    .sidebar a:hover {
-      color: white;
-    }
-
-    /* MAIN */
-    .main {
-      flex: 1;
-      padding: 50px;
-    }
-
-    .title {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #666;
-      margin-bottom: 30px;
-      font-size: 15px;
-    }
-
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-    }
-
-    /* CARD (this is where we FIXED the ugliness) */
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      border: 1px solid #e2e0db;
-      transition: all 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .card h3 {
-      margin: 0 0 6px;
-      font-size: 17px;
-      font-weight: 600;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 7px 12px;
-      background: #0b1e2d;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 13px;
-    }
-
-    .btn:hover {
-      background: #132f47;
-    }
-
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #888;
+      .thinking-hero,
+      .thinking-intro-card,
+      .thinking-note-card,
+      .thinking-card {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
   <div class="topbar">
     <div class="brand">
-      <h1>Historia</h1>
-      <p>History, Geography and Civics empowered by AI</p>
+      <div class="brand-title">Historia</div>
+      <div class="brand-sub">History, Geography and Civics empowered by AI</div>
     </div>
 
-    <nav>
+    <div class="topnav-links">
       <a href="index.html">Home</a>
       <a href="courses.html">Courses</a>
-      <a href="historical-thinking.html">Historical Thinking</a>
-    </nav>
+      <a href="student-portal.html">Student Portal</a>
+      <a href="teacher-portal.html">Teacher Portal</a>
+    </div>
   </div>
 
-  <div class="layout">
+  <div class="thinking-layout">
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-      <a href="historical-thinking.html">Overview</a>
-      <a href="primary-source.html">Primary Source</a>
-      <a href="secondary-source.html">Secondary Source</a>
-      <a href="cer.html">Claim–Evidence</a>
-      <a href="contextualization.html">Context</a>
-      <a href="comparison.html">Comparison</a>
-      <a href="cause-effect.html">Cause & Effect</a>
-      <a href="timebox.html">TimeBox</a>
-    </div>
+    <aside class="thinking-sidebar">
+      <div class="thinking-sidebar-label">Navigation</div>
+      <nav class="thinking-nav">
+        <a href="historical-thinking.html" class="active">Historical Thinking Overview</a>
+        <a href="primary-source-analysis.html">Primary Source Analysis</a>
+        <a href="secondary-source-analysis.html">Secondary Source Analysis</a>
+        <a href="claim-evidence-reasoning.html">Claim-Evidence-Reasoning</a>
+        <a href="contextualization.html">Contextualization</a>
+        <a href="comparison.html">Comparison</a>
+        <a href="cause-and-effect.html">Cause and Effect</a>
+        <a href="timebox.html">Historical TimeBox</a>
+      </nav>
+    </aside>
 
-    <!-- MAIN -->
-    <div class="main">
-      <div class="title">Historical Thinking</div>
-      <div class="subtitle">Core tools students use to understand history.</div>
+    <main class="thinking-main">
+      <section class="thinking-hero">
+        <div class="eyebrow">Historical Thinking</div>
+        <h1>Think like a historian.</h1>
+        <p>
+          Clear, repeatable tools for analyzing sources, building arguments, and understanding change over time.
+        </p>
+      </section>
 
-      <div class="grid">
-
-        <div class="card">
-          <h3>Primary Source</h3>
-          <p>Analyze original documents.</p>
-          <a class="btn" href="primary-source.html">Open</a>
+      <section class="thinking-intro">
+        <div class="thinking-intro-card">
+          <h2>Core Tools</h2>
+          <p>
+            Use these across any unit to build stronger thinking, writing, and discussion.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Secondary Source</h3>
-          <p>Evaluate interpretations.</p>
-          <a class="btn" href="secondary-source.html">Open</a>
+        <div class="thinking-note-card">
+          <h2>Start Anywhere</h2>
+          <p>
+            Each tool stands on its own. Pick what fits your lesson.
+          </p>
         </div>
+      </section>
 
-        <div class="card">
-          <h3>Claim & Evidence</h3>
-          <p>Build arguments.</p>
-          <a class="btn" href="cer.html">Open</a>
-        </div>
+      <section class="thinking-module-grid">
+        <article class="thinking-card">
+          <div class="thinking-card-label">Source Work</div>
+          <h3>Primary Source Analysis</h3>
+          <p>Analyze original documents by identifying author, purpose, and meaning.</p>
+          <a class="btn" href="primary-source-analysis.html">Open Resource</a>
+        </article>
 
-        <div class="card">
-          <h3>Context</h3>
-          <p>Place events in time.</p>
-          <a class="btn" href="contextualization.html">Open</a>
-        </div>
+        <article class="thinking-card">
+          <div class="thinking-card-label">Source Work</div>
+          <h3>Secondary Source Analysis</h3>
+          <p>Break down arguments and evaluate how evidence is used.</p>
+          <a class="btn" href="secondary-source-analysis.html">Open Resource</a>
+        </article>
 
-        <div class="card">
+        <article class="thinking-card">
+          <div class="thinking-card-label">Argument</div>
+          <h3>Claim, Evidence, Reasoning</h3>
+          <p>Make a claim, support it with evidence, and explain your reasoning.</p>
+          <a class="btn" href="claim-evidence-reasoning.html">Open Resource</a>
+        </article>
+
+        <article class="thinking-card">
+          <div class="thinking-card-label">Context</div>
+          <h3>Contextualization</h3>
+          <p>Place events in a broader setting to understand when and why they matter.</p>
+          <a class="btn" href="contextualization.html">Open Resource</a>
+        </article>
+
+        <article class="thinking-card">
+          <div class="thinking-card-label">Connections</div>
           <h3>Comparison</h3>
-          <p>Find similarities.</p>
-          <a class="btn" href="comparison.html">Open</a>
-        </div>
+          <p>Identify similarities and differences across events, ideas, or regions.</p>
+          <a class="btn" href="comparison.html">Open Resource</a>
+        </article>
 
-        <div class="card">
-          <h3>Cause & Effect</h3>
-          <p>Trace change.</p>
-          <a class="btn" href="cause-effect.html">Open</a>
-        </div>
+        <article class="thinking-card">
+          <div class="thinking-card-label">Chronology</div>
+          <h3>Cause and Effect</h3>
+          <p>Trace how events connect and why change happens over time.</p>
+          <a class="btn" href="cause-and-effect.html">Open Resource</a>
+        </article>
 
-        <div class="card">
+        <article class="thinking-card">
+          <div class="thinking-card-label">Chronology</div>
           <h3>Historical TimeBox</h3>
-          <p>Explore structured time.</p>
-          <a class="btn" href="timebox.html">Open</a>
-        </div>
+          <p>Organize history visually by year to see patterns and connections.</p>
+          <a class="btn" href="timebox.html">Open Resource</a>
+        </article>
+      </section>
+    </main>
+  </div>
 
-      </div>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>Historia</div>
+      <div>Historical Thinking Resources</div>
     </div>
-
-  </div>
-
-  <div class="footer">
-    © 2026 Historia
-  </div>
+  </footer>
 
 </body>
 </html>
